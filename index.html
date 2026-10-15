@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DAFF SHOP - 5 APK PREMIUM</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a1929;--card:#112233;--card2:#16233a;--text:#fff;--muted:#7a8da8;--accent:#00d4ff;--accent2:#00f5a8;--border:rgba(255,255,255,0.1)}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{background:var(--bg);color:var(--text);padding-bottom:30px}
+.header{padding:18px;background:linear-gradient(135deg,#111d2f,#0f1a2d);border:1px solid var(--border);border-radius:20px;margin:12px;position:sticky;top:12px;z-index:10;backdrop-filter:blur(20px)}
+.logo-row{display:flex;align-items:center;gap:12px}
+.logo{width:56px;height:56px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:14px;display:flex;align-items:center;justify-content:center;font-weight:800;color:#000;font-size:20px}
+.header h1{font-size:20px;font-weight:800;color:#fff}.header h1 span{color:var(--accent)}.header p{font-size:11px;color:var(--muted)}
+.actions{display:flex;gap:10px;margin-top:14px}
+.btn-tutorial{flex:1;background:linear-gradient(90deg,var(--accent),var(--accent2));border:none;padding:11px;border-radius:30px;color:#000;font-weight:700;cursor:pointer;font-size:12px}
+.btn-tema{background:var(--card2);border:1px solid var(--border);padding:11px 16px;border-radius:30px;cursor:pointer;color:#fff;font-size:12px}
+.slider{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 16px 20px;scrollbar-width:none}
+.slider::-webkit-scrollbar{display:none}
+.card{min-width:88%;max-width:88%;background:var(--card);border:1px solid var(--border);border-radius:22px;overflow:hidden;scroll-snap-align:center;box-shadow:0 10px 30px rgba(0,0,0,0.4)}
+.card img{width:100%;height:320px;object-fit:cover;background:#000}
+.card-body{padding:16px}
+.card-body h3{font-size:16px;margin-bottom:6px;color:var(--accent);text-transform:uppercase}
+.card-body p{font-size:11px;color:var(--muted);line-height:1.6;height:42px;overflow:hidden}
+.card-btns{display:flex;gap:10px;margin-top:14px}
+.btn-preview{flex:1;background:transparent;border:1px solid var(--border);padding:11px;border-radius:12px;color:#fff;font-weight:600;cursor:pointer;font-size:12px}
+.btn-buy{flex:1;background:linear-gradient(90deg,var(--accent),var(--accent2));border:none;padding:11px;border-radius:12px;color:#000;font-weight:800;cursor:pointer;font-size:12px}
+.dots{display:flex;justify-content:center;gap:6px;margin-bottom:20px}
+.dot-ind{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.2)}
+.dot-ind.active{width:28px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,0.85);backdrop-filter:blur(12px);display:none;align-items:end;justify-content:center;z-index:1000}
+.modal.show{display:flex}
+.modal-content{background:#0f2236;width:100%;max-width:520px;border-radius:22px 22px 0 0;padding:20px;max-height:90vh;overflow-y:auto;border:1px solid var(--border)}
+.modal-header{display:flex;justify-content:space-between;margin-bottom:16px;align-items:center}
+.modal-header h3{font-size:16px;font-weight:800}
+.close{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.1);border:none;color:#fff;font-size:18px;cursor:pointer}
+.price-item{display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,0.06);padding:14px 16px;border-radius:14px;margin-bottom:10px;border:1px solid var(--border);cursor:pointer;transition:0.2s}
+.price-item:hover{border-color:var(--accent);background:rgba(0,212,255,0.1)}
+.price-item b{color:#fff;font-size:13px}.price-item .rp{color:var(--accent);font-weight:800;font-size:13px}
+.qris-box{background:#fff;padding:14px;border-radius:18px;text-align:center;color:#000}
+.qris-box img{width:100%;max-width:320px;border-radius:10px}
+.detail{font-size:12px;margin-top:14px;line-height:2.4;color:#fff;background:rgba(255,255,255,0.04);padding:12px;border-radius:12px}
+.detail span{float:right;font-weight:700;color:var(--accent)}
+.btn-wa{width:100%;padding:14px;border-radius:14px;border:none;font-weight:700;margin-top:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;font-size:13px}
+.btn-wa.wa{background:#25D366;color:#fff}.btn-wa.tele{background:#229ED9;color:#fff}
+.badge{font-size:9px;padding:3px 8px;border-radius:20px;background:var(--accent);color:#000;font-weight:800;display:inline-block;margin-bottom:6px}
+</style>
+</head>
+<body>
+<div class="header">
+<div class="logo-row"><div class="logo">D</div><div><h1>DAFF <span>SHOP</span></h1><p>★ 5 APK PREMIUM • QRIS ID1025450705674</p></div></div>
+<div class="actions"><button class="btn-tutorial" onclick="document.getElementById('tutorModal').classList.add('show')">◎ Tutorial Membeli</button><button class="btn-tema" onclick="document.getElementById('themeBox').classList.toggle('show')">◎ Tema</button></div>
+</div>
+
+<div id="themeBox" class="modal" style="align-items:center" onclick="this.classList.remove('show')"><div class="modal-content" style="border-radius:20px" onclick="event.stopPropagation()"><h3>Pilih Tema DAFF SHOP</h3><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px"><button class="btn-preview" onclick="applyTheme('#0a1929','#112233','#00d4ff')">Ocean</button><button class="btn-preview" onclick="applyTheme('#1a102e','#251a3e','#a855f7')">Purple</button><button class="btn-preview" onclick="applyTheme('#0a1f1a','#123128','#10b981')">Emerald</button><button class="btn-preview" onclick="applyTheme('#1f0a12','#2e101c','#f43f5e')">Rose</button></div></div></div>
+
+<div style="padding:16px"><h2>Produk Kami</h2><p style="font-size:12px;color:var(--muted)">Geser → DarkVerse, X-GTR4SH, Trapenden, Orca, TR4SVLOID</p></div>
+<div class="slider" id="slider"></div><div class="dots" id="dots"></div>
+
+<div class="modal" id="tutorModal" onclick="closeModals()"><div class="modal-content" onclick="event.stopPropagation()"><div class="modal-header"><h3>Tutor DAFF SHOP</h3><button class="close" onclick="closeModals()">x</button></div><p style="font-size:12px;line-height:1.9;color:var(--muted)">1. Pilih APK<br>2. Klik Buy → pilih paket<br>3. Scan QRIS DAFF SHOP NMID ID1025450705674 A01<br>4. Ketik nominal manual di DANA<br>5. Screenshot bukti<br>6. WA Admin kirim bukti + username</p></div></div>
+
+<div class="modal" id="priceModal" onclick="closeModals()"><div class="modal-content" onclick="event.stopPropagation()"><div class="modal-header"><h3 id="priceTitle">Price List</h3><button class="close" onclick="closeModals()">x</button></div><div id="priceList"></div></div></div>
+
+<div class="modal" id="qrisModal" onclick="closeModals()"><div class="modal-content" onclick="event.stopPropagation()"><div class="modal-header"><h3>Bayar QRIS</h3><button class="close" onclick="closeModals()">x</button></div>
+<div style="text-align:center"><b id="qrisPrice" style="font-size:24px;color:var(--accent)">Rp0</b><p style="font-size:10px;color:var(--muted)">DAFF SHOP • ID1025450705674 • A01</p></div>
+<div class="qris-box" style="margin-top:12px"><img src="./qris.png" onerror="this.src='https://i.ibb.co/6cQ3zQq/qris-placeholder.png'"><p style="margin-top:8px;font-size:11px;font-weight:700">DAFF SHOP - SATU QRIS UNTUK SEMUA</p><p style="font-size:10px;color:#666">DANA • Gopay • OVO • ShopeePay</p></div>
+<div class="detail"><div>APK <span id="dBarang">-</span></div><div>Paket <span id="dPaket">-</span></div><div>Harga <span id="dHarga">-</span></div><div>Tanggal <span id="dTgl">-</span></div><div style="margin-top:10px;background:rgba(255,230,0,0.15);padding:10px;border-radius:10px;border:1px dashed #ffeb3b;color:#ffeb3b;font-size:11px">⚠ QRIS Statis: Ketik manual <span id="dHarga2" style="float:none;font-weight:800">-</span> di DANA!</div></div>
+<button class="btn-wa wa" onclick="chatWA()">◉ WhatsApp Admin</button><button class="btn-wa tele" onclick="chatTele()">✈ Telegram</button></div></div>
+
+<script>
+const products=[
+{id:'darkverse',title:'DarkVerse',desc:'APK BUG premium full update, reseller & partner. Tools ganas anti delay.',img:'./darkverse.jpg',prices:[{name:'FULL UPDATE',rp:50000},{name:'RESELLER',rp:80000},{name:'PARTNER',rp:150000}]},
+{id:'xgtr4sh',title:'X-GTR4SH',desc:'APK bug X-GTR4SH lengkap admin, partner, moderator. Stabil & gacor.',img:'./xgtr4sh.jpg',prices:[{name:'FULL UPDATE',rp:20000},{name:'RESELLER',rp:30000},{name:'ADMIN',rp:50000},{name:'PARTNER',rp:70000},{name:'MODERATOR',rp:100000}]},
+{id:'trapenden',title:'Trapenden',desc:'Trapenden APK bug VIP, PT, Moderator. Fitur lengkap premium.',img:'./trapenden.jpg',prices:[{name:'FULL UPDATE',rp:25000},{name:'RESELLER',rp:45000},{name:'ADMIN',rp:55000},{name:'VIP',rp:60000},{name:'PT',rp:80000},{name:'MODERATOR',rp:100000}]},
+{id:'orca',title:'Orca Malignant',desc:'Orca Malignant owner biasa, owner VIP, all akses 250k. Paling ganas.',img:'./orca.jpg',prices:[{name:'FULL UPDATE',rp:30000},{name:'RESELLER',rp:45000},{name:'ADMIN',rp:55000},{name:'PARTNER',rp:60000},{name:'VIP',rp:75000},{name:'MODERATOR',rp:80000},{name:'OWNER BIASA',rp:100000},{name:'OWNER VIP',rp:120000},{name:'ALL AKSESS',rp:250000}]},
+{id:'tr4svloid',title:'TR4SVLOID',desc:'TR4SVLOID murah meriah 3 hari 5k sampai VIP permanen 50k.',img:'./tr4svloid.jpg',prices:[{name:'3 HARI',rp:5000},{name:'1 MINGGU',rp:10000},{name:'1 BULAN',rp:15000},{name:'FULL UPDATE',rp:25000},{name:'VIP 1 BULAN',rp:30000},{name:'VIP PERMANEN',rp:50000},{name:'RESELLER',rp:55000}]}
+];
+let curProd=null,curPaket=null;
+const slider=document.getElementById('slider'),dots=document.getElementById('dots');
+products.forEach((p,i)=>{
+const c=document.createElement('div');c.className='card';
+c.innerHTML=`<img src="${p.img}" onerror="this.src='https://picsum.photos/400/320?random=${i+11}'"><div class="card-body"><span class="badge">PREMIUM</span><h3>${p.title}</h3><p>${p.desc}</p><div class="card-btns"><button class="btn-preview" onclick="openPrice('${p.id}')">Lihat ${p.prices.length} Harga</button><button class="btn-buy" onclick="openPrice('${p.id}')">🛒 Buy</button></div></div>`;
+slider.appendChild(c);
+const d=document.createElement('div');d.className='dot-ind'+(i==0?' active':'');dots.appendChild(d);
+});
+slider.addEventListener('scroll',()=>{const idx=Math.round(slider.scrollLeft/(slider.offsetWidth*0.88));document.querySelectorAll('.dot-ind').forEach((el,j)=>el.classList.toggle('active',j==idx))});
+function openPrice(id){curProd=products.find(x=>x.id===id);document.getElementById('priceTitle').innerText=curProd.title+' - Price List';const list=document.getElementById('priceList');list.innerHTML='';curProd.prices.forEach(pr=>{const div=document.createElement('div');div.className='price-item';div.innerHTML=`<div><b>${pr.name}</b><br><small style="color:var(--muted)">${curProd.title}</small></div><div style="text-align:right"><span class="rp">Rp${pr.rp.toLocaleString('id-ID')}</span><br><small style="background:var(--accent);color:#000;padding:2px 8px;border-radius:10px;font-weight:700">Pilih</small></div>`;div.onclick=()=>openQris(pr);list.appendChild(div)});document.getElementById('priceModal').classList.add('show')}
+function openQris(paket){curPaket=paket;document.getElementById('priceModal').classList.remove('show');document.getElementById('qrisPrice').innerText='Rp'+paket.rp.toLocaleString('id-ID');document.getElementById('dBarang').innerText=curProd.title;document.getElementById('dPaket').innerText=paket.name;document.getElementById('dHarga').innerText='Rp'+paket.rp.toLocaleString('id-ID');document.getElementById('dHarga2').innerText='Rp'+paket.rp.toLocaleString('id-ID');document.getElementById('dTgl').innerText=new Date().toLocaleDateString('id-ID',{weekday:'long',day:'numeric',month:'long',year:'numeric'});document.getElementById('qrisModal').classList.add('show')}
+function closeModals(){document.querySelectorAll('.modal').forEach(m=>m.classList.remove('show'))}
+function chatWA(){const txt=`Halo DAFF SHOP%0A%0ASaya sudah bayar:%0AAPK: ${curProd.title}%0APaket: ${curPaket.name}%0AHarga: Rp${curPaket.rp.toLocaleString('id-ID')}%0A%0AQRIS ID1025450705674%0AMohon cek ya min`;window.open('https://wa.me/6287766393346?text='+txt,'_blank')}
+function chatTele(){window.open('https://t.me/DaffShop','_blank')}
+function applyTheme(bg,card,accent){document.documentElement.style.setProperty('--bg',bg);document.documentElement.style.setProperty('--card',card);document.documentElement.style.setProperty('--accent',accent);document.body.style.background=bg;closeModals()}
+</script>
+</body>
+                                                                                                     </html>
