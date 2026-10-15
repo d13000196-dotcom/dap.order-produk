@@ -117,7 +117,7 @@ body{background:radial-gradient(900px 600px at 20% -10%,#0f2a4a 0%,transparent 6
 
 <div class="link-sec">
 <h4>LINK CHANNEL</h4>
-<div class="ch-card" onclick="window.open('https://whatsapp.com/channel/0029VbCB5trEawdx1ISPWd2a','_blank')"><div class="ch-icon">✈</div><div><h5>Channel Saluran WhatsApp</h5><p>Info produk & testimoni pembeli</p></div><div class="ch-arrow">›</div></div>
+<div class="ch-card" onclick="window.open('https://whatsapp.com/channel/0029VbCB5trEawdx1ISPWd2a','_blank')"><div class="ch-icon">✈</div><div><h5>Channel Saluran WhatsApp</h5><p>Informasi produk & Testimoni pembeli</p></div><div class="ch-arrow">›</div></div>
 </div>
 
 <div class="footer">
@@ -129,21 +129,21 @@ body{background:radial-gradient(900px 600px at 20% -10%,#0f2a4a 0%,transparent 6
 
 <div class="modal" id="priceM" onclick="closeM()"><div class="box" onclick="event.stopPropagation()"><div class="box-head"><h3 id="ptitle">Price List</h3><button class="x" onclick="closeM()">x</button></div><div id="plist"></div></div></div>
 
-<!-- QRIS FIX PERSIS FOTO 2 -->
+<!-- QRIS FIX TOMBOL GAK TENGGELAM -->
 <div class="modal" id="qrisM" onclick="closeM()">
-<div class="box" onclick="event.stopPropagation()" style="background:#0f1a2e;border-radius:28px;padding:0;overflow:hidden;border:1px solid rgba(255,255,255,0.08);max-height:95vh">
+<div class="box" onclick="event.stopPropagation()" style="background:#0f1a2e;border-radius:28px;padding:0 0 24px 0;overflow-y:auto;border:1px solid rgba(255,255,255,0.08);max-height:86vh;-webkit-overflow-scrolling:touch">
 <div style="padding:20px 20px 14px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,0.06)">
 <h3 style="font-size:16px;font-weight:800">Pembayaran QRIS</h3><button class="x" onclick="closeM()" style="background:rgba(255,255,255,0.08)">x</button>
 </div>
 <div style="text-align:center;padding:18px 20px 10px">
 <b id="qprice" style="font-size:28px;color:#3b9eff;font-weight:800">Rp0</b>
-<p style="font-size:11px;color:var(--muted);margin-top:4px">DAP ORDER PRODUK • QRIS PAYMENT</p>
+<p style="font-size:11px;color:var(--muted);margin-top:4px">DAP ORDER PRODUK • DAP QRIS ALL PAYMENT</p>
 </div>
 <div style="margin:14px 20px;background:#fff;padding:22px;border-radius:22px;text-align:center">
 <img src="./qris.png" style="width:100%;max-width:300px;border-radius:12px">
 </div>
 <div style="margin:16px 20px;background:rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:16px">
-<div style="font-size:11px;letter-spacing:2px;color:var(--muted);font-weight:700;margin-bottom:14px">📋 DETAIL PESANAN</div>
+<div style="font-size:11px;letter-spacing:2px;color:var(--muted);font-weight:700;margin-bottom:14px">📋 DETAIL PESANAN :</div>
 <div style="display:flex;flex-direction:column;gap:12px;font-size:13px">
 <div style="display:flex;justify-content:space-between"><span style="color:#8a9ab5">Barang</span><b id="db" style="color:#fff">-</b></div>
 <div style="display:flex;justify-content:space-between"><span style="color:#8a9ab5">Role</span><b id="dp" style="color:#fff">-</b></div>
@@ -155,7 +155,7 @@ body{background:radial-gradient(900px 600px at 20% -10%,#0f2a4a 0%,transparent 6
 <div style="margin:0 20px;background:rgba(100,130,255,0.08);border:1px solid rgba(100,130,255,0.18);border-radius:14px;padding:14px;display:flex;gap:10px;font-size:12px;color:#8a9ab5;line-height:1.6">
 <div>ⓘ</div><div>Jika sudah berhasil transfer silahkan chat kontak admin dan langsung kirimkan bukti transfer. <b style="color:#ffeb3b">Ketik manual <span id="dh2">-</span> di DANA!</b></div>
 </div>
-<div style="padding:16px 20px 20px;display:flex;align-items:center;gap:12px">
+<div style="padding:18px 20px 30px;display:flex;align-items:center;gap:12px">
 <button onclick="toTele()" style="flex:1;background:#2d9cdb;border:none;border-radius:14px;padding:14px;font-weight:700;color:#fff;font-size:14px;cursor:pointer">Telegram</button>
 <span style="font-size:12px;color:var(--muted);font-weight:700">OR</span>
 <button onclick="toWA()" style="flex:1;background:#25D366;border:none;border-radius:14px;padding:14px;font-weight:700;color:#fff;font-size:14px;cursor:pointer">WhatsApp</button>
@@ -185,11 +185,7 @@ slider.addEventListener('scroll',()=>{const idx=Math.round(slider.scrollLeft/(sl
 function openPrice(id){curP=products.find(x=>x.id===id);document.getElementById('ptitle').innerText=curP.title;const list=document.getElementById('plist');list.innerHTML='';curP.prices.forEach(pr=>{const div=document.createElement('div');div.className='price';div.innerHTML=`<div><b>${pr.name}</b><br><small style="color:var(--muted)">${curP.title}</small></div><div style="text-align:right"><span style="color:#00d4ff;font-weight:800">Rp${pr.rp.toLocaleString('id-ID')}</span><br><small style="background:#00d4ff;color:#000;padding:2px 8px;border-radius:10px;font-weight:700;font-size:10px">Pilih</small></div>`;div.onclick=()=>openQ(pr);list.appendChild(div)});document.getElementById('priceM').classList.add('show')}
 function openQ(p){curPak=p;document.getElementById('priceM').classList.remove('show');document.getElementById('qprice').innerText='Rp'+p.rp.toLocaleString('id-ID');document.getElementById('db').innerText=curP.title;document.getElementById('dp').innerText=p.name;document.getElementById('dh').innerText='Rp'+p.rp.toLocaleString('id-ID');document.getElementById('dh2').innerText='Rp'+p.rp.toLocaleString('id-ID');document.getElementById('dt').innerText=new Date().toLocaleDateString('id-ID',{weekday:'long',day:'numeric',month:'long',year:'numeric'});document.getElementById('qrisM').classList.add('show')}
 function closeM(){document.querySelectorAll('.modal').forEach(m=>m.classList.remove('show'));document.getElementById('themeDrop').classList.remove('show')}
-function toWA(){const t=`Halo DAP ORDER PRODUK%0A%0ASudah Bayar:%0AAPK: ${curP.title}%0APaket: ${curPak.name}%0AHarga: Rp${curPak.rp.toLocaleString('id-ID')}`;window.open('https://wa.me/6283879195047?text='+t,'_blank')}
+function toWA(){const t=`Hallo Mas Dap Mau Konfirmasi Pembelian Nih%0A%0ASudah Bayar:%0AAPK: ${curP.title}%0APaket: ${curPak.name}%0AHarga: Rp${curPak.rp.toLocaleString('id-ID')}`;window.open('https://wa.me/6283879195047?text='+t,'_blank')}
 function toTele(){window.open('https://t.me/Dappak_Reals1','_blank')}
 function toggleTheme(){document.getElementById('themeDrop').classList.toggle('show')}
-const themes={dark:['#080e1f','#121e35'],light:['#f0f4f8','#ffffff'],ocean:['#061e2a','#0f2f42'],purple:['#1a1030','#251a45'],emerald:['#061e1a','#0f2f26'],sunset:['#2a1206','#3f1f0f'],rose:['#2a0a14','#3f1020'],cyberpunk:['#1a0a2a','#2a103f'],nord:['#1e293b','#334155'],dracula:['#1a102a','#2a1a3f'],coffee:['#2a1a0a','#3f2a14'],candy:['#2a1230','#3f1a45'],matrix:['#0a1a0a','#142a14']};
-function setTheme(k,el){const [bg]=themes[k];document.body.style.background=bg;document.querySelectorAll('.t-item').forEach(i=>i.classList.remove('active'));el.classList.add('active');document.getElementById('themeDrop').classList.remove('show')}
-</script>
-</body>
-</html>
+const themes={dark:['#080e1f'],light:['#f0f4f8'],ocean:['#061e2a'],purple:['#1a1030'],emerald:['#061e1a'],sunset:['#2a1206'],rose:['#2a0a14'],cyberpunk:['#1a0a2a'],nord:['#1e293b'],dracula:['#1a102a'],coffee:['#2a1a0a'],candy:
