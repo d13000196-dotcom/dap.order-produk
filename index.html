@@ -67,8 +67,6 @@ body{background:radial-gradient(900px 600px at 20% -10%,#0f2a4a 0%,transparent 6
 .box-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
 .box-head h3{font-size:16px;font-weight:800}.x{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,0.08);border:none;color:#fff;font-size:18px;cursor:pointer}
 .price{display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,0.05);border:1px solid var(--border);padding:14px 16px;border-radius:14px;margin-bottom:10px;cursor:pointer}
-.qris-box{background:#fff;padding:22px;border-radius:22px;text-align:center}
-.qris-box img{width:100%;max-width:300px}
 </style>
 </head>
 <body>
@@ -131,22 +129,19 @@ body{background:radial-gradient(900px 600px at 20% -10%,#0f2a4a 0%,transparent 6
 
 <div class="modal" id="priceM" onclick="closeM()"><div class="box" onclick="event.stopPropagation()"><div class="box-head"><h3 id="ptitle">Price List</h3><button class="x" onclick="closeM()">x</button></div><div id="plist"></div></div></div>
 
-<!-- QRIS BARU PERSIS FOTO 2 -->
+<!-- QRIS FIX PERSIS FOTO 2 -->
 <div class="modal" id="qrisM" onclick="closeM()">
 <div class="box" onclick="event.stopPropagation()" style="background:#0f1a2e;border-radius:28px;padding:0;overflow:hidden;border:1px solid rgba(255,255,255,0.08);max-height:95vh">
 <div style="padding:20px 20px 14px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,0.06)">
 <h3 style="font-size:16px;font-weight:800">Pembayaran QRIS</h3><button class="x" onclick="closeM()" style="background:rgba(255,255,255,0.08)">x</button>
 </div>
-
 <div style="text-align:center;padding:18px 20px 10px">
 <b id="qprice" style="font-size:28px;color:#3b9eff;font-weight:800">Rp0</b>
 <p style="font-size:11px;color:var(--muted);margin-top:4px">DAP ORDER PRODUK • ID1025450705674</p>
 </div>
-
 <div style="margin:14px 20px;background:#fff;padding:22px;border-radius:22px;text-align:center">
 <img src="./qris.png" style="width:100%;max-width:300px;border-radius:12px">
 </div>
-
 <div style="margin:16px 20px;background:rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:16px">
 <div style="font-size:11px;letter-spacing:2px;color:var(--muted);font-weight:700;margin-bottom:14px">📋 DETAIL PESANAN</div>
 <div style="display:flex;flex-direction:column;gap:12px;font-size:13px">
@@ -157,17 +152,14 @@ body{background:radial-gradient(900px 600px at 20% -10%,#0f2a4a 0%,transparent 6
 <div style="display:flex;justify-content:space-between"><span style="color:#8a9ab5">Hari/Tanggal</span><b id="dt" style="color:#fff;font-size:12px">-</b></div>
 </div>
 </div>
-
 <div style="margin:0 20px;background:rgba(100,130,255,0.08);border:1px solid rgba(100,130,255,0.18);border-radius:14px;padding:14px;display:flex;gap:10px;font-size:12px;color:#8a9ab5;line-height:1.6">
 <div>ⓘ</div><div>Jika sudah berhasil transfer silahkan chat kontak admin dan langsung kirimkan bukti transfer. <b style="color:#ffeb3b">Ketik manual <span id="dh2">-</span> di DANA!</b></div>
 </div>
-
 <div style="padding:16px 20px 20px;display:flex;align-items:center;gap:12px">
-<button onclick="toTele()" style="flex:1;background:#2d9cdb;border:none;border-radius:14px;padding:14px;font-weight:700;color:#fff;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px">✈ Telegram</button>
+<button onclick="toTele()" style="flex:1;background:#2d9cdb;border:none;border-radius:14px;padding:14px;font-weight:700;color:#fff;font-size:14px;cursor:pointer">✈ Telegram</button>
 <span style="font-size:12px;color:var(--muted);font-weight:700">OR</span>
-<button onclick="toWA()" style="flex:1;background:#25D366;border:none;border-radius:14px;padding:14px;font-weight:700;color:#fff;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px">WhatsApp</button>
+<button onclick="toWA()" style="flex:1;background:#25D366;border:none;border-radius:14px;padding:14px;font-weight:700;color:#fff;font-size:14px;cursor:pointer">WhatsApp</button>
 </div>
-
 </div>
 </div>
 
@@ -196,4 +188,4 @@ function closeM(){document.querySelectorAll('.modal').forEach(m=>m.classList.rem
 function toWA(){const t=`Halo DAP ORDER PRODUK%0A%0ASudah Bayar:%0AAPK: ${curP.title}%0APaket: ${curPak.name}%0AHarga: Rp${curPak.rp.toLocaleString('id-ID')}`;window.open('https://wa.me/6283879195047?text='+t,'_blank')}
 function toTele(){window.open('https://t.me/Dappak_Reals1','_blank')}
 function toggleTheme(){document.getElementById('themeDrop').classList.toggle('show')}
-const themes={dark:['#0
+const themes={dark:['#080e1f','#121e35'],light:['#f0f4f8','#ffffff'],ocean:['#061e2a','#0f2f42'],purple:['#1a1030','#251a45'],emerald:['#061e1a','#0f2f26'],sunset:['#2a1206','#3f1f0f'],rose:['#2a0a14','#3f1020'],cyberpunk:['#1a0a2a','#2a103f'],nord:['#1e293b','#334155'],drac
