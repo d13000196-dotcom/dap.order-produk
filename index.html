@@ -114,7 +114,7 @@ let curP=null,curPak=null;
 const slider=document.getElementById('slider'),dots=document.getElementById('dots');
 products.forEach((p,i)=>{
 let badge='';
-if(p.id==='trapenden') badge='<span class="badge top" style="position:absolute;top:16px!important;right:10px!important">★ TOP</span>';
+if(p.id==='tr4svloid') badge='<span class="badge top" style="position:absolute;top:16px!important;right:10px!important">★ TOP</span>';
 if(p.id==='darkverse') badge='<span class="badge best" style="position:absolute;top:16px!important;right:10px!important">★ BEST SELLER</span>';
 const c=document.createElement('div');c.className='card';
 c.innerHTML='<div class="img-wrap"><img src="'+p.img+'" onerror="this.src=\'https://picsum.photos/400/360?random='+(i+10)+'\'">'+badge+'</div><h3>'+p.title+'</h3><p>'+p.desc+'</p><div class="card-btns"><button class="btn-prev" data-preview="'+p.id+'"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M8 5.14v14l11-7-11-7z"/></svg> Preview</button><button class="btn-buy" data-buy="'+p.id+'"><svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM17 18c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zM7.17 14.75l-.02.03L7 16h12.5l1.8-8H6.14l-.75-3H1v2h2l3.6 7.59-.8 1.45C5.21 16.37 6.04 18 7.5 18H19v-2H7.5l1-1.75L7.17 14.75z"/></svg> Buy</button></div>';
