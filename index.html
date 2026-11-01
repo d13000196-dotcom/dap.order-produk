@@ -7,25 +7,16 @@
 <style>
 :root{--main:#FFDE59;--bg:#F2EFFF}
 *{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;font-family:Inter;background:var(--bg);background-image:linear-gradient(#0000000e 1px,transparent 1px),linear-gradient(90deg,#0000000e 1px,transparent 1px);background-size:26px 26px;padding-bottom:88px;-webkit-overflow-scrolling:touch}
+body{margin:0;font-family:Inter;background:var(--bg);background-image:linear-gradient(#0000000e 1px,transparent 1px),linear-gradient(90deg,#0000000e 1px,transparent 1px);background-size:26px 26px;padding-bottom:88px;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain}
 .header{position:sticky;top:0;z-index:90;height:64px;background:var(--main);border-bottom:4px solid #000;display:flex;justify-content:space-between;align-items:center;padding:0 12px}
 .btn-dap{border:3.5px solid #000;background:#fff;border-radius:18px;padding:10px 16px;display:flex;gap:8px;align-items:center;font-family:'Bricolage Grotesque';font-weight:900;font-size:14px;box-shadow:4px 4px 0 #000;cursor:pointer}
-.theme-wrap{position:relative}
-.btn-theme{border:3.5px solid #000;background:#fff;border-radius:999px;padding:10px 14px;display:flex;gap:8px;align-items:center;font-family:'Bricolage Grotesque';font-weight:900;box-shadow:4px 4px 0 #000;cursor:pointer}
-.theme-dropdown{position:absolute;top:58px;right:0;width:260px;background:#fff;border:3.5px solid #000;border-radius:22px;padding:10px;box-shadow:6px 6px 0 #000;z-index:150;opacity:0;transform:translateY(-10px) scale(.96);pointer-events:none;transition:.28s cubic-bezier(.34,1.56,.64,1)}
-.theme-dropdown.show{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
-.theme-head{font-family:'Bricolage Grotesque';font-weight:900;font-size:11px;letter-spacing:1px;color:#666;padding:6px 10px;border-bottom:2px solid #000;margin-bottom:8px}
-.theme-opt{border:3px solid #000;border-radius:999px;padding:10px 14px;display:flex;align-items:center;gap:10px;font-weight:800;font-size:14px;background:#FFFBEB;box-shadow:3px 3px 0 #000;margin-bottom:8px;cursor:pointer;justify-content:space-between}
-.theme-opt.active{background:var(--main)}
-.theme-colorbox{width:22px;height:22px;border-radius:6px;border:2.5px solid #000}
-.notif{position:fixed;top:78px;left:12px;right:12px;z-index:300;background:#CBE8FF;border:3.5px solid #000;border-radius:18px;padding:12px 16px;box-shadow:5px 5px 0 #000;display:flex;gap:10px;align-items:center;transform:translateY(-150%);transition:transform .4s cubic-bezier(.34,1.56,.64,1)}
-.notif.show{transform:translateY(0)}
+.btn-theme{border:3.5px solid #000;background:#fff;width:68px;height:44px;border-radius:18px;display:flex;align-items:center;justify-content:center;box-shadow:4px 4px 0 #000;cursor:pointer}
 .hero{padding:18px 14px}
-.tag{display:inline-block;border:3px solid #000;border-radius:8px;padding:6px 12px;font-family:'Bricolage Grotesque';font-weight:900;transform:rotate(-2deg);box-shadow:3px 3px 0 #000;font-size:13px;background:var(--main)}
+.tag{display:inline-block;background:var(--main);border:3px solid #000;border-radius:8px;padding:6px 12px;font-family:'Bricolage Grotesque';font-weight:900;transform:rotate(-2deg);box-shadow:3px 3px 0 #000;font-size:13px}
 .title{font-family:'Bricolage Grotesque';font-weight:900;line-height:.9;font-size:44px;margin-top:12px;letter-spacing:-1px}
-.title .box{background:#fff;border:3.5px solid #000;display:inline-block;padding:2px 12px;transform:rotate(-2deg);box-shadow:5px 5px 0 #000;color:var(--main);filter:brightness(.6)}
+.title .box{background:#fff;border:3.5px solid #000;display:inline-block;padding:2px 12px;transform:rotate(-2deg);box-shadow:5px 5px 0 #000;color:#D97A00}
 .btn-jelajah{margin-top:16px;background:#000;color:#fff;border-radius:999px;padding:16px 22px;display:inline-flex;gap:10px;align-items:center;font-weight:900;cursor:pointer;box-shadow:4px 4px 0 #000;border:3px solid #000}
-.info-card{border:3.5px solid #000;border-radius:18px;padding:14px 16px;background:#fff;display:flex;justify-content:space-between;align-items:center;font-weight:800;box-shadow:5px 5px 0 #000;margin-bottom:12px;cursor:pointer;color:#000}
+.info-card{border:3.5px solid #000;border-radius:18px;padding:14px 16px;background:#fff;display:flex;justify-content:space-between;align-items:center;font-weight:800;box-shadow:5px 5px 0 #000;margin-bottom:12px;cursor:pointer;text-decoration:none;color:#000}
 .nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:4px solid #000;display:flex;gap:8px;padding:8px;z-index:80}
 .nav button{flex:1;border:3.5px solid #000;border-radius:16px;padding:10px 2px;text-align:center;font-family:'Bricolage Grotesque';font-weight:900;font-size:11px;display:flex;flex-direction:column;align-items:center;gap:4px;box-shadow:3px 3px 0 #000;background:#fff;cursor:pointer}
 .nav button.on{background:var(--main)}
@@ -43,56 +34,54 @@ body{margin:0;font-family:Inter;background:var(--bg);background-image:linear-gra
 <div id="pageTrans"></div>
 <div class="header">
 <div class="btn-dap" onclick="openMenu()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3"><path d="M4 6 H20 M4 12 H20 M4 18 H20"/></svg> DAP ORDER</div>
-<div class="theme-wrap">
-<div class="btn-theme" onclick="toggleThemeMenu()"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.2"><path d="M12 2 C6 2 2 6 2 12 C2 17 6 21 12 21 C13 21 13 20 13 19 C13 18 12 18 12 17 C12 12 16 12 16 9 C16 6 12 2 12 2 Z"/><circle cx="7" cy="10" r="1" fill="black"/><circle cx="9" cy="7" r="1" fill="black"/><circle cx="13" cy="6" r="1" fill="black"/><circle cx="16" cy="9" r="1" fill="black"/></svg><span id="themeArrow">▼</span></div>
-<div id="themeDropdown" class="theme-dropdown">
-<div class="theme-head">PILIH WARNA TEMA</div>
-<div class="theme-opt" onclick="setTheme('#5B8DEF','BIRU',this)"><div style="display:flex;gap:10px;align-items:center"><div class="theme-colorbox" style="background:#5B8DEF"></div>Biru (Cyber)</div></div>
-<div class="theme-opt" onclick="setTheme('#8AFF8A','HIJAU',this)"><div style="display:flex;gap:10px;align-items:center"><div class="theme-colorbox" style="background:#8AFF8A"></div>Hijau (Lime)</div></div>
-<div class="theme-opt" onclick="setTheme('#C9A8FF','UNGU',this)"><div style="display:flex;gap:10px;align-items:center"><div class="theme-colorbox" style="background:#C9A8FF"></div>Ungu (Violet)</div></div>
-<div class="theme-opt" onclick="setTheme('#FF7A7A','MERAH',this)"><div style="display:flex;gap:10px;align-items:center"><div class="theme-colorbox" style="background:#FF7A7A"></div>Merah (Coral)</div></div>
-<div class="theme-opt active" onclick="setTheme('#FFDE59','KUNING',this)"><div style="display:flex;gap:10px;align-items:center"><div class="theme-colorbox" style="background:#FFDE59"></div>Kuning (Bold)</div><span style="font-size:11px">AKTIF</span></div>
+<div class="btn-theme" onclick="toggleTheme()"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="black" stroke-width="2.5"/><circle cx="9" cy="10" r="1" fill="black"/><circle cx="15" cy="10" r="1" fill="black"/><path d="M8 14 C9.5 16 14.5 16 16 14" stroke="black" stroke-width="2" stroke-linecap="round"/></svg></div>
 </div>
-</div>
-</div>
-<div id="themeNotif" class="notif"><div style="width:28px;height:28px;border-radius:50%;background:#000;color:#fff;display:flex;align-items:center;justify-content:center">✓</div><div><b>TEMA TERPILIH</b><p id="notifText" style="margin:2px 0 0;font-size:13px;font-weight:700">Warna BIRU aktif.</p></div></div>
 
 <div class="hero">
 <div class="tag">PRODUCT & TESTIMONI</div>
-<div class="title">BERBAGAI<br><span class="box">PRODUCT</span><br>APLIKASI<br>PREMIUM<br>TOOLS</div>
-<div style="margin-top:10px;color:#333">Saya Dappak menjual berbagai produk aplikasi tools</div>
+<div class="title">BERBAGAI<br><span class="box">PRODUCT</span><br>APLIKASI<br>BUG WA X RAT SADAP<br></div>
+<div style="margin-top:10px;color:#333">Saya Dappak menjual berbagai produk aplikasi bug untuk exploitasi WhatsApp dan mengirim serangan dan RAT (Remote Access Trojan) untuk melakukan penyadapan informasi dan data pada ponsel target.</div>
 <div class="btn-jelajah" onclick="smoothGo('produk.html')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2"><circle cx="8" cy="21" r="1.5"/><circle cx="19" cy="21" r="1.5"/><path d="M2 2 H4 L6 14 H20 L22 6 H6"/></svg> JELAJAHI PRODUCT</div>
 </div>
 
 <div style="background:#C9F1DF;border-top:4px solid #000;padding:14px">
-<div class="tag">● DAP OFFICIAL</div>
+<div class="tag" style="background:#FFDE59">● DAP OFFICIAL</div>
 <p style="font-weight:700;line-height:1.4;margin-top:12px">Tempat menjelajahi produk digital. Periksa informasi produk dan ketentuan sebelum melakukan transaksi.</p>
+<div style="margin-top:8px">© 2026 Dap Official. Hak cipta dilindungi.</div>
 <div style="margin-top:18px">
 <div style="border:3.5px solid #000;display:inline-block;padding:8px 14px;font-weight:900;background:#B7E6CC;box-shadow:4px 4px 0 #000">INFORMASI</div>
 <div style="margin-top:12px">
 <div class="info-card" onclick="smoothGo('produk.html')"><span>Jelajahi Product</span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3"><path d="M7 17 L17 7 M8 7 H17 V16"/></svg></div>
-<div class="info-card" style="background:#C2E6FF"><span>Tutorial Membeli</span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3"><path d="M5 12 H19 M13 6 L19 12 L13 18"/></svg></div>
+<div class="info-card" style="background:#C2E6FF" onclick="alert('Tutorial: Pilih produk aplikasi yang mau di beli > Bayar/payment > Konfirmasi ke WhatsApp atau Telegram Owner')"><span>Tutorial Membeli</span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3"><path d="M5 12 H19 M13 6 L19 12 L13 18"/></svg></div>
 </div>
 </div>
 </div>
 
 <div id="menuBg" onclick="closeMenu()"></div>
-<div id="menuDrawer"><div class="menu-top"><div><div style="font-family:'Bricolage Grotesque';font-weight:900;font-size:20px">MENU UTAMA</div></div><div class="btn-theme" onclick="closeMenu()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3"><path d="M6 6 L18 18 M18 6 L6 18"/></svg></div></div>
-<div class="menu-item" onclick="smoothGo('index.html')">Beranda</div><div class="menu-item" onclick="smoothGo('produk.html')" style="background:var(--main)">Katalog Produk</div><div class="menu-item" onclick="smoothGo('contact.html')">Kontak Kami</div></div>
+<div id="menuDrawer">
+<div class="menu-top"><div><div style="font-family:'Bricolage Grotesque';font-weight:900;font-size:20px">MENU UTAMA</div><div style="font-size:12px;font-weight:700">Eksplorasi Product, Testi & Layanan</div></div><div class="btn-theme" onclick="closeMenu()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3"><path d="M6 6 L18 18 M18 6 L6 18"/></svg></div></div>
+<div style="padding-top:10px"><div style="margin:12px;font-size:11px;letter-spacing:1px;color:#888;font-weight:800">HALAMAN UTAMA</div>
+<div class="menu-item" onclick="smoothGo('index.html')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.2"><path d="M3 9 L12 2 L21 9 V20 A2 2 0 0 1 19 22 H5 A2 2 0 0 1 3 20 Z"/><path d="M9 22 V12 H15 V22"/></svg> Beranda</div>
+<div class="menu-item" onclick="smoothGo('produk.html')" style="background:var(--main)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.2"><circle cx="8" cy="21" r="1.5"/><circle cx="19" cy="21" r="1.5"/><path d="M2 2 H4 L6 14 H20 L22 6 H6"/></svg> Katalog Produk</div>
+<div class="menu-item" onclick="smoothGo('testi.html')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.2"><path d="M21 11.5 A8.5 8.5 0 0 1 12 20 L7 22 L8 16.5 A8.5 8.5 0 0 1 21 11.5 Z"/></svg> Testimoni</div>
+<div class="menu-item" onclick="window.open('https://wa.me/6283879195047','_blank')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.2"><path d="M4 4 H20 V16 H4 Z"/><path d="M4 8 L12 13 L20 8"/></svg> Kontak Kami</div>
+</div>
+</div>
 
 <div class="nav">
-<button class="on" onclick="smoothGo('index.html')">HOME</button><button onclick="smoothGo('produk.html')">PRODUCT</button><button onclick="smoothGo('contact.html')">TESTI</button><button onclick="smoothGo('contact.html')">CONTACT</button>
+<button class="on" onclick="smoothGo('index.html')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.2"><path d="M3 9 L12 2 L21 9 V20 A2 2 0 0 1 19 22 H5 A2 2 0 0 1 3 20 Z"/><path d="M9 22 V12 H15 V22"/></svg>HOME</button>
+<button onclick="smoothGo('produk.html')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.2"><circle cx="8" cy="21" r="1.5"/><circle cx="19" cy="21" r="1.5"/><path d="M2 2 H4 L6 14 H20 L22 6 H6"/></svg>PRODUCT</button>
+<button onclick="smoothGo('testi.html')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.2"><path d="M14 2 H6 A2 2 0 0 0 4 4 V20 A2 2 0 0 0 6 22 H18 A2 2 0 0 0 20 20 V8 Z"/><path d="M14 2 V8 H20"/><path d="M8 13 H16 M8 17 H12"/></svg>TESTI</button>
+<button onclick="window.open('https://wa.me/6283879195047','_blank')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.2"><path d="M22 16.9 V20.5 A2 2 0 0 1 20.2 22.5 C10.2 22.5 2 14.3 2 4.2 A2 2 0 0 1 4 2.3 H7.9 A2 2 0 0 1 9.8 3.8 L11 8.1 A2 2 0 0 1 10.2 10.2 L8.1 12.3 A16 16 0 0 0 11.7 18.3 L13.8 16.2 A2 2 0 0 1 15.9 15.4 L20.2 16.6 A2 2 0 0 1 22 18.5 Z"/></svg>CONTACT</button>
 </div>
 
 <script>
-let curMain=localStorage.getItem('main')||'#FFDE59';document.documentElement.style.setProperty('--main',curMain);
+let curMain=localStorage.getItem('main'); if(curMain){document.documentElement.style.setProperty('--main',curMain)}
 function openMenu(){document.getElementById('menuDrawer').classList.add('show');document.getElementById('menuBg').classList.add('show')}
 function closeMenu(){document.getElementById('menuDrawer').classList.remove('show');document.getElementById('menuBg').classList.remove('show')}
-function toggleThemeMenu(){const d=document.getElementById('themeDropdown');const a=document.getElementById('themeArrow');const s=d.classList.contains('show');if(s){d.classList.remove('show');a.textContent='▼'}else{d.classList.add('show');a.textContent='▲'}}
-function setTheme(c,n,el){document.documentElement.style.setProperty('--main',c);localStorage.setItem('main',c);document.querySelectorAll('.theme-opt').forEach(o=>o.classList.remove('active'));el.classList.add('active');document.getElementById('themeDropdown').classList.remove('show');document.getElementById('themeArrow').textContent='▼';document.getElementById('notifText').innerText=`Warna ${n} aktif.`;const nn=document.getElementById('themeNotif');nn.classList.add('show');setTimeout(()=>nn.classList.remove('show'),2500)}
-function smoothGo(u){let t=document.getElementById('pageTrans');t.classList.add('on');setTimeout(()=>location.href=u,280)}
+function toggleTheme(){let colors=['#FFDE59','#8AFF8A','#7AC7FF','#FF9BD2'];let i=colors.indexOf(getComputedStyle(document.documentElement).getPropertyValue('--main').trim());let n=colors[(i+1)%colors.length];document.documentElement.style.setProperty('--main',n);localStorage.setItem('main',n)}
+function smoothGo(url){let t=document.getElementById('pageTrans');t.classList.add('on');setTimeout(()=>{window.location.href=url},280)}
 window.addEventListener('load',()=>{let t=document.getElementById('pageTrans');t.style.transition='none';t.classList.add('on');requestAnimationFrame(()=>{setTimeout(()=>{t.style.transition='transform .42s cubic-bezier(.76,0,.24,1)';t.classList.remove('on')},30)})})
-document.addEventListener('click',e=>{if(!e.target.closest('.theme-wrap')){document.getElementById('themeDropdown')?.classList.remove('show');document.getElementById('themeArrow').textContent='▼'}})
 </script>
 </body>
 </html>
