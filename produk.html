@@ -173,8 +173,8 @@ products.forEach(p=>{
 });
 function openBuying(name){const prod=products.find(x=>x.id===name); document.getElementById('buyingTitle').innerText=prod.id; let html=''; prod.prices.forEach(pr=>{html+=`<div class="price-label">${pr[0]}</div><div class="price-row"><div><div style="font-size:12px;color:#666">${pr[2]}</div><b>${pr[1]}</b></div><button class="btn-bayar" onclick="goPayment('${prod.id}','${pr[0]}','${pr[1]}','${pr[2]}')">Bayar</button></div>`}); document.getElementById('buyingList').innerHTML=html; document.getElementById('buyingModal').classList.add('show')}
 function closeBuying(){document.getElementById('buyingModal').classList.remove('show')}
-function goPayment(apk,paket,harga,expired){
-  cur={apk,paket,harga,expired};
+function goPayment(apk,paket,harga,masa){
+  cur={apk,paket,harga,masa};
   closeBuying();
   setTimeout(()=>{
     document.getElementById('payPrice').innerText=harga;
