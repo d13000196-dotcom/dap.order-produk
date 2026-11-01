@@ -1,116 +1,120 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 <title>PRODUCT - DAP ORDER</title>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@800;900&family=Inter:wght@500;700;900&display=swap" rel="stylesheet">
 <style>
 :root{--main:#FFDE59;--bg:#F2EFFF}
-*{box-sizing:border-box}
-body{margin:0; font-family:'Inter',sans-serif; background:var(--bg); background-image:linear-gradient(#0000000e 1px, transparent 1px), linear-gradient(90deg, #0000000e 1px, transparent 1px); background-size:26px 26px; padding-bottom:100px}
-.header{position:sticky; top:0; z-index:50; height:62px; background:var(--main); border-bottom:3.5px solid #000; display:flex; justify-content:space-between; align-items:center; padding:0 12px}
-.btn-dap{border:3.5px solid #000; background:#fff; border-radius:18px; padding:8px 14px; display:flex; gap:8px; align-items:center; font-family:'Bricolage Grotesque'; font-weight:900; font-size:14px; box-shadow:4px 4px 0 #000; color:#000; text-decoration:none}
-.grid{padding:14px 12px; display:grid; grid-template-columns:1fr 1fr; gap:14px}
-.p-card{border:3.5px solid #000; border-radius:22px; background:var(--main); padding:7px; box-shadow:6px 6px 0 #000; display:flex; flex-direction:column}
-.p-img{position:relative; background:#fff; border:3px solid #000; border-radius:16px; overflow:hidden; height:150px; display:flex; align-items:center; justify-content:center}
-.p-img img{width:100%; height:100%; object-fit:cover}
-.p-badge{position:absolute; top:8px; left:8px; background:#FFE3C2; border:2px solid #000; border-radius:6px; padding:2px 7px; font-family:'Bricolage Grotesque'; font-weight:900; font-size:8px; box-shadow:2px 2px 0 #000; z-index:2}
-.p-name{margin-top:10px; background:#fff; border:3px solid #000; border-radius:999px; padding:7px 10px; font-family:'Bricolage Grotesque'; font-weight:900; font-size:11px; display:flex; gap:6px; align-items:center; box-shadow:3px 3px 0 #000; text-transform:uppercase}
-.dot{width:9px; height:9px; border-radius:50%; background:#000}
-.p-desc{background:#FFFBE6; border:2.5px solid #000; border-radius:10px; padding:8px 10px; margin-top:8px; font-size:11px; color:#333; flex:1}
-.p-actions{margin-top:10px; display:grid; grid-template-columns:1fr 1fr; gap:7px}
-.btn-pre{border:3px solid #000; background:#D9D7FF; border-radius:999px; padding:8px 4px; font-family:'Bricolage Grotesque'; font-weight:900; font-size:11px; box-shadow:3px 3px 0 #000; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:4px}
-.btn-buy{border:3px solid #000; background:#FF8A1A; border-radius:999px; padding:8px 4px; font-family:'Bricolage Grotesque'; font-weight:900; font-size:11px; box-shadow:3px 3px 0 #000; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:4px}
-.nav{position:fixed; bottom:0; left:0; right:0; background:#fff; border-top:4px solid #000; display:flex; gap:8px; padding:8px; z-index:20}
-.nav div{flex:1; border:3.5px solid #000; border-radius:16px; padding:10px 2px; text-align:center; font-family:'Bricolage Grotesque'; font-weight:900; font-size:11px; box-shadow:3px 3px 0 #000; background:#fff; cursor:pointer}
-.nav .on{background:var(--main)}
-
-/* MODAL SMOOTH SYSTEM */
-.modal-bg{position:fixed; inset:0; background:rgba(0,0,0,0.65); z-index:400; display:flex; align-items:center; justify-content:center; padding:14px; opacity:0; pointer-events:none; transition:opacity .25s ease}
-.modal-bg.show{opacity:1; pointer-events:auto}
-.modal{width:100%; max-width:390px; background:#fff; border:4px solid #000; border-radius:22px; box-shadow:8px 8px 0 #000; padding:16px; position:relative; transform:translateY(20px) scale(.96); transition:transform .3s cubic-bezier(.34,1.56,.64,1); max-height:90vh; overflow:auto}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter;background:var(--bg);background-image:linear-gradient(#0000000e 1px,transparent 1px),linear-gradient(90deg,#0000000e 1px,transparent 1px);background-size:26px 26px;padding-bottom:88px;-webkit-overflow-scrolling:touch}
+.header{position:sticky;top:0;z-index:90;height:62px;background:var(--main);border-bottom:3.5px solid #000;display:flex;justify-content:space-between;align-items:center;padding:0 12px}
+.btn-dap{border:3.5px solid #000;background:#fff;border-radius:18px;padding:10px 14px;display:flex;gap:8px;align-items:center;font-family:'Bricolage Grotesque';font-weight:900;font-size:14px;box-shadow:4px 4px 0 #000;color:#000;cursor:pointer}
+.btn-theme{border:3.5px solid #000;background:#fff;width:68px;height:44px;border-radius:18px;display:flex;align-items:center;justify-content:center;box-shadow:4px 4px 0 #000;cursor:pointer}
+.grid{padding:14px 12px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.p-card{border:3.5px solid #000;border-radius:22px;background:var(--main);padding:7px;box-shadow:6px 6px 0 #000;display:flex;flex-direction:column}
+.p-img{position:relative;background:#fff;border:3px solid #000;border-radius:16px;overflow:hidden;height:150px;display:flex;align-items:center;justify-content:center}
+.p-img img{width:100%;height:100%;object-fit:cover}
+.p-badge{position:absolute;top:8px;left:8px;background:#FFE3C2;border:2px solid #000;border-radius:6px;padding:2px 7px;font-family:'Bricolage Grotesque';font-weight:900;font-size:8px;box-shadow:2px 2px 0 #000;z-index:2}
+.p-name{margin-top:10px;background:#fff;border:3px solid #000;border-radius:999px;padding:7px 10px;font-family:'Bricolage Grotesque';font-weight:900;font-size:11px;display:flex;gap:6px;align-items:center;box-shadow:3px 3px 0 #000;text-transform:uppercase}
+.p-desc{background:#FFFBE6;border:2.5px solid #000;border-radius:10px;padding:8px 10px;margin-top:8px;font-size:11px;color:#333;flex:1}
+.p-actions{margin-top:10px;display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.btn-pre{border:3px solid #000;background:#D9D7FF;border-radius:999px;padding:8px 4px;font-family:'Bricolage Grotesque';font-weight:900;font-size:11px;box-shadow:3px 3px 0 #000;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px}
+.btn-buy{border:3px solid #000;background:#FF8A1A;border-radius:999px;padding:8px 4px;font-family:'Bricolage Grotesque';font-weight:900;font-size:11px;box-shadow:3px 3px 0 #000;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px}
+.nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:4px solid #000;display:flex;gap:8px;padding:8px;z-index:80}
+.nav button{flex:1;border:3.5px solid #000;border-radius:16px;padding:10px 2px;text-align:center;font-family:'Bricolage Grotesque';font-weight:900;font-size:11px;display:flex;flex-direction:column;align-items:center;gap:4px;box-shadow:3px 3px 0 #000;background:#fff;cursor:pointer}
+.nav button.on{background:var(--main)}
+/* MODAL SMOOTH */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,0.65);z-index:400;display:flex;align-items:center;justify-content:center;padding:14px;opacity:0;pointer-events:none;transition:opacity .25s ease}
+.modal-bg.show{opacity:1;pointer-events:auto}
+.modal{width:100%;max-width:390px;background:#fff;border:4px solid #000;border-radius:22px;box-shadow:8px 8px 0 #000;padding:16px;position:relative;transform:translateY(20px) scale(.96);transition:transform .3s cubic-bezier(.34,1.56,.64,1);max-height:90vh;overflow:auto}
 .modal-bg.show .modal{transform:translateY(0) scale(1)}
-.modal-head{font-family:'Bricolage Grotesque'; font-weight:900; font-size:20px; padding-right:50px; text-transform:uppercase}
-.close-x{position:absolute; top:12px; right:12px; width:42px; height:42px; border:3px solid #000; border-radius:50%; background:#fff; box-shadow:3px 3px 0 #000; display:flex; align-items:center; justify-content:center; cursor:pointer}
-.close-x svg{width:18px; height:18px}
-
-/* PAYMENT MODAL EXACT FALLREAL */
-.qris-title{font-family:'Bricolage Grotesque'; font-weight:900; font-size:20px}
-.qris-price{font-family:'Bricolage Grotesque'; font-weight:900; font-size:28px; color:#FF7A00; text-align:center; margin:8px 0 12px}
-.qris-box{border:3.5px solid #000; border-radius:20px; background:#fff; padding:8px; box-shadow:5px 5px 0 #000; overflow:hidden}
-.qris-box img{width:100%; display:block; border-radius:12px}
-.detail-box{margin-top:14px; border:3px solid #E6E6E6; border-radius:16px; background:#FFFEFE; padding:12px 14px; box-shadow:inset 0 0 0 1px #fff}
-.detail-head{font-family:'Bricolage Grotesque'; font-weight:900; font-size:12px; letter-spacing:.8px; display:flex; align-items:center; gap:6px; border-bottom:2px solid #EDEDED; padding-bottom:8px; margin-bottom:10px}
-.detail-row{display:flex; justify-content:space-between; gap:10px; font-size:13px; margin-bottom:8px}
-.detail-row .k{color:#8A8A8A; font-weight:600}
-.detail-row .v{font-weight:800; text-align:right}
+/* PAYMENT MODAL - LOCKED VERSION DARI FOTO TERAKHIR - JANGAN DIUBAH */
+.qris-title{font-family:'Bricolage Grotesque';font-weight:900;font-size:20px}
+.qris-price{font-family:'Bricolage Grotesque';font-weight:900;font-size:28px;color:#FF7A00;text-align:center;margin:8px 0 12px}
+.qris-box{border:3.5px solid #000;border-radius:20px;background:#fff;padding:8px;box-shadow:5px 5px 0 #000;overflow:hidden}
+.qris-box img{width:100%;display:block;border-radius:12px}
+.detail-box{margin-top:14px;border:3px solid #E6E6E6;border-radius:16px;background:#FFFEFE;padding:12px 14px}
+.detail-head{font-family:'Bricolage Grotesque';font-weight:900;font-size:12px;letter-spacing:.8px;display:flex;align-items:center;gap:6px;border-bottom:2px solid #EDEDED;padding-bottom:8px;margin-bottom:10px}
+.detail-row{display:flex;justify-content:space-between;gap:10px;font-size:13px;margin-bottom:8px}
+.detail-row .k{color:#8A8A8A;font-weight:600}
+.detail-row .v{font-weight:800;text-align:right}
 .detail-row .v.orange{color:#FF7A00}
-.note-box{margin-top:12px; border:2px solid #E5DDFF; background:#F6F1FF; border-radius:14px; padding:10px 12px; display:flex; gap:8px; font-size:12px; line-height:1.4; color:#6B5A8A}
-.btn-tele{border:3.5px solid #000; background:#C8E6FF; border-radius:999px; padding:12px; font-family:'Bricolage Grotesque'; font-weight:900; font-size:13px; box-shadow:4px 4px 0 #000; display:flex; align-items:center; justify-content:center; gap:6px; cursor:pointer; width:100%}
-.btn-wa{border:3.5px solid #000; background:#FFE3C2; border-radius:999px; padding:12px; font-family:'Bricolage Grotesque'; font-weight:900; font-size:13px; box-shadow:4px 4px 0 #000; display:flex; align-items:center; justify-content:center; gap:6px; cursor:pointer; width:100%}
-.price-label{font-family:'Bricolage Grotesque'; font-weight:800; font-size:11px; color:#1A7A4A; margin-top:16px; margin-bottom:6px; letter-spacing:.8px}
-.price-row{border:2.5px solid #000; border-radius:14px; padding:12px; display:flex; justify-content:space-between; align-items:center; background:#fff; box-shadow:3px 3px 0 #000; margin-bottom:10px}
-.btn-bayar{border:3px solid #000; background:#FF8A1A; border-radius:999px; padding:8px 16px; font-family:'Bricolage Grotesque'; font-weight:900; font-size:13px; box-shadow:3px 3px 0 #000; cursor:pointer}
+.note-box{margin-top:12px;border:2px solid #E5DDFF;background:#F6F1FF;border-radius:14px;padding:10px 12px;display:flex;gap:8px;font-size:12px;line-height:1.4;color:#6B5A8A}
+.btn-tele{border:3.5px solid #000;background:#C8E6FF;border-radius:999px;padding:12px;font-family:'Bricolage Grotesque';font-weight:900;font-size:13px;box-shadow:4px 4px 0 #000;display:flex;align-items:center;justify-content:center;gap:6px;cursor:pointer;width:100%}
+.btn-wa{border:3.5px solid #000;background:#FFE3C2;border-radius:999px;padding:12px;font-family:'Bricolage Grotesque';font-weight:900;font-size:13px;box-shadow:4px 4px 0 #000;display:flex;align-items:center;justify-content:center;gap:6px;cursor:pointer;width:100%}
+.close-x{position:absolute;top:12px;right:12px;width:42px;height:42px;border:3px solid #000;border-radius:50%;background:#fff;box-shadow:3px 3px 0 #000;display:flex;align-items:center;justify-content:center;cursor:pointer}
+#menuBg{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:200;opacity:0;pointer-events:none;transition:.25s}
+#menuBg.show{opacity:1;pointer-events:auto}
+#menuDrawer{position:fixed;top:0;left:0;bottom:0;width:82%;max-width:360px;background:#fff;border-right:4px solid #000;z-index:201;transform:translateX(-100%);transition:transform .35s cubic-bezier(.34,1.56,.64,1);display:flex;flex-direction:column}
+#menuDrawer.show{transform:translateX(0)}
+.menu-top{height:64px;background:var(--main);border-bottom:4px solid #000;display:flex;justify-content:space-between;align-items:center;padding:0 14px}
+.menu-item{border:3.5px solid #000;border-radius:16px;padding:14px 16px;display:flex;gap:12px;align-items:center;font-weight:900;box-shadow:4px 4px 0 #000;margin:10px 12px 0;cursor:pointer;background:#fff}
+#pageTrans{position:fixed;inset:0;background:var(--bg);z-index:9999;transform:translateY(100%);transition:transform .42s cubic-bezier(.76,0,.24,1);pointer-events:none}
+#pageTrans.on{transform:translateY(0);pointer-events:auto}
+.price-label{font-family:'Bricolage Grotesque';font-weight:800;font-size:11px;color:#1A7A4A;margin-top:16px;margin-bottom:6px;letter-spacing:.8px}
+.price-row{border:2.5px solid #000;border-radius:14px;padding:12px;display:flex;justify-content:space-between;align-items:center;background:#fff;box-shadow:3px 3px 0 #000;margin-bottom:10px}
+.btn-bayar{border:3px solid #000;background:#FF8A1A;border-radius:999px;padding:8px 16px;font-family:'Bricolage Grotesque';font-weight:900;font-size:13px;box-shadow:3px 3px 0 #000;cursor:pointer}
 </style>
 </head>
 <body>
-
-<div class="header"><a href="index.html" class="btn-dap">☰ DAP ORDER</a><div style="border:3px solid #000; background:#fff; width:62px; height:42px; border-radius:18px; display:flex; align-items:center; justify-content:center; box-shadow:4px 4px 0 #000">◐</div></div>
+<div id="pageTrans"></div>
+<div class="header"><div class="btn-dap" onclick="openMenu()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3"><path d="M4 6 H20 M4 12 H20 M4 18 H20"/></svg> DAP ORDER</div><div class="btn-theme" onclick="toggleTheme()"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="black" stroke-width="2.5"/><circle cx="9" cy="10" r="1" fill="black"/><circle cx="15" cy="10" r="1" fill="black"/><path d="M8 14 C9.5 16 14.5 16 16 14" stroke="black" stroke-width="2" stroke-linecap="round"/></svg></div></div>
 
 <div class="grid" id="grid"></div>
 
-<div class="nav"><div onclick="location.href='index.html'">HOME</div><div class="on">PRODUCT</div><div>TESTI</div><div>CONTACT</div></div>
+<div id="menuBg" onclick="closeMenu()"></div>
+<div id="menuDrawer">
+<div class="menu-top"><div><div style="font-family:'Bricolage Grotesque';font-weight:900;font-size:20px">MENU UTAMA</div><div style="font-size:12px;font-weight:700">Eksplorasi Product, Testi & Layanan</div></div><div class="btn-theme" onclick="closeMenu()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3"><path d="M6 6 L18 18 M18 6 L6 18"/></svg></div></div>
+<div style="padding-top:10px"><div style="margin:12px;font-size:11px;letter-spacing:1px;color:#888;font-weight:800">HALAMAN UTAMA</div>
+<div class="menu-item" onclick="smoothGo('index.html')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.2"><path d="M3 9 L12 2 L21 9 V20 A2 2 0 0 1 19 22 H5 A2 2 0 0 1 3 20 Z"/><path d="M9 22 V12 H15 V22"/></svg> Beranda</div>
+<div class="menu-item" onclick="smoothGo('produk.html')" style="background:var(--main)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.2"><circle cx="8" cy="21" r="1.5"/><circle cx="19" cy="21" r="1.5"/><path d="M2 2 H4 L6 14 H20 L22 6 H6"/></svg> Katalog Produk</div>
+</div>
+</div>
+
+<div class="nav">
+<button onclick="smoothGo('index.html')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.2"><path d="M3 9 L12 2 L21 9 V20 A2 2 0 0 1 19 22 H5 A2 2 0 0 1 3 20 Z"/><path d="M9 22 V12 H15 V22"/></svg>HOME</button>
+<button class="on" onclick="smoothGo('produk.html')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.2"><circle cx="8" cy="21" r="1.5"/><circle cx="19" cy="21" r="1.5"/><path d="M2 2 H4 L6 14 H20 L22 6 H6"/></svg>PRODUCT</button>
+<button onclick="smoothGo('index.html')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.2"><path d="M14 2 H6 A2 2 0 0 0 4 4 V20 A2 2 0 0 0 6 22 H18 A2 2 0 0 0 20 20 V8 Z"/><path d="M14 2 V8 H20"/><path d="M8 13 H16 M8 17 H12"/></svg>TESTI</button>
+<button onclick="window.open('https://wa.me/6283879195047','_blank')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.2"><path d="M22 16.9 V20.5 A2 2 0 0 1 20.2 22.5 C10.2 22.5 2 14.3 2 4.2 A2 2 0 0 1 4 2.3 H7.9 A2 2 0 0 1 9.8 3.8 L11 8.1 A2 2 0 0 1 10.2 10.2 L8.1 12.3 A16 16 0 0 0 11.7 18.3 L13.8 16.2 A2 2 0 0 1 15.9 15.4 L20.2 16.6 A2 2 0 0 1 22 18.5 Z"/></svg>CONTACT</button>
+</div>
 
 <!-- BUYING MODAL -->
-<div id="buyingModal" class="modal-bg" onclick="closeBuying()"><div class="modal" onclick="event.stopPropagation()"><div style="font-weight:800; font-size:11px; color:#8A4A16; letter-spacing:.8px">PRICE LIST</div><div id="buyingTitle" class="modal-head" style="margin-top:4px">PREMIUM D</div><div class="close-x" onclick="closeBuying()"><svg viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3" stroke-linecap="round"><path d="M6 6 L18 18 M18 6 L6 18"/></svg></div><div id="buyingList"></div></div></div>
+<div id="buyingModal" class="modal-bg" onclick="closeBuying()"><div class="modal" onclick="event.stopPropagation()"><div style="font-weight:800;font-size:11px;color:#8A4A16;letter-spacing:.8px">PRICE LIST</div><div id="buyingTitle" class="modal-head" style="font-family:'Bricolage Grotesque';font-weight:900;font-size:20px;margin-top:4px">PREMIUM D</div><div class="close-x" onclick="closeBuying()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3"><path d="M6 6 L18 18 M18 6 L6 18"/></svg></div><div id="buyingList"></div></div></div>
 
-<!-- PAYMENT MODAL - 100% KAYAK FOTO LU -->
+<!-- PAYMENT MODAL - LOCKED - FOTO TERAKHIR LU - JANGAN DIUBAH -->
 <div id="paymentModal" class="modal-bg" onclick="closePayment()">
-<div class="modal" onclick="event.stopPropagation()" style="background:#FFFBFF; padding:14px">
-  <div style="display:flex; justify-content:space-between; align-items:center">
+<div class="modal" onclick="event.stopPropagation()" style="background:#FFFBFF;padding:14px">
+  <div style="display:flex;justify-content:space-between;align-items:center">
     <div class="qris-title">Pembayaran QRIS</div>
-    <div class="close-x" style="position:relative; top:0; right:0; background:#E9E9F1" onclick="closePayment()"><svg viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3" stroke-linecap="round"><path d="M6 6 L18 18 M18 6 L6 18"/></svg></div>
+    <div class="close-x" style="position:relative;top:0;right:0;background:#E9E9F1" onclick="closePayment()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3"><path d="M6 6 L18 18 M18 6 L6 18"/></svg></div>
   </div>
-  <div id="payPrice" class="qris-price">Rp 20.000</div>
-  
-  <div class="qris-box">
-    <!-- GANTI qris.png DENGAN QRIS LU YANG PNG -->
-    <img id="qrisImg" src="qris.png" alt="QRIS" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=QRIS-DAP-ORDER'">
-  </div>
-
+  <div id="payPrice" class="qris-price">Rp 150.000</div>
+  <div class="qris-box"><img id="qrisImg" src="qris.png" alt="QRIS" onerror="this.src='QRIS_FINAL_LOCKED.png'"></div>
   <div class="detail-box">
-    <div class="detail-head">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A8A8A" stroke-width="2"><path d="M14 2 H6 A2 2 0 0 0 4 4 V20 A2 2 0 0 0 6 22 H18 A2 2 0 0 0 20 20 V8 Z"/><path d="M14 2 V8 H20"/><path d="M8 13 H16 M8 17 H16"/></svg>
-      DETAIL PESANAN
-    </div>
-    <div class="detail-row"><span class="k">Barang</span><span class="v" id="dBarang">APK SYAM BUG X RAT</span></div>
-    <div class="detail-row"><span class="k">Role</span><span class="v" id="dRole">Member</span></div>
-    <div class="detail-row"><span class="k">Masa aktif</span><span class="v" id="dMasa">30 hari</span></div>
-    <div class="detail-row"><span class="k">Harga</span><span class="v orange" id="dHarga">Rp 20.000</span></div>
+    <div class="detail-head"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A8A8A" stroke-width="2"><path d="M14 2 H6 A2 2 0 0 0 4 4 V20 A2 2 0 0 0 6 22 H18 A2 2 0 0 0 20 20 V8 Z"/><path d="M14 2 V8 H20"/><path d="M8 13 H16 M8 17 H16"/></svg> DETAIL PESANAN</div>
+    <div class="detail-row"><span class="k">Barang</span><span class="v" id="dBarang">PREMIUM ORC</span></div>
+    <div class="detail-row"><span class="k">Role</span><span class="v" id="dRole">OWNER</span></div>
+    <div class="detail-row"><span class="k">Masa aktif</span><span class="v" id="dMasa">Permanen</span></div>
+    <div class="detail-row"><span class="k">Harga</span><span class="v orange" id="dHarga">Rp 150.000</span></div>
     <div class="detail-row"><span class="k">Hari/Tanggal</span><span class="v" id="dTanggal">Minggu, 1 November 2026</span></div>
   </div>
-
-  <div class="note-box">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><circle cx="12" cy="12" r="9" stroke="#A48DFF" stroke-width="2"/><path d="M12 8 V13" stroke="#A48DFF" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="16" r="1" fill="#A48DFF"/></svg>
-    <span>Setelah transfer, silahkan hubungi admin dengan menekan tombol dibawah ini untuk mendapatkan produk.</span>
-  </div>
-
-  <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:14px">
-    <button class="btn-tele" onclick="goTelegram()">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="#1E293B"><path d="M22 2 L2 11 L9 13 L20 4 L12 18 L20 22 L22 2 Z"/></svg>
-      TELEGRAM
-    </button>
-    <button class="btn-wa" onclick="goWhatsapp()">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1E293B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9 V20.5 A2 2 0 0 1 20.2 22.5 C10.2 22.5 2 14.3 2 4.2 A2 2 0 0 1 4 2.3 H7.9 A2 2 0 0 1 9.8 3.8 L11 8.1 A2 2 0 0 1 10.2 10.2 L8.1 12.3 A16 16 0 0 0 11.7 18.3 L13.8 16.2 A2 2 0 0 1 15.9 15.4 L20.2 16.6 A2 2 0 0 1 22 18.5 Z"/></svg>
-      WHATSAPP
-    </button>
+  <div class="note-box"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><circle cx="12" cy="12" r="9" stroke="#A48DFF" stroke-width="2"/><path d="M12 8 V13" stroke="#A48DFF" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="16" r="1" fill="#A48DFF"/></svg><span>Setelah transfer, silahkan hubungi admin dengan menekan tombol dibawah ini untuk mendapatkan produk.</span></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px">
+    <button class="btn-tele" onclick="goTelegram()"><svg width="18" height="18" viewBox="0 0 24 24" fill="#1E293B"><path d="M22 2 L2 11 L9 13 L20 4 L12 18 L20 22 L22 2 Z"/></svg> TELEGRAM</button>
+    <button class="btn-wa" onclick="goWhatsapp()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1E293B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9 V20.5 A2 2 0 0 1 20.2 22.5 C10.2 22.5 2 14.3 2 4.2 A2 2 0 0 1 4 2.3 H7.9 A2 2 0 0 1 9.8 3.8 L11 8.1 A2 2 0 0 1 10.2 10.2 L8.1 12.3 A16 16 0 0 0 11.7 18.3 L13.8 16.2 A2 2 0 0 1 15.9 15.4 L20.2 16.6 A2 2 0 0 1 22 18.5 Z"/></svg> WHATSAPP</button>
   </div>
 </div>
 </div>
 
 <script>
-let m=localStorage.getItem('main'); let b=localStorage.getItem('bg'); if(m){document.documentElement.style.setProperty('--main',m); document.documentElement.style.setProperty('--bg',b)}
+let curMain=localStorage.getItem('main'); if(curMain){document.documentElement.style.setProperty('--main',curMain)}
+function openMenu(){document.getElementById('menuDrawer').classList.add('show');document.getElementById('menuBg').classList.add('show')}
+function closeMenu(){document.getElementById('menuDrawer').classList.remove('show');document.getElementById('menuBg').classList.remove('show')}
+function toggleTheme(){let colors=['#FFDE59','#8AFF8A','#7AC7FF','#FF9BD2'];let i=colors.indexOf(getComputedStyle(document.documentElement).getPropertyValue('--main').trim());let n=colors[(i+1)%colors.length];document.documentElement.style.setProperty('--main',n);localStorage.setItem('main',n)}
+function smoothGo(url){let t=document.getElementById('pageTrans');t.classList.add('on');setTimeout(()=>{window.location.href=url},280)}
+window.addEventListener('load',()=>{let t=document.getElementById('pageTrans');t.style.transition='none';t.classList.add('on');requestAnimationFrame(()=>{setTimeout(()=>{t.style.transition='transform .42s cubic-bezier(.76,0,.24,1)';t.classList.remove('on')},30)})})
+
 const products=[
   {id:"PREMIUM D", img:"d.jpg", desc:"aplikasi premium tools keren", prices:[["FULL UPDATE","Rp 50.000","30 hari"],["RESELLER","Rp 120.000","Permanen"],["PARTNER","Rp 250.000","Permanen"]]},
   {id:"PREMIUM T", img:"t.jpg", desc:"aplikasi premium tools keren", prices:[["PERHARI","Rp 5.000","1 hari"],["PERMINGGU","Rp 20.000","7 hari"],["FULL UPDATE","Rp 30.000","30 hari"],["RESELLER","Rp 50.000","Permanen"],["VIP","Rp 60.000","Permanen"],["PT","Rp 80.000","Permanen"],["TK","Rp 100.000","Permanen"]]},
@@ -121,15 +125,13 @@ const products=[
 let cur={apk:"", paket:"", harga:"", masa:""};
 const grid=document.getElementById('grid');
 products.forEach(p=>{
-  grid.innerHTML+=`<div class="p-card"><div class="p-img"><div class="p-badge">OPEN / READY</div><img src="${p.img}" onerror="this.src='https://via.placeholder.com/300x300/FFFFFF/000000?text=${p.id}'"></div><div class="p-name"><span class="dot"></span> ${p.id}</div><div class="p-desc">${p.desc}</div><div class="p-actions"><button class="btn-pre" onclick="openBuying('${p.id}')">👁 PREVIEW</button><button class="btn-buy" onclick="openBuying('${p.id}')">🛒 BUYING</button></div></div>`;
+  grid.innerHTML+=`<div class="p-card"><div class="p-img"><div class="p-badge">OPEN / READY</div><img src="${p.img}" onerror="this.src='https://via.placeholder.com/300x300/FFFFFF/000000?text=${p.id}'"></div><div class="p-name"><span style="width:9px;height:9px;border-radius:50%;background:#000;display:inline-block"></span> ${p.id}</div><div class="p-desc">${p.desc}</div><div class="p-actions"><button class="btn-pre" onclick="openBuying('${p.id}')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.2"><path d="M1 12 S8 4 12 4 S23 12 12 20 S1 12 1 12"/><circle cx="12" cy="12" r="3"/></svg> PREVIEW</button><button class="btn-buy" onclick="openBuying('${p.id}')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.2"><circle cx="8" cy="21" r="1.5"/><circle cx="19" cy="21" r="1.5"/><path d="M2 2 H4 L6 14 H20 L22 6 H6"/></svg> BUYING</button></div></div>`;
 });
-function openBuying(name){const prod=products.find(x=>x.id===name); document.getElementById('buyingTitle').innerText=prod.id; let html=''; prod.prices.forEach(pr=>{html+=`<div class="price-label">${pr[0]}</div><div class="price-row"><div><div style="font-size:12px; color:#666">${pr[2]}</div><b>${pr[1]}</b></div><button class="btn-bayar" onclick="goPayment('${prod.id}','${pr[0]}','${pr[1]}','${pr[2]}')">Bayar</button></div>`}); document.getElementById('buyingList').innerHTML=html; document.getElementById('buyingModal').classList.add('show')}
+function openBuying(name){const prod=products.find(x=>x.id===name); document.getElementById('buyingTitle').innerText=prod.id; let html=''; prod.prices.forEach(pr=>{html+=`<div class="price-label">${pr[0]}</div><div class="price-row"><div><div style="font-size:12px;color:#666">${pr[2]}</div><b>${pr[1]}</b></div><button class="btn-bayar" onclick="goPayment('${prod.id}','${pr[0]}','${pr[1]}','${pr[2]}')">Bayar</button></div>`}); document.getElementById('buyingList').innerHTML=html; document.getElementById('buyingModal').classList.add('show')}
 function closeBuying(){document.getElementById('buyingModal').classList.remove('show')}
-
 function goPayment(apk,paket,harga,masa){
   cur={apk,paket,harga,masa};
   closeBuying();
-  // SMOOTH DELAY
   setTimeout(()=>{
     document.getElementById('payPrice').innerText=harga;
     document.getElementById('dBarang').innerText=apk;
@@ -142,14 +144,8 @@ function goPayment(apk,paket,harga,masa){
   },180);
 }
 function closePayment(){document.getElementById('paymentModal').classList.remove('show')}
-function goWhatsapp(){
-  const text=`Hallo bang dappak saya ingin konfirmasi pembayaran pembelian produk apk bug%0A%0ASudah Bayar:%0AAPK: ${encodeURIComponent(cur.apk)}%0APaket: ${encodeURIComponent(cur.paket)}%0AHarga: ${encodeURIComponent(cur.harga)}%0AMasa: ${encodeURIComponent(cur.masa)}`;
-  window.open(`https://wa.me/6283879195047?text=${text}`,'_blank');
-}
-function goTelegram(){
-  // GANTI LINK TELE LU DISINI
-  window.open(`https://t.me/Dappak?text=Halo%20bang%20dappak%20sudah%20bayar%20${cur.apk}%20${cur.paket}`,'_blank');
-}
+function goWhatsapp(){const text=`Hallo bang dappak saya ingin konfirmasi pembayaran%0A%0ASudah Bayar:%0AAPK: ${cur.apk}%0APaket: ${cur.paket}%0AHarga: ${cur.harga}%0AMasa: ${cur.masa}`; window.open(`https://wa.me/6283879195047?text=${text}`,'_blank')}
+function goTelegram(){window.open(`https://t.me/Dappak?text=Hallo%20bang%20dappak%20sudah%20bayar%20${cur.apk}%20${cur.paket}`,'_blank')}
 </script>
 </body>
 </html>
