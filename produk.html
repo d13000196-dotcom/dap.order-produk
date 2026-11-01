@@ -109,13 +109,56 @@ body{margin:0;font-family:Inter;background:var(--bg);background-image:linear-gra
 </div>
 
 <script>
-let curMain=localStorage.getItem('main'); if(curMain){document.documentElement.style.setProperty('--main',curMain)}
+// ANTI LAG DOUBLE DI PRODUK
+let isNavigating = false;
+let curMain=localStorage.getItem('main'); 
+if(curMain){document.documentElement.style.setProperty('--main',curMain)}
+
 function openMenu(){document.getElementById('menuDrawer').classList.add('show');document.getElementById('menuBg').classList.add('show')}
 function closeMenu(){document.getElementById('menuDrawer').classList.remove('show');document.getElementById('menuBg').classList.remove('show')}
-function toggleTheme(){let colors=['#FFDE59','#8AFF8A','#7AC7FF','#FF9BD2'];let i=colors.indexOf(getComputedStyle(document.documentElement).getPropertyValue('--main').trim());let n=colors[(i+1)%colors.length];document.documentElement.style.setProperty('--main',n);localStorage.setItem('main',n)}
-function smoothGo(url){let t=document.getElementById('pageTrans');t.classList.add('on');setTimeout(()=>{window.location.href=url},280)}
-window.addEventListener('load',()=>{let t=document.getElementById('pageTrans');t.style.transition='none';t.classList.add('on');requestAnimationFrame(()=>{setTimeout(()=>{t.style.transition='transform .42s cubic-bezier(.76,0,.24,1)';t.classList.remove('on')},30)})})
 
+function toggleTheme(){
+  let colors=['#FFDE59','#8AFF8A','#7AC7FF','#FF9BD2'];
+  let cur=getComputedStyle(document.documentElement).getPropertyValue('--main').trim();
+  let i=colors.indexOf(cur); 
+  let n=colors[(i+1)%colors.length];
+  document.documentElement.style.setProperty('--main',n);
+  localStorage.setItem('main',n);
+}
+
+function smoothGo(url){
+  if(isNavigating) return; // cegah pencet 2x
+  isNavigating = true;
+  let t=document.getElementById('pageTrans');
+  t.classList.add('on');
+  // kalo tujuan nya sama, jangan load lagi
+  if(window.location.href.includes(url)){
+    setTimeout(()=>{ t.classList.remove('on'); isNavigating=false; closeMenu(); }, 300);
+    return;
+  }
+  setTimeout(()=>{window.location.href=url}, 300);
+}
+
+// FIX UTAMA LAG 2 KALI - jangan tunggu load gambar
+window.addEventListener('DOMContentLoaded',()=>{
+  let t=document.getElementById('pageTrans');
+  t.style.transition='none';
+  t.classList.add('on');
+  requestAnimationFrame(()=>{
+    setTimeout(()=>{
+      t.style.transition='transform .42s cubic-bezier(.76,0,.24,1)';
+      t.classList.remove('on');
+    },50)
+  })
+})
+
+// Preload gambar biar gak patah pas pertama kali buka produk
+function preloadImages(){
+  let imgs = document.querySelectorAll('img');
+  imgs.forEach(img=>{ img.loading='eager'; img.decoding='async'; });
+}
+preloadImages();
+  
 const products=[
   {id:"DARKVERSE XRAT", img:"darkverse.jpg", desc:"Xploit bug WhatsApp sangat gacor sender global stabil dan memiliki tools RAT untuk menyadap hp target melalui phising. serta banyak tools lainnya yang gacor. silahkan buy dan pilih role sesuai yang kamu mau.", prices:[["FULL UPDATE","Rp 50.000","30 hari"],["RESELLER","Rp 120.000","Permanen"],["PARTNER","Rp 250.000","Permanen"]]},
   {id:"TRAPENDEN XRAT", img:"trapenden.jpg", desc:"Xploit bug WhatsApp sangat gacor sender global stabil dan memiliki tools RAT untuk menyadap hp target melalui phising. serta banyak tools lainnya yang gacor. silahkan buy dan pilih role sesuai yang kamu mau.", prices:[["PERHARI","Rp 5.000","1 hari"],["PERMINGGU","Rp 20.000","7 hari"],["FULL UPDATE","Rp 30.000","30 hari"],["RESELLER","Rp 50.000","Permanen"],["VIP","Rp 60.000","Permanen"],["PT","Rp 80.000","Permanen"],["TK","Rp 100.000","Permanen"]]},
@@ -130,8 +173,8 @@ products.forEach(p=>{
 });
 function openBuying(name){const prod=products.find(x=>x.id===name); document.getElementById('buyingTitle').innerText=prod.id; let html=''; prod.prices.forEach(pr=>{html+=`<div class="price-label">${pr[0]}</div><div class="price-row"><div><div style="font-size:12px;color:#666">${pr[2]}</div><b>${pr[1]}</b></div><button class="btn-bayar" onclick="goPayment('${prod.id}','${pr[0]}','${pr[1]}','${pr[2]}')">Bayar</button></div>`}); document.getElementById('buyingList').innerHTML=html; document.getElementById('buyingModal').classList.add('show')}
 function closeBuying(){document.getElementById('buyingModal').classList.remove('show')}
-function goPayment(apk,paket,harga,masa){
-  cur={apk,paket,harga,masa};
+function goPayment(apk,paket,harga,expired){
+  cur={apk,paket,harga,expired};
   closeBuying();
   setTimeout(()=>{
     document.getElementById('payPrice').innerText=harga;
