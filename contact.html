@@ -5,29 +5,32 @@
 <title>CONTACT - DAP ORDER</title>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@800;900&family=Inter:wght@600;800&display=swap" rel="stylesheet">
 <style>
-:root{--main:#FFDE59;--bg:#F2EFFF}
+:root{--main:#FFDE59;--bg:#E9E6FF}
 *{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;font-family:Inter;background:var(--bg);background-image:linear-gradient(#0000000e 1px,transparent 1px),linear-gradient(90deg,#0000000e 1px,transparent 1px);background-size:26px 26px;padding-bottom:88px;-webkit-overflow-scrolling:touch}
+body{margin:0;font-family:Inter;background:var(--bg);background-image:linear-gradient(#0000000a 1px,transparent 1px),linear-gradient(90deg,#0000000a 1px,transparent 1px);background-size:22px 22px;padding-bottom:88px;-webkit-overflow-scrolling:touch}
 .header{position:sticky;top:0;z-index:90;height:64px;background:var(--main);border-bottom:4px solid #000;display:flex;justify-content:space-between;align-items:center;padding:0 12px}
-.btn-dap{border:3.5px solid #000;background:#fff;border-radius:18px;padding:10px 16px;display:flex;gap:8px;align-items:center;font-family:'Bricolage Grotesque';font-weight:900;font-size:14px;box-shadow:4px 4px 0 #000;cursor:pointer}
+.btn-dap{border:3.5px solid #000;background:#fff;border-radius:999px;padding:10px 14px;display:flex;gap:8px;align-items:center;font-family:'Bricolage Grotesque';font-weight:900;font-size:13px;box-shadow:4px 4px 0 #000;cursor:pointer}
 .theme-wrap{position:relative}
-.btn-theme{border:3.5px solid #000;background:#fff;border-radius:999px;padding:10px 14px;display:flex;gap:8px;align-items:center;font-family:'Bricolage Grotesque';font-weight:900;box-shadow:4px 4px 0 #000;cursor:pointer}
+.btn-theme{border:3.5px solid #000;background:#fff;border-radius:999px;padding:10px 12px;display:flex;gap:6px;align-items:center;box-shadow:4px 4px 0 #000;cursor:pointer;font-family:'Bricolage Grotesque';font-weight:900}
 .theme-dropdown{position:absolute;top:58px;right:0;width:260px;background:#fff;border:3.5px solid #000;border-radius:22px;padding:10px;box-shadow:6px 6px 0 #000;z-index:150;opacity:0;transform:translateY(-10px) scale(.96);pointer-events:none;transition:.28s cubic-bezier(.34,1.56,.64,1)}
 .theme-dropdown.show{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
 .theme-head{font-family:'Bricolage Grotesque';font-weight:900;font-size:11px;letter-spacing:1px;color:#666;padding:6px 10px;border-bottom:2px solid #000;margin-bottom:8px}
 .theme-opt{border:3px solid #000;border-radius:999px;padding:10px 14px;display:flex;align-items:center;gap:10px;font-weight:800;font-size:14px;background:#FFFBEB;box-shadow:3px 3px 0 #000;margin-bottom:8px;cursor:pointer;justify-content:space-between}
 .theme-opt.active{background:var(--main)}
 .theme-colorbox{width:22px;height:22px;border-radius:6px;border:2.5px solid #000}
-.notif{position:fixed;top:78px;left:12px;right:12px;z-index:300;background:#CBE8FF;border:3.5px solid #000;border-radius:18px;padding:12px 16px;box-shadow:5px 5px 0 #000;display:flex;gap:10px;align-items:center;transform:translateY(-120%);transition:transform .4s cubic-bezier(.34,1.56,.64,1)}
+.notif{position:fixed;top:78px;left:12px;right:12px;z-index:300;background:#CBE8FF;border:3.5px solid #000;border-radius:18px;padding:12px 16px;box-shadow:5px 5px 0 #000;display:flex;gap:10px;align-items:center;transform:translateY(-150%);transition:transform .4s cubic-bezier(.34,1.56,.64,1)}
 .notif.show{transform:translateY(0)}
-.contact-head{margin:14px 12px;background:#C9E6FF;border:3.5px solid #000;border-radius:20px;padding:16px;box-shadow:5px 5px 0 #000}
-.contact-head h1{font-family:'Bricolage Grotesque';font-weight:900;font-size:28px;margin:0 0 8px;line-height:1}
-.contact-head p{margin:0;font-weight:600;color:#333;line-height:1.4;font-size:14px}
-.card{margin:16px 12px;background:#fff;border:3.5px solid #000;border-radius:22px;padding:16px;box-shadow:6px 6px 0 #000}
-.card-icon{width:54px;height:54px;border:3px solid #000;border-radius:10px;display:flex;align-items:center;justify-content:center;box-shadow:3px 3px 0 #000}
-.card h2{font-family:'Bricolage Grotesque';font-weight:900;font-size:18px;margin:12px 0 6px}
+
+.contact-title-box{margin:14px 12px;background:#C9E6FF;border:3.5px solid #000;border-radius:20px;padding:16px 16px;box-shadow:5px 5px 0 #000}
+.contact-title-box h1{font-family:'Bricolage Grotesque';font-weight:900;font-size:28px;margin:0;line-height:1}
+.contact-title-box p{margin:8px 0 0;font-size:14px;font-weight:600;color:#222;line-height:1.4}
+
+.card{margin:14px 12px;background:#fff;border:3.5px solid #000;border-radius:22px;padding:16px;box-shadow:6px 6px 0 #000}
+.card-icon{width:58px;height:58px;border:3px solid #000;border-radius:12px;display:flex;align-items:center;justify-content:center;box-shadow:3px 3px 0 #000}
+.card h2{font-family:'Bricolage Grotesque';font-weight:900;font-size:18px;margin:14px 0 6px}
 .card p{margin:0 0 14px;font-size:13px;color:#666;font-weight:600}
-.btn-contact{border:3.5px solid #000;border-radius:999px;padding:14px;font-family:'Bricolage Grotesque';font-weight:900;font-size:14px;box-shadow:4px 4px 0 #000;cursor:pointer;width:100%;text-align:center}
+.btn-contact{border:3.5px solid #000;border-radius:999px;padding:14px;font-family:'Bricolage Grotesque';font-weight:900;font-size:14px;box-shadow:4px 4px 0 #000;cursor:pointer;width:100%;text-align:center;letter-spacing:.3px}
+
 .nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:4px solid #000;display:flex;gap:8px;padding:8px;z-index:80}
 .nav button{flex:1;border:3.5px solid #000;border-radius:16px;padding:10px 2px;text-align:center;font-family:'Bricolage Grotesque';font-weight:900;font-size:11px;display:flex;flex-direction:column;align-items:center;gap:4px;box-shadow:3px 3px 0 #000;background:#fff;cursor:pointer}
 .nav button.on{background:var(--main)}
@@ -57,19 +60,19 @@ body{margin:0;font-family:Inter;background:var(--bg);background-image:linear-gra
 <div class="theme-opt" onclick="setTheme('#FFDE59','KUNING',this)"><div style="display:flex;gap:10px;align-items:center"><div class="theme-colorbox" style="background:#FFDE59"></div>Kuning (Bold)</div></div>
 </div>
 </div>
-<div class="btn-theme"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 16 L7 8 M7 8 L10 12 L7 8 L10 8"/><path d="M14 8 H18 M16 8 V16 M19 10 A2 2 0 1 1 19 14"/></svg></div>
+<div class="btn-theme"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 16 L7 8 M7 8 L10 12 L7 8 L10 8"/><path d="M14 8 H18 M16 8 V16 M19 10 A2 2 0 1 1 19 14"/></svg></div>
 </div>
 </div>
 
 <div id="themeNotif" class="notif"><div style="width:28px;height:28px;border-radius:50%;background:#000;color:#fff;display:flex;align-items:center;justify-content:center">✓</div><div><b>TEMA TERPILIH</b><p id="notifText">Warna BIRU aktif.</p></div></div>
 
-<div class="contact-head">
+<div class="contact-title-box">
 <h1>HUBUNGI DAP ORDER</h1>
 <p>Pilih kanal kontak resmi di bawah ini. Setiap tombol langsung membuka tautan yang diatur pengelola.</p>
 </div>
 
 <div class="card">
-<div class="card-icon" style="background:#FFE2C8"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2"><path d="M20 11.5 A8.5 8.5 0 0 1 8.5 20 L5 21 L6 17.5 A8.5 8.5 0 0 1 20 11.5 Z"/><path d="M9 9 C9 9 10 11 12 11 C14 11 15 9 15 9"/></svg></div>
+<div class="card-icon" style="background:#FFE2C8"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.2"><path d="M8 14 C8 14 11 19 14 14 M8 14 A4 4 0 0 1 16 14"/><circle cx="12" cy="14" r="9" stroke="black" stroke-width="2"/></svg></div>
 <h2>WHATSAPP</h2><p>Chat langsung dengan admin.</p>
 <button class="btn-contact" style="background:#FFE2C8" onclick="window.open('https://wa.me/6283879195047','_blank')">BUKA WHATSAPP</button>
 </div>
@@ -83,7 +86,7 @@ body{margin:0;font-family:Inter;background:var(--bg);background-image:linear-gra
 <div class="card">
 <div class="card-icon" style="background:#FFDE59"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.2"><path d="M20 4 L3 10 L9 12 L10 20 L20 4 Z"/></svg></div>
 <h2>CHANNEL WHATSAPP</h2><p>Lihat pengumuman dan update terbaru.</p>
-<button class="btn-contact" style="background:#FFDE59" onclick="window.open('https://whatsapp.com/channel/0029Va...','_blank')">BUKA CHANNEL</button>
+<button class="btn-contact" style="background:#FFDE59" onclick="window.open('https://whatsapp.com/channel/0029Va8...','_blank')">BUKA CHANNEL</button>
 </div>
 
 <div id="menuBg" onclick="closeMenu()"></div>
@@ -93,7 +96,7 @@ body{margin:0;font-family:Inter;background:var(--bg);background-image:linear-gra
 <div class="nav">
 <button onclick="smoothGo('index.html')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.2"><path d="M3 9 L12 2 L21 9 V20 A2 2 0 0 1 19 22 H5 A2 2 0 0 1 3 20 Z"/><path d="M9 22 V12 H15 V22"/></svg>HOME</button>
 <button onclick="smoothGo('produk.html')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.2"><circle cx="8" cy="21" r="1.5"/><circle cx="19" cy="21" r="1.5"/><path d="M2 2 H4 L6 14 H20 L22 6 H6"/></svg>PRODUCT</button>
-<button onclick="smoothGo('index.html')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.2"><path d="M14 2 H6 A2 2 0 0 0 4 4 V20 A2 2 0 0 0 6 22 H18 A2 2 0 0 0 20 20 V8 Z"/><path d="M14 2 V8 H20"/><path d="M8 13 H16 M8 17 H12"/></svg>TESTI</button>
+<button onclick="smoothGo('testi.html')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.2"><path d="M14 2 H6 A2 2 0 0 0 4 4 V20 A2 2 0 0 0 6 22 H18 A2 2 0 0 0 20 20 V8 Z"/><path d="M14 2 V8 H20"/><path d="M8 13 H16 M8 17 H12"/></svg>TESTI</button>
 <button class="on" onclick="smoothGo('contact.html')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.2"><path d="M22 16.9 V20.5 A2 2 0 0 1 20.2 22.5 C10.2 22.5 2 14.3 2 4.2 A2 2 0 0 1 4 2.3 H7.9 A2 2 0 0 1 9.8 3.8 L11 8.1 A2 2 0 0 1 10.2 10.2 L8.1 12.3 A16 16 0 0 0 11.7 18.3 L13.8 16.2 A2 2 0 0 1 15.9 15.4 L20.2 16.6 A2 2 0 0 1 22 18.5 Z"/></svg>CONTACT</button>
 </div>
 
