@@ -1,114 +1,104 @@
 <!DOCTYPE html>
-<html lang="id">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DAP ORDER - FALLREAL EDITION</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-:root{ --main:#FFDE59; --bg:#EDE7FF; --ink:#1A1A1A; }
-*{box-sizing:border-box; font-family:'Space Grotesk',sans-serif; -webkit-tap-highlight-color:transparent}
-body{margin:0; background:var(--bg); background-image:linear-gradient(rgba(0,0,0,0.07) 1px, transparent 1px),linear-gradient(90deg, rgba(0,0,0,0.07) 1px, transparent 1px); background-size:28px 28px; color:var(--ink)}
-.header{position:sticky; top:0; z-index:50; background:var(--main); border-bottom:3.5px solid var(--ink); display:flex; justify-content:space-between; align-items:center; padding:12px 16px}
-.btn-neo{border:3px solid var(--ink); border-radius:14px; background:#fff; box-shadow:4px 4px 0 var(--ink); padding:10px 14px; font-weight:800; cursor:pointer; transition:.15s}
-.btn-neo:active{transform:translate(3px,3px); box-shadow:1px 1px 0 var(--ink)}
-.theme-row{display:flex; gap:8px; padding:10px 16px; overflow:auto}
-.t-dot{width:32px; height:32px; border-radius:10px; border:3px solid var(--ink); cursor:pointer; box-shadow:3px 3px 0 var(--ink)}
-.wrap{padding:16px; padding-bottom:110px; max-width:520px; margin:auto}
-.card{border:3.5px solid var(--ink); border-radius:22px; box-shadow:6px 6px 0 var(--ink); background:#fff; overflow:hidden; margin-bottom:14px}
-.card-hero{background:var(--main); padding:18px}
-.grid{display:grid; grid-template-columns:1fr 1fr; gap:12px}
-.prod-icon{height:120px; display:grid; place-items:center}
-.nav{position:fixed; bottom:0; left:0; right:0; background:#fff; border-top:3.5px solid var(--ink); display:flex; gap:8px; padding:10px; z-index:40}
-.nav button{flex:1}
-.nav button.active{background:var(--main)}
-.modal{position:fixed; inset:0; background:rgba(0,0,0,0.6); display:none; place-items:center; z-index:100; padding:16px}
-.modal.show{display:grid}
-.box{background:#fff; border:3.5px solid var(--ink); border-radius:20px; box-shadow:8px 8px 0 var(--ink); width:100%; max-width:420px; padding:18px; max-height:90vh; overflow:auto}
-.price-row{border:3px solid var(--ink); border-radius:14px; padding:12px; display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; cursor:pointer}
-.slide{position:fixed; inset:0 auto 0 0; width:82%; max-width:320px; background:#fff; border-right:3.5px solid var(--ink); transform:translateX(-100%); transition:.3s; z-index:90; padding:18px}
-.slide.show{transform:translateX(0)}
+:root{--main:#FFDE59; --bg:#F2EFFF}
+body{margin:0; font-family:Inter, sans-serif; background-color:var(--bg); background-image: linear-gradient(#0000000a 1px, transparent 1px), linear-gradient(90deg, #0000000a 1px, transparent 1px); background-size:28px 28px}
+.header{position:sticky; top:0; z-index:99; background:var(--main); border-bottom:3.5px solid #000; padding:10px 12px; display:flex; justify-content:space-between; align-items:center}
+.btn-h{border:3.5px solid #000; border-radius:18px; background:#fff; padding:8px 14px; font-weight:900; display:flex; gap:8px; align-items:center; box-shadow:4px 4px 0 #000}
+.btn-icon{border:3.5px solid #000; border-radius:16px; background:#fff; width:46px; height:38px; display:grid; place-items:center; box-shadow:3px 3px 0 #000}
+.color-picker{position:absolute; top:58px; right:70px; background:#fff; border:3.5px solid #000; border-radius:16px; padding:10px; display:none; gap:8px; box-shadow:4px 4px 0 #000; z-index:100}
+.color-picker.show{display:flex}
+.c{width:36px; height:36px; border:3px solid #000; border-radius:10px; cursor:pointer; box-shadow:2px 2px 0 #000}
+.banner-musik{background:#FFE2C8; border:3.5px solid #000; border-radius:16px; padding:10px 14px; margin:10px 12px; display:flex; gap:10px; align-items:center; box-shadow:4px 4px 0 #000}
+.badge-mini{background:var(--main); border:3px solid #000; display:inline-block; padding:4px 12px; font-weight:900; font-size:13px; transform:rotate(-1deg); box-shadow:3px 3px 0 #000; margin:10px 12px 0}
+.h1{font-size:42px; font-weight:900; line-height:0.9; padding:10px 12px; letter-spacing:-1px}
+.h1 span{background:#fff; border:3.5px solid #000; color:#B65A18; padding:2px 10px; display:inline-block; transform:rotate(1.5deg); box-shadow:4px 4px 0 #000}
+.desc{padding:10px 14px; font-size:15px; line-height:1.5; color:#333; font-weight:500}
+.btn-black{background:#000; color:#fff; border:3.5px solid #000; border-radius:24px; padding:14px 20px; font-weight:900; display:flex; gap:8px; align-items:center; margin:14px; box-shadow:4px 4px 0 #000; cursor:pointer}
+.card-games{background:var(--main); border:3.5px solid #000; border-radius:20px; margin:18px 12px; padding:18px; box-shadow:6px 6px 0 #000}
+.nav-bottom{position:fixed; bottom:0; left:0; right:0; background:#fff; border-top:3.5px solid #000; display:flex; gap:8px; padding:8px; z-index:99}
+.nav-b{flex:1; border:3px solid #000; border-radius:14px; background:#fff; padding:8px 4px; font-weight:900; font-size:12px; display:flex; flex-direction:column; align-items:center; box-shadow:3px 3px 0 #000}
+.nav-b.active{background:var(--main)}
 </style>
 </head>
 <body>
+
 <div class="header">
-  <button class="btn-neo" onclick="document.getElementById('side').classList.add('show')">☰ DAP ORDER</button>
+  <button class="btn-h">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3"><path d="M4 6 h16 M4 12 h16 M4 18 h16"/></svg>
+    DAP ORDER
+  </button>
   <div style="display:flex; gap:8px">
-    <button class="btn-neo" onclick="cycleTheme()">🎨</button>
-    <button class="btn-neo" id="musicBtn" onclick="toggleMusic()">♫ OFF</button>
+    <button class="btn-icon" onclick="document.getElementById('cp').classList.toggle('show')">
+      <svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 2 A10 10 0 0 0 2 12 A10 10 0 0 0 12 22 A10 10 0 0 0 22 12 A10 10 0 0 0 12 2 Z M12 4 A3 3 0 0 1 15 7 A2 2 0 0 1 12 9 A2 2 0 0 1 9 7 A3 3 0 0 1 12 4 Z" fill="black"/><circle cx="7" cy="12" r="1.5" fill="white"/><circle cx="17" cy="12" r="1.5" fill="white"/></svg>
+      <svg width="10" height="10" viewBox="0 0 24 24" fill="black"><path d="M6 9 l6 6 6-6"/></svg>
+    </button>
+    <button class="btn-icon" id="musicBtn" onclick="toggleMusik()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5"><rect x="3" y="12" width="3" height="8"/><rect x="8" y="8" width="3" height="12"/><rect x="13" y="4" width="3" height="16"/><circle cx="19" cy="8" r="3" fill="black"/></svg>
+    </button>
   </div>
 </div>
 
-<div class="theme-row">
-  <div class="t-dot" style="background:#FFDE59" onclick="setTheme('#FFDE59','#EDE7FF')"></div>
-  <div class="t-dot" style="background:#FF8A8A" onclick="setTheme('#FF8A8A','#FFE8E8')"></div>
-  <div class="t-dot" style="background:#8AB8FF" onclick="setTheme('#8AB8FF','#E8F0FF')"></div>
-  <div class="t-dot" style="background:#8AFF9E" onclick="setTheme('#8AFF9E','#E6FFEA')"></div>
-  <div class="t-dot" style="background:#E8B5FF" onclick="setTheme('#E8B5FF','#F6E8FF')"></div>
+<div id="cp" class="color-picker">
+  <div class="c" style="background:#FFDE59" onclick="setColor('#FFDE59','#F2EFFF')"></div>
+  <div class="c" style="background:#FF8A8A" onclick="setColor('#FF8A8A','#FFF0F0')"></div>
+  <div class="c" style="background:#8AB8FF" onclick="setColor('#8AB8FF','#EFF4FF')"></div>
+  <div class="c" style="background:#8AFF9E" onclick="setColor('#8AFF9E','#F0FFF3')"></div>
+  <div class="c" style="background:#C5B5FF" onclick="setColor('#C5B5FF','#F2EFFF')"></div>
 </div>
 
-<div class="wrap">
-  <div class="card card-hero">
-    <h1 style="margin:0">PRODUCT & TESTIMONI</h1>
-    <p style="margin:8px 0 0">Berbagai product aplikasi premium dengan tampilan FallReal smooth 60fps, full SVG.</p>
-    <button class="btn-neo" style="margin-top:12px">GAMES →</button>
-  </div>
-
-  <div class="grid" id="grid"></div>
-
-  <div class="card" style="padding:16px; margin-top:16px">
-    <b>CONTACT & INFO</b>
-    <p style="font-size:13px">Transaksi Aman & Terpercaya • Support Fast Respon</p>
-  </div>
+<div id="musikBanner" class="banner-musik" style="display:none">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3"><path d="M5 12 l4 4 l10-10"/></svg>
+  <div><b style="font-size:12px">MUSIK AKTIF</b><div style="font-size:13px">Musik Dap Order sedang diputar.</div></div>
 </div>
 
-<div class="nav">
-  <button class="btn-neo active">HOME</button>
-  <button class="btn-neo">PRODUCT</button>
-  <button class="btn-neo">TESTI</button>
-  <button class="btn-neo">CONTACT</button>
+<div class="badge-mini">PRODUCT & TESTIMONI</div>
+
+<div class="h1">
+BERBAGAI<br>
+<span>PRODUCT</span><br>
+APLIKASI<br>PREMIUM
 </div>
 
-<div id="side" class="slide">
-  <div style="display:flex; justify-content:space-between"><b>MENU FITUR</b><button class="btn-neo" onclick="document.getElementById('side').classList.remove('show')">✕</button></div>
-  <div style="margin-top:16px; display:grid; gap:10px">
-    <button class="btn-neo">🏠 Home</button>
-    <button class="btn-neo">📦 Product</button>
-    <button class="btn-neo">⭐ Testimoni</button>
-    <button class="btn-neo">📞 Contact</button>
-    <div style="margin-top:20px; font-size:12px; opacity:.6">MongoDB • Terhubung<br>Versi FallReal Clean</div>
-  </div>
+<div class="desc">
+Berbagai product aplikasi premium dengan tampilan FallReal smooth 60fps, full SVG. Transaksi aman & fast respon untuk kebutuhan digital kamu.
 </div>
 
-<div id="priceM" class="modal"><div class="box"><div style="display:flex; justify-content:space-between"><b id="pTitle">PRICE LIST</b><button class="btn-neo" onclick="closeM()">✕</button></div><div id="pList" style="margin-top:14px"></div></div></div>
-<div id="qrisM" class="modal"><div class="box"><div style="display:flex; justify-content:space-between"><b>PEMBAYARAN QRIS</b><button class="btn-neo" onclick="closeM()">✕</button></div><div style="text-align:center; margin-top:10px"><b id="qPrice" style="font-size:28px">Rp0</b><p style="font-size:12px; opacity:.6">QRIS ALL PAYMENT</p></div><div style="background:#fff; border:3px solid #000; border-radius:14px; padding:14px; text-align:center; margin-top:12px"><div style="border:2px dashed #000; border-radius:10px; padding:30px">TEMPEL QRIS LU DISINI</div></div><div style="margin-top:12px; font-size:12px; line-height:2"><div>Produk <span id="d1" style="float:right; font-weight:800"></span></div><div>Paket <span id="d2" style="float:right; font-weight:800"></span></div><div>Harga <span id="d3" style="float:right; font-weight:800"></span></div></div><button class="btn-neo" style="width:100%; margin-top:14px; background:#25D366; color:#fff" onclick="toWA()">Konfirmasi WhatsApp</button></div></div>
+<button class="btn-black" onclick="location.href='#product'">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M9 8 h10 l-2 8 H7 L5 4 H2"/></svg>
+  JELAJAHI PRODUCT
+</button>
+
+<div class="card-games">
+  <div style="font-weight:900; font-size:26px">GAMES</div>
+  <div style="font-size:14px; margin:6px 0 14px">Mainkan mini games di halaman Games.</div>
+  <button class="btn-h" style="border-radius:14px">GAMES <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3"><path d="M5 12 h14 M12 5 l7 7 l-7 7"/></svg></button>
+</div>
+
+<div style="height:90px"></div>
+
+<div class="nav-bottom">
+  <button class="nav-b active"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5"><path d="M3 9 l9-7 9 7 v11 a2 2 0 0 1-2 2 H5 a2 2 0 0 1-2-2 z M9 21 V12 h6 v9"/></svg>HOME</button>
+  <button class="nav-b"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5"><path d="M9 8 h10 l-2 8 H7 L5 4 H2"/></svg>PRODUCT</button>
+  <button class="nav-b"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 9 h8 M8 13 h5"/><circle cx="16" cy="13" r="1.5" fill="black"/></svg>TESTI</button>
+  <button class="nav-b"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5"><path d="M22 16.9 v3 a2 2 0 0 1-2.2 2 A19.8 19.8 0 0 1 3.1 6.2 A2 2 0 0 1 5 4 h3 a2 2 0 0 1 2 1.7 l1 4 a2 2 0 0 1-.6 1.9 L9 13 a16 16 0 0 0 6 6 l1.4-1.4 a2 2 0 0 1 1.9-.6 l4 1 A2 2 0 0 1 22 16.9 z"/></svg>CONTACT</button>
+</div>
 
 <script>
-const products=[
- {id:'basic', name:'APLIKASI BASIC', color:'#C6E8D9', svg:'<svg width="64" height="64" viewBox="0 0 24 24"><path d="M12 2 L14 8 L20 9 L15 13 L16 19 L12 16 L8 19 L9 13 L4 9 L10 8 Z" fill="black"/></svg>', prices:[{name:'1 BULAN', rp:25000},{name:'3 BULAN', rp:60000},{name:'FULL UPDATE', rp:90000}]},
- {id:'premium', name:'APLIKASI PREMIUM', color:'#FFDE59', svg:'<svg width="64" height="64" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="black"/><circle cx="12" cy="12" r="4" fill="white"/></svg>', prices:[{name:'1 BULAN', rp:50000},{name:'RESELLER', rp:120000},{name:'PARTNER', rp:250000}]}
-];
-let curP, curPak;
-const grid=document.getElementById('grid');
-products.forEach(p=>{
-  const el=document.createElement('div'); el.className='card';
-  el.innerHTML=`<div class="prod-icon" style="background:${p.color}">${p.svg}</div><div style="padding:10px"><b>${p.name}</b><br><small style="opacity:.6">Klik untuk lihat harga</small></div>`;
-  el.onclick=()=>openPrice(p.id);
-  grid.appendChild(el);
-});
-function openPrice(id){curP=products.find(x=>x.id===id); document.getElementById('pTitle').innerText=curP.name; const list=document.getElementById('pList'); list.innerHTML=''; curP.prices.forEach(pr=>{const d=document.createElement('div'); d.className='price-row'; d.innerHTML=`<div><b>${pr.name}</b><br><small>${curP.name}</small></div><div style="text-align:right"><span style="font-weight:800">Rp${pr.rp.toLocaleString('id-ID')}</span><br><small style="background:#000; color:#fff; padding:2px 8px; border-radius:20px">Pilih</small></div>`; d.onclick=()=>openQris(pr); list.appendChild(d)}); document.getElementById('priceM').classList.add('show')}
-function openQris(pr){curPak=pr; document.getElementById('priceM').classList.remove('show'); document.getElementById('qPrice').innerText='Rp'+pr.rp.toLocaleString('id-ID'); document.getElementById('d1').innerText=curP.name; document.getElementById('d2').innerText=pr.name; document.getElementById('d3').innerText='Rp'+pr.rp.toLocaleString('id-ID'); document.getElementById('qrisM').classList.add('show')}
-function closeM(){document.querySelectorAll('.modal').forEach(m=>m.classList.remove('show'))}
-let themes=['#FFDE59','#FF8A8A','#8AB8FF','#8AFF9E','#E8B5FF']; let ti=0;
-function setTheme(main,bg){document.documentElement.style.setProperty('--main',main); document.documentElement.style.setProperty('--bg',bg); localStorage.setItem('fall_theme',main)}
-function cycleTheme(){ti=(ti+1)%themes.length; setTheme(themes[ti], themes[ti]+'33')}
-let audio;
-function toggleMusic(){
-  if(!audio){audio=new Audio('https://cdn.pixabay.com/audio/2022/10/30/audio_fa1a508f89.mp3'); audio.loop=true; audio.volume=0.4}
-  if(audio.paused){audio.play(); document.getElementById('musicBtn').innerText='♫ ON'}else{audio.pause(); document.getElementById('musicBtn').innerText='♫ OFF'}
+function setColor(main, bg){
+  document.documentElement.style.setProperty('--main', main);
+  document.documentElement.style.setProperty('--bg', bg);
+  localStorage.setItem('main', main); localStorage.setItem('bg', bg);
+  document.getElementById('cp').classList.remove('show');
 }
-function toWA(){const txt=`Halo, saya mau konfirmasi pembayaran\nProduk: ${curP.name}\nPaket: ${curPak.name}\nHarga: Rp${curPak.rp.toLocaleString('id-ID')}`; window.open('https://wa.me/628xxxxxxxxxx?text='+encodeURIComponent(txt),'_blank')}
-document.querySelectorAll('.modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m) closeM()}))
+function toggleMusik(){
+  let b=document.getElementById('musikBanner');
+  b.style.display = b.style.display=='none' ? 'flex' : 'none';
+}
+let m=localStorage.getItem('main'); let bg=localStorage.getItem('bg');
+if(m){ document.documentElement.style.setProperty('--main', m); document.documentElement.style.setProperty('--bg', bg); }
 </script>
 </body>
 </html>
