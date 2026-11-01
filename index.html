@@ -1,64 +1,79 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>DAP ORDER - PRODUCT PREMIUM</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800;900&family=Inter:wght@500;700;900&display=swap" rel="stylesheet">
 <style>
-:root{--main:#FFDE59; --bg:#F2EFFF}
-body{margin:0; font-family:Inter, sans-serif; background-color:var(--bg); background-image: linear-gradient(#0000000a 1px, transparent 1px), linear-gradient(90deg, #0000000a 1px, transparent 1px); background-size:28px 28px}
-.header{position:sticky; top:0; z-index:99; background:var(--main); border-bottom:3.5px solid #000; padding:10px 12px; display:flex; justify-content:space-between; align-items:center}
-.btn-h{border:3.5px solid #000; border-radius:18px; background:#fff; padding:8px 14px; font-weight:900; display:flex; gap:8px; align-items:center; box-shadow:4px 4px 0 #000}
-.btn-icon{border:3.5px solid #000; border-radius:16px; background:#fff; width:46px; height:38px; display:grid; place-items:center; box-shadow:3px 3px 0 #000}
-.color-picker{position:absolute; top:58px; right:70px; background:#fff; border:3.5px solid #000; border-radius:16px; padding:10px; display:none; gap:8px; box-shadow:4px 4px 0 #000; z-index:100}
-.color-picker.show{display:flex}
-.c{width:36px; height:36px; border:3px solid #000; border-radius:10px; cursor:pointer; box-shadow:2px 2px 0 #000}
-.banner-musik{background:#FFE2C8; border:3.5px solid #000; border-radius:16px; padding:10px 14px; margin:10px 12px; display:flex; gap:10px; align-items:center; box-shadow:4px 4px 0 #000}
-.badge-mini{background:var(--main); border:3px solid #000; display:inline-block; padding:4px 12px; font-weight:900; font-size:13px; transform:rotate(-1deg); box-shadow:3px 3px 0 #000; margin:10px 12px 0}
-.h1{font-size:42px; font-weight:900; line-height:0.9; padding:10px 12px; letter-spacing:-1px}
-.h1 span{background:#fff; border:3.5px solid #000; color:#B65A18; padding:2px 10px; display:inline-block; transform:rotate(1.5deg); box-shadow:4px 4px 0 #000}
-.desc{padding:10px 14px; font-size:15px; line-height:1.5; color:#333; font-weight:500}
-.btn-black{background:#000; color:#fff; border:3.5px solid #000; border-radius:24px; padding:14px 20px; font-weight:900; display:flex; gap:8px; align-items:center; margin:14px; box-shadow:4px 4px 0 #000; cursor:pointer}
-.card-games{background:var(--main); border:3.5px solid #000; border-radius:20px; margin:18px 12px; padding:18px; box-shadow:6px 6px 0 #000}
+:root{--main:#FFDE59;--bg:#F2EFFF;--black:#121212}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0; font-family:'Inter', sans-serif; background:var(--bg); color:var(--black);
+background-image: linear-gradient(#00000010 1.5px, transparent 1.5px), linear-gradient(90deg, #00000010 1.5px, transparent 1.5px);
+background-size:28px 28px;
+padding-bottom:90px;
+}
+.header{position:sticky; top:0; z-index:99; height:64px; background:var(--main); border-bottom:3.5px solid #000; display:flex; align-items:center; justify-content:space-between; padding:0 10px}
+.btn-head{border:3.5px solid #000; background:#fff; border-radius:18px; padding:10px 14px; font-family:'Bricolage Grotesque'; font-weight:900; font-size:14px; display:flex; align-items:center; gap:8px; box-shadow:4px 4px 0 #000; cursor:pointer}
+.btn-icon{border:3.5px solid #000; background:#fff; width:52px; height:42px; border-radius:16px; display:grid; place-items:center; box-shadow:4px 4px 0 #000; cursor:pointer; position:relative}
+.color-box{position:absolute; top:66px; right:70px; background:#fff; border:3.5px solid #000; border-radius:18px; padding:10px; display:none; gap:10px; box-shadow:6px 6px 0 #000; z-index:100}
+.color-box.show{display:flex}
+.cdot{width:40px; height:40px; border:3px solid #000; border-radius:12px; cursor:pointer; box-shadow:3px 3px 0 #000}
+.banner-musik{margin:10px 12px; background:#FFDCC2; border:3.5px solid #000; border-radius:18px; padding:12px 14px; display:none; gap:10px; align-items:center; box-shadow:4px 4px 0 #000}
+.badge-top{background:var(--main); border:3.5px solid #000; font-weight:900; font-size:12px; letter-spacing:0.5px; padding:6px 12px; transform:rotate(-1.5deg); box-shadow:3px 3px 0 #000; display:inline-block; margin:16px 12px 6px; font-family:'Bricolage Grotesque'}
+.h1{font-family:'Bricolage Grotesque'; font-weight:900; font-size:46px; line-height:0.9; letter-spacing:-1.8px; padding:6px 12px; text-transform:uppercase}
+.stiker-product{background:#fff; border:3.5px solid #000; color:#A85A12; padding:2px 14px; display:inline-block; transform:rotate(1.2deg); box-shadow:6px 6px 0 #000; margin:8px 0}
+.desc{padding:12px 14px; font-size:14.5px; line-height:1.6; color:#2a2a2a; font-weight:500; max-width:95%}
+.btn-jelajah{margin:16px 12px; background:#000; color:#fff; border:3.5px solid #000; border-radius:999px; padding:15px 20px; font-weight:900; font-family:'Bricolage Grotesque'; font-size:15px; display:flex; align-items:center; gap:10px; box-shadow:4px 4px 0 #000; cursor:pointer}
+.card-games{margin:24px 12px; background:var(--main); border:3.5px solid #000; border-radius:24px; padding:20px 18px; box-shadow:6px 6px 0 #000}
+.btn-games{background:#fff; border:3.5px solid #000; border-radius:14px; padding:12px 18px; font-weight:900; font-family:'Bricolage Grotesque'; display:inline-flex; gap:8px; align-items:center; box-shadow:4px 4px 0 #000; cursor:pointer}
+.strip-mint{height:58px; background:#CFF7E4; border-top:3.5px solid #000; border-bottom:3.5px solid #000; display:flex; align-items:center; padding:0 12px; background-image: radial-gradient(#00000025 1.8px, transparent 1.8px); background-size:20px 20px; margin-top:22px}
+.strip-badge{background:var(--main); border:3px solid #000; padding:5px 12px; font-weight:900; font-size:12px; box-shadow:3px 3px 0 #000; display:flex; gap:6px; align-items:center}
+.product-wrap{padding:18px 12px; display:grid; grid-template-columns:1fr 1fr; gap:14px}
+.card-p{background:#fff; border:3.5px solid #000; border-radius:22px; overflow:hidden; box-shadow:6px 6px 0 #000; cursor:pointer}
+.card-p-top{height:132px; display:grid; place-items:center}
+.card-p-bot{padding:12px; border-top:3.5px solid #000; background:#fff}
 .nav-bottom{position:fixed; bottom:0; left:0; right:0; background:#fff; border-top:3.5px solid #000; display:flex; gap:8px; padding:8px; z-index:99}
-.nav-b{flex:1; border:3px solid #000; border-radius:14px; background:#fff; padding:8px 4px; font-weight:900; font-size:12px; display:flex; flex-direction:column; align-items:center; box-shadow:3px 3px 0 #000}
+.nav-b{flex:1; border:3px solid #000; border-radius:14px; background:#fff; padding:9px 2px; font-weight:900; font-size:11px; font-family:'Bricolage Grotesque'; display:flex; flex-direction:column; align-items:center; gap:3px; box-shadow:3px 3px 0 #000; cursor:pointer}
 .nav-b.active{background:var(--main)}
 </style>
 </head>
 <body>
 
 <div class="header">
-  <button class="btn-h">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3"><path d="M4 6 h16 M4 12 h16 M4 18 h16"/></svg>
+  <button class="btn-head" onclick="location.href='#'">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3.2"><path d="M4 6 h16 M4 12 h16 M4 18 h16"/></svg>
     DAP ORDER
   </button>
-  <div style="display:flex; gap:8px">
-    <button class="btn-icon" onclick="document.getElementById('cp').classList.toggle('show')">
-      <svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 2 A10 10 0 0 0 2 12 A10 10 0 0 0 12 22 A10 10 0 0 0 22 12 A10 10 0 0 0 12 2 Z M12 4 A3 3 0 0 1 15 7 A2 2 0 0 1 12 9 A2 2 0 0 1 9 7 A3 3 0 0 1 12 4 Z" fill="black"/><circle cx="7" cy="12" r="1.5" fill="white"/><circle cx="17" cy="12" r="1.5" fill="white"/></svg>
-      <svg width="10" height="10" viewBox="0 0 24 24" fill="black"><path d="M6 9 l6 6 6-6"/></svg>
+  <div style="display:flex; gap:8px; align-items:center">
+    <button class="btn-icon" onclick="document.getElementById('colorBox').classList.toggle('show')">
+      <svg width="22" height="22" viewBox="0 0 24 24"><path d="M12 2 A10 10 0 1 0 22 12 A10 10 0 0 0 12 2 Z" fill="none" stroke="black" stroke-width="2.5"/><circle cx="9" cy="10" r="1.5" fill="black"/><circle cx="15" cy="10" r="1.5" fill="black"/><circle cx="12" cy="15" r="1.5" fill="black"/></svg>
+      <svg width="10" height="10" style="position:absolute; right:6px; bottom:6px" viewBox="0 0 24 24"><path d="M6 9 l6 6 6-6" fill="none" stroke="black" stroke-width="3"/></svg>
     </button>
-    <button class="btn-icon" id="musicBtn" onclick="toggleMusik()">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5"><rect x="3" y="12" width="3" height="8"/><rect x="8" y="8" width="3" height="12"/><rect x="13" y="4" width="3" height="16"/><circle cx="19" cy="8" r="3" fill="black"/></svg>
+    <button class="btn-icon" onclick="toggleMusik()">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5"><rect x="3" y="13" width="3" height="7" fill="black"/><rect x="8" y="9" width="3" height="11" fill="black"/><rect x="13" y="5" width="3" height="15" fill="black"/><path d="M17 4 a3 3 0 0 0 0 6 a3 3 0 0 0 0-6" fill="black"/></svg>
     </button>
+  </div>
+  <div id="colorBox" class="color-box">
+    <div class="cdot" style="background:#FFDE59" onclick="setColor('#FFDE59','#F2EFFF')"></div>
+    <div class="cdot" style="background:#FF8A8A" onclick="setColor('#FF8A8A','#FFF0F0')"></div>
+    <div class="cdot" style="background:#8AB8FF" onclick="setColor('#8AB8FF','#EFF4FF')"></div>
+    <div class="cdot" style="background:#8AFF9E" onclick="setColor('#8AFF9E','#F0FFF3')"></div>
+    <div class="cdot" style="background:#C5B5FF" onclick="setColor('#C5B5FF','#F2EFFF')"></div>
   </div>
 </div>
 
-<div id="cp" class="color-picker">
-  <div class="c" style="background:#FFDE59" onclick="setColor('#FFDE59','#F2EFFF')"></div>
-  <div class="c" style="background:#FF8A8A" onclick="setColor('#FF8A8A','#FFF0F0')"></div>
-  <div class="c" style="background:#8AB8FF" onclick="setColor('#8AB8FF','#EFF4FF')"></div>
-  <div class="c" style="background:#8AFF9E" onclick="setColor('#8AFF9E','#F0FFF3')"></div>
-  <div class="c" style="background:#C5B5FF" onclick="setColor('#C5B5FF','#F2EFFF')"></div>
+<div id="musikBanner" class="banner-musik">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3"><path d="M5 12 l4 4 l10-10"/></svg>
+  <div><div style="font-weight:900; font-size:12px">MUSIK AKTIF</div><div style="font-size:13px">Musik Dap Order sedang diputar.</div></div>
 </div>
 
-<div id="musikBanner" class="banner-musik" style="display:none">
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3"><path d="M5 12 l4 4 l10-10"/></svg>
-  <div><b style="font-size:12px">MUSIK AKTIF</b><div style="font-size:13px">Musik Dap Order sedang diputar.</div></div>
-</div>
-
-<div class="badge-mini">PRODUCT & TESTIMONI</div>
+<div class="badge-top">PRODUCT & TESTIMONI</div>
 
 <div class="h1">
 BERBAGAI<br>
-<span>PRODUCT</span><br>
+<div class="stiker-product">PRODUCT</div><br>
 APLIKASI<br>PREMIUM
 </div>
 
@@ -66,39 +81,61 @@ APLIKASI<br>PREMIUM
 Berbagai product aplikasi premium dengan tampilan FallReal smooth 60fps, full SVG. Transaksi aman & fast respon untuk kebutuhan digital kamu.
 </div>
 
-<button class="btn-black" onclick="location.href='#product'">
+<button class="btn-jelajah" onclick="document.getElementById('product').scrollIntoView()">
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M9 8 h10 l-2 8 H7 L5 4 H2"/></svg>
   JELAJAHI PRODUCT
 </button>
 
 <div class="card-games">
-  <div style="font-weight:900; font-size:26px">GAMES</div>
+  <div style="font-family:'Bricolage Grotesque'; font-weight:900; font-size:26px">GAMES</div>
   <div style="font-size:14px; margin:6px 0 14px">Mainkan mini games di halaman Games.</div>
-  <button class="btn-h" style="border-radius:14px">GAMES <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3"><path d="M5 12 h14 M12 5 l7 7 l-7 7"/></svg></button>
+  <button class="btn-games">GAMES <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3"><path d="M5 12 h14 M12 5 l7 7 l-7 7"/></svg></button>
 </div>
 
-<div style="height:90px"></div>
+<div class="strip-mint">
+  <div class="strip-badge"><div style="width:10px; height:10px; background:#000; border-radius:50%"></div> FALL REAL</div>
+</div>
+
+<div id="product" class="product-wrap">
+  <div class="card-p" onclick="alert('Harga BASIC: 25K / 90K')">
+    <div class="card-p-top" style="background:#C6E8D9">
+      <svg width="68" height="68" viewBox="0 0 24 24"><path d="M12 2 L14.8 8.2 L21 9 L16 14 L17.2 21 L12 17.8 L6.8 21 L8 14 L3 9 L9.2 8.2 Z" fill="black"/></svg>
+    </div>
+    <div class="card-p-bot"><b style="font-family:'Bricolage Grotesque'">APLIKASI BASIC</b><div style="font-size:12px; color:#666; margin-top:4px">Klik untuk lihat harga</div></div>
+  </div>
+  <div class="card-p" onclick="alert('Harga PREMIUM: 50K / 250K')">
+    <div class="card-p-top" style="background:#FFDE59">
+      <svg width="68" height="68" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="none" stroke="black" stroke-width="3"/><circle cx="12" cy="12" r="3.5" fill="black"/></svg>
+    </div>
+    <div class="card-p-bot"><b style="font-family:'Bricolage Grotesque'">APLIKASI PREMIUM</b><div style="font-size:12px; color:#666; margin-top:4px">Klik untuk lihat harga</div></div>
+  </div>
+</div>
 
 <div class="nav-bottom">
-  <button class="nav-b active"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5"><path d="M3 9 l9-7 9 7 v11 a2 2 0 0 1-2 2 H5 a2 2 0 0 1-2-2 z M9 21 V12 h6 v9"/></svg>HOME</button>
-  <button class="nav-b"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5"><path d="M9 8 h10 l-2 8 H7 L5 4 H2"/></svg>PRODUCT</button>
-  <button class="nav-b"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 9 h8 M8 13 h5"/><circle cx="16" cy="13" r="1.5" fill="black"/></svg>TESTI</button>
+  <button class="nav-b active" onclick="window.scrollTo(0,0)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5"><path d="M3 9 l9-7 9 7 v11 a2 2 0 0 1-2 2 H5 a2 2 0 0 1-2-2 z M9 21 V12 h6 v9"/></svg>HOME</button>
+  <button class="nav-b" onclick="document.getElementById('product').scrollIntoView()"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5"><path d="M9 8 h10 l-2 8 H7 L5 4 H2"/></svg>PRODUCT</button>
+  <button class="nav-b"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 9 h8 M8 13 h5"/></svg>TESTI</button>
   <button class="nav-b"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5"><path d="M22 16.9 v3 a2 2 0 0 1-2.2 2 A19.8 19.8 0 0 1 3.1 6.2 A2 2 0 0 1 5 4 h3 a2 2 0 0 1 2 1.7 l1 4 a2 2 0 0 1-.6 1.9 L9 13 a16 16 0 0 0 6 6 l1.4-1.4 a2 2 0 0 1 1.9-.6 l4 1 A2 2 0 0 1 22 16.9 z"/></svg>CONTACT</button>
 </div>
 
 <script>
-function setColor(main, bg){
-  document.documentElement.style.setProperty('--main', main);
-  document.documentElement.style.setProperty('--bg', bg);
-  localStorage.setItem('main', main); localStorage.setItem('bg', bg);
-  document.getElementById('cp').classList.remove('show');
+function setColor(main,bg){
+  document.documentElement.style.setProperty('--main',main);
+  document.documentElement.style.setProperty('--bg',bg);
+  localStorage.setItem('main',main); localStorage.setItem('bg',bg);
+  document.getElementById('colorBox').classList.remove('show');
 }
 function toggleMusik(){
   let b=document.getElementById('musikBanner');
-  b.style.display = b.style.display=='none' ? 'flex' : 'none';
+  b.style.display = b.style.display==='none' || b.style.display=='' ? 'flex' : 'none';
 }
-let m=localStorage.getItem('main'); let bg=localStorage.getItem('bg');
-if(m){ document.documentElement.style.setProperty('--main', m); document.documentElement.style.setProperty('--bg', bg); }
+let m=localStorage.getItem('main'); let b=localStorage.getItem('bg');
+if(m){ document.documentElement.style.setProperty('--main',m); document.documentElement.style.setProperty('--bg',b); }
+document.addEventListener('click',function(e){
+  let box=document.getElementById('colorBox');
+  let btn=document.querySelectorAll('.btn-icon')[0];
+  if(!box.contains(e.target) && !btn.contains(e.target)) box.classList.remove('show');
+});
 </script>
 </body>
 </html>
