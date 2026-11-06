@@ -207,6 +207,7 @@ const products=[
 ];
 let cur={apk:"", paket:"", harga:"", masa:""};
 const grid=document.getElementById('grid');
+grid.innerHTML='';
 products.forEach(p=>{
   grid.innerHTML+=`<div class="p-card"><div class="p-img"><div class="p-badge">OPEN / READY</div><img src="${p.img}" onerror="this.src='https://via.placeholder.com/300x300/FFFFFF/000000?text=${p.id}'"></div><div class="p-name"><span style="width:9px;height:9px;border-radius:50%;background:#000;display:inline-block"></span> ${p.id}</div><div class="p-desc">${p.desc}</div><div class="p-actions"><button class="btn-pre" onclick="openBuying('${p.id}')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.2"><path d="M1 12 S8 4 12 4 S23 12 12 20 S1 12 1 12"/><circle cx="12" cy="12" r="3"/></svg> PREVIEW</button><button class="btn-buy" onclick="openBuying('${p.id}')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.2"><circle cx="8" cy="21" r="1.5"/><circle cx="19" cy="21" r="1.5"/><path d="M2 2 H4 L6 14 H20 L22 6 H6"/></svg> BUYING</button></div></div>`;
 });
