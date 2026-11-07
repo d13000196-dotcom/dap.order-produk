@@ -1,278 +1,70 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" data-theme="kuning">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<title>PRODUCT - DAP ORDER</title>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@800;900&family=Inter:wght@500;700;900&display=swap" rel="stylesheet">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Produk - DAP ORDER</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--main:#FFDE59;--bg:#F2EFFF}
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;font-family:Inter;background:var(--bg);background-image:linear-gradient(#0000000e 1px,transparent 1px),linear-gradient(90deg,#0000000e 1px,transparent 1px);background-size:26px 26px;padding-bottom:88px;-webkit-overflow-scrolling:touch}
-.header{position:sticky;top:0;z-index:90;height:62px;background:var(--main);border-bottom:3.5px solid #000;display:flex;justify-content:space-between;align-items:center;padding:0 12px}
-.btn-dap{border:3.5px solid #000;background:#fff;border-radius:18px;padding:10px 14px;display:flex;gap:8px;align-items:center;font-family:'Bricolage Grotesque';font-weight:900;font-size:14px;box-shadow:4px 4px 0 #000;color:#000;cursor:pointer}
-.btn-theme{border:3.5px solid #000;background:#fff;width:68px;height:44px;border-radius:18px;display:flex;align-items:center;justify-content:center;box-shadow:4px 4px 0 #000;cursor:pointer}
-.grid{padding:14px 12px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.p-card{border:3.5px solid #000;border-radius:22px;background:var(--main);padding:7px;box-shadow:6px 6px 0 #000;display:flex;flex-direction:column}
-.p-img{position:relative;background:#fff;border:3px solid #000;border-radius:16px;overflow:hidden;height:150px;display:flex;align-items:center;justify-content:center}
-.p-img img{width:100%;height:100%;object-fit:cover}
-.p-badge{position:absolute;top:8px;left:8px;background:#FFE3C2;border:2px solid #000;border-radius:6px;padding:2px 7px;font-family:'Bricolage Grotesque';font-weight:900;font-size:8px;box-shadow:2px 2px 0 #000;z-index:2}
-.p-name{margin-top:10px;background:#fff;border:3px solid #000;border-radius:999px;padding:7px 10px;font-family:'Bricolage Grotesque';font-weight:900;font-size:11px;display:flex;gap:6px;align-items:center;box-shadow:3px 3px 0 #000;text-transform:uppercase}
-.p-desc{background:#FFFBE6;border:2.5px solid #000;border-radius:10px;padding:8px 10px;margin-top:8px;font-size:11px;color:#333;flex:1}
-.p-actions{margin-top:10px;display:grid;grid-template-columns:1fr 1fr;gap:7px}
-.btn-pre{border:3px solid #000;background:#D9D7FF;border-radius:999px;padding:8px 4px;font-family:'Bricolage Grotesque';font-weight:900;font-size:11px;box-shadow:3px 3px 0 #000;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px}
-.btn-buy{border:3px solid #000;background:#FF8A1A;border-radius:999px;padding:8px 4px;font-family:'Bricolage Grotesque';font-weight:900;font-size:11px;box-shadow:3px 3px 0 #000;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px}
-.nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:4px solid #000;display:flex;gap:8px;padding:8px;z-index:80}
-.nav button{flex:1;border:3.5px solid #000;border-radius:16px;padding:10px 2px;text-align:center;font-family:'Bricolage Grotesque';font-weight:900;font-size:11px;display:flex;flex-direction:column;align-items:center;gap:4px;box-shadow:3px 3px 0 #000;background:#fff;cursor:pointer}
-.nav button.on{background:var(--main)}
-/* MODAL SMOOTH */
-.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,0.65);z-index:400;display:flex;align-items:center;justify-content:center;padding:14px;opacity:0;pointer-events:none;transition:opacity .25s ease}
-.modal-bg.show{opacity:1;pointer-events:auto}
-.modal{width:100%;max-width:390px;background:#fff;border:4px solid #000;border-radius:22px;box-shadow:8px 8px 0 #000;padding:16px;position:relative;transform:translateY(20px) scale(.96);transition:transform .3s cubic-bezier(.34,1.56,.64,1);max-height:90vh;overflow:auto}
-.modal-bg.show .modal{transform:translateY(0) scale(1)}
-/* PAYMENT MODAL - LOCKED VERSION DARI FOTO TERAKHIR - JANGAN DIUBAH */
-.qris-title{font-family:'Bricolage Grotesque';font-weight:900;font-size:20px}
-.qris-price{font-family:'Bricolage Grotesque';font-weight:900;font-size:28px;color:#FF7A00;text-align:center;margin:8px 0 12px}
-.qris-box{border:3.5px solid #000;border-radius:20px;background:#fff;padding:8px;box-shadow:5px 5px 0 #000;overflow:hidden}
-.qris-box img{width:100%;display:block;border-radius:12px}
-.detail-box{margin-top:14px;border:3px solid #E6E6E6;border-radius:16px;background:#FFFEFE;padding:12px 14px}
-.detail-head{font-family:'Bricolage Grotesque';font-weight:900;font-size:12px;letter-spacing:.8px;display:flex;align-items:center;gap:6px;border-bottom:2px solid #EDEDED;padding-bottom:8px;margin-bottom:10px}
-.detail-row{display:flex;justify-content:space-between;gap:10px;font-size:13px;margin-bottom:8px}
-.detail-row .k{color:#8A8A8A;font-weight:600}
-.detail-row .v{font-weight:800;text-align:right}
-.detail-row .v.orange{color:#FF7A00}
-.note-box{margin-top:12px;border:2px solid #E5DDFF;background:#F6F1FF;border-radius:14px;padding:10px 12px;display:flex;gap:8px;font-size:12px;line-height:1.4;color:#6B5A8A}
-.btn-tele{border:3.5px solid #000;background:#C8E6FF;border-radius:999px;padding:12px;font-family:'Bricolage Grotesque';font-weight:900;font-size:13px;box-shadow:4px 4px 0 #000;display:flex;align-items:center;justify-content:center;gap:6px;cursor:pointer;width:100%}
-.btn-wa{border:3.5px solid #000;background:#FFE3C2;border-radius:999px;padding:12px;font-family:'Bricolage Grotesque';font-weight:900;font-size:13px;box-shadow:4px 4px 0 #000;display:flex;align-items:center;justify-content:center;gap:6px;cursor:pointer;width:100%}
-.close-x{position:absolute;top:12px;right:12px;width:42px;height:42px;border:3px solid #000;border-radius:50%;background:#fff;box-shadow:3px 3px 0 #000;display:flex;align-items:center;justify-content:center;cursor:pointer}
-#menuBg{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:200;opacity:0;pointer-events:none;transition:.25s}
-#menuBg.show{opacity:1;pointer-events:auto}
-#menuDrawer{position:fixed;top:0;left:0;bottom:0;width:82%;max-width:360px;background:#fff;border-right:4px solid #000;z-index:201;transform:translateX(-100%);transition:transform .35s cubic-bezier(.34,1.56,.64,1);display:flex;flex-direction:column}
-#menuDrawer.show{transform:translateX(0)}
-.menu-top{height:64px;background:var(--main);border-bottom:4px solid #000;display:flex;justify-content:space-between;align-items:center;padding:0 14px}
-.menu-item{border:3.5px solid #000;border-radius:16px;padding:14px 16px;display:flex;gap:12px;align-items:center;font-weight:900;box-shadow:4px 4px 0 #000;margin:10px 12px 0;cursor:pointer;background:#fff}
-#pageTrans{position:fixed;inset:0;background:var(--bg);z-index:9999;transform:translateY(100%);transition:transform .42s cubic-bezier(.76,0,.24,1);pointer-events:none}
-#pageTrans.on{transform:translateY(0);pointer-events:auto}
-.price-label{font-family:'Bricolage Grotesque';font-weight:800;font-size:11px;color:#1A7A4A;margin-top:16px;margin-bottom:6px;letter-spacing:.8px}
-.price-row{border:2.5px solid #000;border-radius:14px;padding:12px;display:flex;justify-content:space-between;align-items:center;background:#fff;box-shadow:3px 3px 0 #000;margin-bottom:10px}
-.btn-bayar{border:3px solid #000;background:#FF8A1A;border-radius:999px;padding:8px 16px;font-family:'Bricolage Grotesque';font-weight:900;font-size:13px;box-shadow:3px 3px 0 #000;cursor:pointer}
-/* ===== MICRO INTERACTION - PRODUK - FINAL ===== */
-*{ -webkit-tap-highlight-color: transparent; }
-button, .btn-pre, .btn-buy, .btn-bayar, .btn-dap, .btn-theme, .menu-item{
-  transition: transform .15s ease, box-shadow .15s ease, filter .15s ease !important;
-  will-change: transform;
-}
-button:active, .btn-pre:active, .btn-buy:active, .btn-bayar:active, .btn-dap:active, .btn-theme:active, .menu-item:active{
-  transform: scale(.94) translateY(2px) !important;
-  box-shadow: 1px 1px 0 #000 !important;
-  filter: brightness(1.08);
-}
-.p-card{
-  transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease !important;
-  will-change: transform;
-}
-.p-card:hover{
-  transform: translateY(-6px) rotate(-0.5deg) !important;
-  box-shadow: 10px 12px 0 #000 !important;
-}
-.p-card img{ transition: transform .4s ease !important; }
-.p-card:hover img{ transform: scale(1.04); }
-
-/* SKELETON */
-.skeleton{
-  background: linear-gradient(90deg, #e0e0e0 25%, #f5f5f5 50%, #e0e0e0 75%);
-  background-size: 200% 100%;
-  animation: shimmer 1.2s infinite linear;
-  border: 3px solid #000;
-  border-radius: 14px;
-}
-@keyframes shimmer{ 0%{ background-position: 200% 0; } 100%{ background-position: -200% 0; } }
-.skeleton-card{ height: 320px; }
-
-/* ===== COPY DARI INDEX - TEMPEL DI PRODUK ===== */
-#pageTrans{
-  position: fixed; inset: 0; background: #fff; z-index: 9999;
-  opacity: 0; pointer-events: none; transition: opacity .18s ease;
-}
-#pageTrans.on{ opacity: 1; }
-
-.p-card{
-  animation: revealPop .55s cubic-bezier(.34,1.56,.64,1) both !important;
-}
-.p-card:nth-child(1){ animation-delay: .02s; }
-.p-card:nth-child(2){ animation-delay: .08s; }
-.p-card:nth-child(3){ animation-delay: .14s; }
-.p-card:nth-child(4){ animation-delay: .20s; }
-
-@keyframes revealPop{
-  0%{ opacity: 0; transform: scale(.92) translateY(15px); filter: blur(8px) brightness(1.5); }
-  100%{ opacity: 1; transform: scale(1) translateY(0); filter: blur(0) brightness(1); }
-}
-
-.skeleton{
-  background: linear-gradient(90deg, #FFEFA8 25%, #FFF8D6 50%, #FFEFA8 75%) !important;
-  background-size: 200% 100% !important;
-  animation: shimmer 1s infinite linear !important;
-  color: transparent !important;
-}
-@keyframes shimmer{
-  0%{ background-position: 200% 0; }
-  100%{ background-position: -200% 0; }
-}
+:root{ --bg:#FFDE59; --bg2:#FFF3A8; --ink:#1A1A2E; --accent:#FF6B00; --border:3px solid #1A1A2E; --shadow:6px 6px 0 #1A1A2E; }
+[data-theme="hijau"]{ --bg:#3ED97A; --bg2:#D6FFDF; --accent:#0B8A4A; }
+[data-theme="biru"]{ --bg:#4AA8FF; --bg2:#D6EDFF; --accent:#1A5CFF; }
+[data-theme="ungu"]{ --bg:#B48CFF; --bg2:#F0E6FF; --accent:#6D28D9; }
+[data-theme="merah"]{ --bg:#FF5A5A; --bg2:#FFE3E3; --accent:#D90429; }
+*{ margin:0; padding:0; box-sizing:border-box; }
+body{ font-family:'Sora',sans-serif; background:var(--bg2); color:var(--ink); background-image:linear-gradient(rgba(26,26,46,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(26,26,46,.07) 1px, transparent 1px); background-size:28px 28px; }
+header{ background:var(--bg); border-bottom:var(--border); position:sticky; top:0; z-index:50; }
+.top{ max-width:1080px; margin:0 auto; padding:12px 14px; display:flex; justify-content:space-between; align-items:center; }
+.top b{ font-family:'Bricolage Grotesque'; font-size:20px; } .top span{ font-size:10px; font-weight:700; letter-spacing:1.5px; opacity:.8; }
+.theme-wrap{ display:flex; gap:6px; background:#fff; border:var(--border); border-radius:99px; padding:5px; box-shadow:3px 3px 0 #1A1A2E; }
+.theme-btn{ width:26px; height:26px; border-radius:50%; border:2px solid #1A1A2E; cursor:pointer; } .theme-btn.active{ outline:3px solid #1A1A2E; outline-offset:2px; }
+main{ max-width:1080px; margin:0 auto; padding:18px 14px 110px; }
+h1{ font-family:'Bricolage Grotesque'; font-size:34px; }
+#loaderBox{ background:#fff; border:var(--border); border-radius:18px; box-shadow:var(--shadow); padding:22px; text-align:center; margin-top:16px; font-weight:700; }
+.grid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:16px; }
+@media(max-width:640px){ .grid{ grid-template-columns:1fr; } }
+.card{ background:#fff; border:var(--border); border-radius:18px; box-shadow:var(--shadow); padding:18px; opacity:0; transform:scale(.85); transition:all .5s cubic-bezier(.34,1.56,.64,1); }
+.card.show{ opacity:1; transform:scale(1); }
+.card h3{ font-family:'Bricolage Grotesque'; font-size:21px; }
+.price{ font-size:22px; font-weight:800; color:var(--accent); margin:8px 0; }
+.btn{ display:block; text-align:center; margin-top:12px; border:var(--border); border-radius:12px; padding:11px; font-weight:800; background:#25D366; color:#fff; text-decoration:none; box-shadow:4px 4px 0 #1A1A2E; }
+nav{ position:fixed; bottom:12px; left:50%; transform:translateX(-50%); width:min(96%,620px); background:#fff; border:var(--border); border-radius:18px; box-shadow:var(--shadow); display:grid; grid-template-columns:repeat(4,1fr); padding:6px; }
+nav a{ text-decoration:none; color:#1A1A2E; display:flex; flex-direction:column; align-items:center; padding:8px 4px; font-size:11px; font-weight:800; border-radius:12px; }
+nav a.active{ background:var(--bg); }
 </style>
 </head>
 <body>
-<div id="pageTrans"></div>
-<div class="header"><div class="btn-dap" onclick="openMenu()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3"><path d="M4 6 H20 M4 12 H20 M4 18 H20"/></svg> DAP ORDER</div><div class="btn-theme" onclick="toggleTheme()"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="black" stroke-width="2.5"/><circle cx="9" cy="10" r="1" fill="black"/><circle cx="15" cy="10" r="1" fill="black"/><path d="M8 14 C9.5 16 14.5 16 16 14" stroke="black" stroke-width="2" stroke-linecap="round"/></svg></div></div>
-
-<div class="grid" id="grid">
-  <div class="skeleton skeleton-card"></div>
-  <div class="skeleton skeleton-card"></div>
-  <div class="skeleton skeleton-card"></div>
-  <div class="skeleton skeleton-card"></div>
-</div>
-
-<div id="menuBg" onclick="closeMenu()"></div>
-<div id="menuDrawer">
-<div class="menu-top"><div><div style="font-family:'Bricolage Grotesque';font-weight:900;font-size:20px">MENU UTAMA</div><div style="font-size:12px;font-weight:700">Eksplorasi Product, Testi & Layanan</div></div><div class="btn-theme" onclick="closeMenu()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3"><path d="M6 6 L18 18 M18 6 L6 18"/></svg></div></div>
-<div style="padding-top:10px"><div style="margin:12px;font-size:11px;letter-spacing:1px;color:#888;font-weight:800">HALAMAN UTAMA</div>
-<div class="menu-item" onclick="smoothGo('index.html')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.2"><path d="M3 9 L12 2 L21 9 V20 A2 2 0 0 1 19 22 H5 A2 2 0 0 1 3 20 Z"/><path d="M9 22 V12 H15 V22"/></svg> Beranda</div>
-<div class="menu-item" onclick="smoothGo('produk.html')" style="background:var(--main)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.2"><circle cx="8" cy="21" r="1.5"/><circle cx="19" cy="21" r="1.5"/><path d="M2 2 H4 L6 14 H20 L22 6 H6"/></svg> Katalog Produk</div>
-<div class="menu-item" onclick="smoothGo('contact.html')">Kontak Kami</div>
-</div>
-</div>
-
-<div class="nav">
-<button onclick="smoothGo('index.html')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9 L12 2 L21 9 V20 A2 2 0 0 1 19 22 H5 A2 2 0 0 1 3 20 Z"/><path d="M9 22 V12 H15 V22"/></svg>HOME</button>
-<button class="on" onclick="smoothGo('produk.html')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.3"><circle cx="8" cy="21" r="1.5" fill="black"/><circle cx="19" cy="21" r="1.5" fill="black"/><path d="M2 2 H4 L6 14 H20 L22 6 H6"/></svg>PRODUCT</button>
-<button onclick="smoothGo('testi.html')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.3"><path d="M14 2 H6 A2 2 0 0 0 4 4 V20 A2 2 0 0 0 6 22 H18 A2 2 0 0 0 20 20 V8 Z"/><path d="M14 2 V8 H20"/><path d="M8 13 H16"/><path d="M8 17 H12"/></svg>TESTI</button>
-<button onclick="smoothGo('contact.html')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.3"><path d="M22 16.92 V20.5 A2.5 2.5 0 0 1 20.5 23 C10.5 23 2.5 15 2.5 5 A2.5 2.5 0 0 1 5 2.5 H8.58 A2 2 0 0 1 10.48 3.96 L12 8 A2 2 0 0 1 11.1 10.2 L9 12.3 A16 16 0 0 0 12.7 16 L14.8 13.9 A2 2 0 0 1 17 13 L21 14.5 A2 2 0 0 1 22 16.92 Z"/></svg>CONTACT</button>
-</div>
-
-<!-- BUYING MODAL -->
-<div id="buyingModal" class="modal-bg" onclick="closeBuying()"><div class="modal" onclick="event.stopPropagation()"><div style="font-weight:800;font-size:11px;color:#8A4A16;letter-spacing:.8px">PRICE LIST</div><div id="buyingTitle" class="modal-head" style="font-family:'Bricolage Grotesque';font-weight:900;font-size:20px;margin-top:4px">PREMIUM D</div><div class="close-x" onclick="closeBuying()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3"><path d="M6 6 L18 18 M18 6 L6 18"/></svg></div><div id="buyingList"></div></div></div>
-
-<!-- PAYMENT MODAL - LOCKED - FOTO TERAKHIR LU - JANGAN DIUBAH -->
-<div id="paymentModal" class="modal-bg" onclick="closePayment()">
-<div class="modal" onclick="event.stopPropagation()" style="background:#FFFBFF;padding:14px">
-  <div style="display:flex;justify-content:space-between;align-items:center">
-    <div class="qris-title">Pembayaran QRIS</div>
-    <div class="close-x" style="position:relative;top:0;right:0;background:#E9E9F1" onclick="closePayment()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3"><path d="M6 6 L18 18 M18 6 L6 18"/></svg></div>
-  </div>
-  <div id="payPrice" class="qris-price">Rp 150.000</div>
-  <div class="qris-box"><img id="qrisImg" src="qris.png" alt="QRIS" onerror="this.src='QRIS_FINAL_LOCKED.png'"></div>
-  <div class="detail-box">
-    <div class="detail-head"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A8A8A" stroke-width="2"><path d="M14 2 H6 A2 2 0 0 0 4 4 V20 A2 2 0 0 0 6 22 H18 A2 2 0 0 0 20 20 V8 Z"/><path d="M14 2 V8 H20"/><path d="M8 13 H16 M8 17 H16"/></svg> DETAIL PESANAN</div>
-    <div class="detail-row"><span class="k">Barang</span><span class="v" id="dBarang">DarkVerse</span></div>
-    <div class="detail-row"><span class="k">Role</span><span class="v" id="dRole">FULL UPDATE</span></div>
-    <div class="detail-row"><span class="k">Masa aktif</span><span class="v" id="dMasa">Permanen</span></div>
-    <div class="detail-row"><span class="k">Harga</span><span class="v orange" id="dHarga">Rp 50.000</span></div>
-    <div class="detail-row"><span class="k">Hari/Tanggal</span><span class="v" id="dTanggal">Minggu, 1 November 2026</span></div>
-  </div>
-  <div class="note-box"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><circle cx="12" cy="12" r="9" stroke="#A48DFF" stroke-width="2"/><path d="M12 8 V13" stroke="#A48DFF" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="16" r="1" fill="#A48DFF"/></svg><span>Setelah transfer, silahkan hubungi admin dengan menekan tombol dibawah ini untuk mendapatkan produk.</span></div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px">
-    <button class="btn-tele" onclick="goTelegram()"><svg width="18" height="18" viewBox="0 0 24 24" fill="#1E293B"><path d="M22 2 L2 11 L9 13 L20 4 L12 18 L20 22 L22 2 Z"/></svg> TELEGRAM</button>
-    <button class="btn-wa" onclick="goWhatsapp()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1E293B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9 V20.5 A2 2 0 0 1 20.2 22.5 C10.2 22.5 2 14.3 2 4.2 A2 2 0 0 1 4 2.3 H7.9 A2 2 0 0 1 9.8 3.8 L11 8.1 A2 2 0 0 1 10.2 10.2 L8.1 12.3 A16 16 0 0 0 11.7 18.3 L13.8 16.2 A2 2 0 0 1 15.9 15.4 L20.2 16.6 A2 2 0 0 1 22 18.5 Z"/></svg> WHATSAPP</button>
-  </div>
-</div>
-</div>
-
+<header><div class="top"><div><b>DAP ORDER</b><br><span>STORE & APPS</span></div><div class="theme-wrap"><button class="theme-btn" data-t="kuning" style="background:#FFDE59"></button><button class="theme-btn" data-t="hijau" style="background:#3ED97A"></button><button class="theme-btn" data-t="biru" style="background:#4AA8FF"></button><button class="theme-btn" data-t="ungu" style="background:#B48CFF"></button><button class="theme-btn" data-t="merah" style="background:#FF5A5A"></button></div></div></header>
+<main>
+<h1>📦 Daftar Produk</h1><p style="font-size:13px;opacity:.75;margin-top:4px;">Harga bisa berubah sewaktu-waktu. Order via WhatsApp.</p>
+<div id="loaderBox">Menghubungkan Server... <span id="pct">0%</span></div>
+<div class="grid" id="grid"></div>
+</main>
+<nav><a href="index.html">🏠<span>HOME</span></a><a href="produk.html" class="active">📦<span>PRODUK</span></a><a href="testi.html">💬<span>TESTI</span></a><a href="contact.html">📞<span>CONTACT</span></a></nav>
 <script>
-// ANTI LAG DOUBLE DI PRODUK
-let isNavigating = false;
-let curMain=localStorage.getItem('main'); 
-if(curMain){document.documentElement.style.setProperty('--main',curMain)}
-
-function openMenu(){document.getElementById('menuDrawer').classList.add('show');document.getElementById('menuBg').classList.add('show')}
-function closeMenu(){document.getElementById('menuDrawer').classList.remove('show');document.getElementById('menuBg').classList.remove('show')}
-
-function toggleTheme(){
-  let colors=['#FFDE59','#8AFF8A','#7AC7FF','#FF9BD2'];
-  let cur=getComputedStyle(document.documentElement).getPropertyValue('--main').trim();
-  let i=colors.indexOf(cur); 
-  let n=colors[(i+1)%colors.length];
-  document.documentElement.style.setProperty('--main',n);
-  localStorage.setItem('main',n);
-}
-
-function smoothGo(url){
-  if(isNavigating) return; // cegah pencet 2x
-  isNavigating = true;
-  let t=document.getElementById('pageTrans');
-  t.classList.add('on');
-  // kalo tujuan nya sama, jangan load lagi
-  if(window.location.href.includes(url)){
-    setTimeout(()=>{ t.classList.remove('on'); isNavigating=false; closeMenu(); }, 300);
-    return;
-  }
-  setTimeout(()=>{window.location.href=url}, 300);
-}
-
-// FIX UTAMA LAG 2 KALI - jangan tunggu load gambar
-window.addEventListener('DOMContentLoaded',()=>{
-  let t=document.getElementById('pageTrans');
-  t.style.transition='none';
-  t.classList.add('on');
-  requestAnimationFrame(()=>{
-    setTimeout(()=>{
-      t.style.transition='opacity .18s ease';
-      t.classList.remove('on');
-    },50)
-  })
-})
-
-// Preload gambar biar gak patah pas pertama kali buka produk
-function preloadImages(){
-  let imgs = document.querySelectorAll('img');
-  imgs.forEach(img=>{ img.loading='eager'; img.decoding='async'; });
-}
-preloadImages();
-  
-const products=[
-  {id:"DARKVERSE XRAT", img:"darkverse.jpg", desc:"Xploit bug WhatsApp sangat gacor sender global stabil dan memiliki tools RAT untuk menyadap hp target melalui phising. serta banyak tools lainnya yang gacor. silahkan pilih role sesuai yang kamu mau.", prices:[["FULL UPDATE","Rp 50.000","30 hari"],["RESELLER","Rp 120.000","Permanen"],["PARTNER","Rp 250.000","Permanen"]]},
-  {id:"NEXSUS INFINITY XRAT", img:"nexsus.jpg", desc:"Xploit bug WhatsApp sangat gacor sender global stabil dan memiliki tools RAT untuk menyadap hp target melalui phising. serta banyak tools lainnya yang gacor. silahkan pilih role sesuai yang kamu mau.", prices:[["1 HARI","Rp 2.000","1 Hari"],["1 BULAN","Rp 30.000","30 Hari"],["FULL UPDATE","Rp 35.000","Update"],["RESELLER PERMANEN","Rp 45.000","Permanen"],["ADMIN PERMANEN","Rp 65.000","Permanen"],["PARTNER PERMANEN","Rp 75.000","Permanen"],["MODERATOR PERMANEN","Rp 90.000","Permanen"],["OWNER PERMANEN","Rp 100.000","Permanen"]]},
-  {id:"TRAPENDEN XRAT", img:"trapenden.jpg", desc:"Xploit bug WhatsApp sangat gacor sender global stabil dan memiliki tools RAT untuk menyadap hp target melalui phising. serta banyak tools lainnya yang gacor. silahkan pilih role sesuai yang kamu mau.", prices:[["PERHARI","Rp 5.000","1 hari"],["PERMINGGU","Rp 20.000","7 hari"],["FULL UPDATE","Rp 30.000","30 hari"],["RESELLER","Rp 50.000","Permanen"],["VIP","Rp 60.000","Permanen"],["PT","Rp 80.000","Permanen"],["TK","Rp 100.000","Permanen"]]},
-  {id:"ORCA MALIGNANT", img:"orca.jpg", desc:"Xploit Aplikasi Orca Malignant bug WhatsApp gacor memiliki tools RAT untuk menyadap hp target melalui phising. serta banyak tools lainnya yang gacor dan juga pilihan role yang banyak. silahkan pilih role sesuai yang kamu mau.", prices:[["FULL UPDATE","Rp 30.000","30 hari"],["RESELLER","Rp 45.000","Permanen"],["VIP","Rp 130.000","Permanen"],["ADMIN","Rp 100.000","Permanen"],["OWNER","Rp 150.000","Permanen"]]},
-  {id:"TR4SVLOID", img:"tr4svloid.jpg", desc:"Aplikasi bug Tr4sVloid adalah aplikasi bug WhatsApp dan juga Memiliki RAT. menu bug yang work dan gacor serta cocok untuk pemula main bug.", prices:[["3 HARI","Rp 5.000","3 hari"],["1 MINGGU","Rp 10.000","7 hari"],["1 BULAN","Rp 15.000","30 hari"],["FULL UPDATE","Rp 25.000","30 hari"],["VIP 1 BULAN","Rp 30.000","30 hari"],["VIP PERMANEN","Rp 50.000","Permanen"],["RESELLER","Rp 55.000","Permanen"]]},
-  {id:"X-GTR4SH", img:"xgtr4sh.jpg", desc:"X-GTR4SH Adalah aplikasi bug gacor keren, dengan performa yang stabil, tampilan modern dan simpel, fitur/tools lengkap. Tersedia akses permanen dari Full Update sampai VIP. VIP sudah termasuk Sender Global.", prices:[["FULL UPDATE","Rp 25.000","Permanen"],["RESELLER PERMANEN","Rp 45.000","Permanen"],["ADMIN PERMANEN","Rp 70.000","Permanen"],["PARTNER PERMANEN","Rp 80.000","Permanen"],["MODERATOR PERMANEN","Rp 120.000","Permanen"],["VIP PERMANEN","Rp 140.000","Permanen"]]},
-  {id:"TOXIC AVENGERS", img:"toxic.jpg", desc:"Toxic Avengers Adalah aplikasi bug wa yang gacor tampilan keren dan banyak tema warna bisa di ganti, memiliki rat stabil dan sender global yang aktif.", prices:[["1 BULAN","Rp 10.000","30 hari"],["FULL UPDATE","Rp 20.000","30 hari"],["RESELLER 1 BULAN","Rp 30.000","30 hari"],["RESELLER PERMANEN","Rp 50.000","Permanen"],["ADMIN","Rp 60.000","Permanen"],["PARTNER","Rp 70.000","Permanen"],["VIP","Rp 100.000","Permanen"],["MODERATOR","Rp 100.000","Permanen"]]},
+const saved=localStorage.getItem('dap_theme')||'kuning'; document.documentElement.setAttribute('data-theme',saved);
+document.querySelectorAll('.theme-btn').forEach(b=>{ b.classList.toggle('active',b.dataset.t===saved); b.onclick=()=>{ document.documentElement.setAttribute('data-theme',b.dataset.t); localStorage.setItem('dap_theme',b.dataset.t); document.querySelectorAll('.theme-btn').forEach(x=>x.classList.toggle('active',x===b)); } });
+// Produk default - kalo Admin nambah, yang dari Admin yang tampil duluan
+const defaults=[
+  {nama:'Netflix Premium 1 Bulan', harga:'35000', desc:'Akun premium, 4K, bisa request profil.'},
+  {nama:'CapCut Pro 1 Bulan', harga:'25000', desc:'Fitur pro unlock semua, tanpa watermark.'},
+  {nama:'Canva Pro 1 Bulan', harga:'15000', desc:'Template premium, brand kit, Magic Studio.'},
+  {nama:'Spotify Premium 1 Bulan', harga:'20000', desc:'Tanpa iklan, download offline, kualitas tinggi.'},
+  {nama:'YouTube Premium 1 Bulan', harga:'22000', desc:'Tanpa iklan, background play, YouTube Music.'},
+  {nama:'Alight Motion Pro', harga:'18000', desc:'Unlock semua preset & efek premium.'},
 ];
-let cur={apk:"", paket:"", harga:"", masa:""};
-const grid=document.getElementById('grid');
-grid.innerHTML='';
-products.forEach(p=>{
-  grid.innerHTML+=`<div class="p-card"><div class="p-img"><div class="p-badge">OPEN / READY</div><img src="${p.img}" onerror="this.src='https://via.placeholder.com/300x300/FFFFFF/000000?text=${p.id}'"></div><div class="p-name"><span style="width:9px;height:9px;border-radius:50%;background:#000;display:inline-block"></span> ${p.id}</div><div class="p-desc">${p.desc}</div><div class="p-actions"><button class="btn-pre" onclick="openBuying('${p.id}')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.2"><path d="M1 12 S8 4 12 4 S23 12 12 20 S1 12 1 12"/><circle cx="12" cy="12" r="3"/></svg> PREVIEW</button><button class="btn-buy" onclick="openBuying('${p.id}')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.2"><circle cx="8" cy="21" r="1.5"/><circle cx="19" cy="21" r="1.5"/><path d="M2 2 H4 L6 14 H20 L22 6 H6"/></svg> BUYING</button></div></div>`;
-});
-function openBuying(name){const prod=products.find(x=>x.id===name); document.getElementById('buyingTitle').innerText=prod.id; let html=''; prod.prices.forEach(pr=>{html+=`<div class="price-label">${pr[0]}</div><div class="price-row"><div><div style="font-size:12px;color:#666">${pr[2]}</div><b>${pr[1]}</b></div><button class="btn-bayar" onclick="goPayment('${prod.id}','${pr[0]}','${pr[1]}','${pr[2]}')">Bayar</button></div>`}); document.getElementById('buyingList').innerHTML=html; document.getElementById('buyingModal').classList.add('show')}
-function closeBuying(){document.getElementById('buyingModal').classList.remove('show')}
-function goPayment(apk,paket,harga,masa){
-  cur={apk,paket,harga,masa};
-  closeBuying();
-  setTimeout(()=>{
-    document.getElementById('payPrice').innerText=harga;
-    document.getElementById('dBarang').innerText=apk;
-    document.getElementById('dRole').innerText=paket;
-    document.getElementById('dMasa').innerText=masa;
-    document.getElementById('dHarga').innerText=harga;
-    const tgl=new Date().toLocaleDateString('id-ID',{weekday:'long', day:'numeric', month:'long', year:'numeric'});
-    document.getElementById('dTanggal').innerText=tgl;
-    document.getElementById('paymentModal').classList.add('show');
-  },180);
+let p=0; const pct=document.getElementById('pct');
+const iv=setInterval(()=>{
+  p+=Math.floor(Math.random()*20)+10; if(p>=100){ p=100; clearInterval(iv); document.getElementById('loaderBox').style.display='none'; showProduk(); }
+  pct.textContent=p+'%';
+},120);
+function showProduk(){
+  let custom=[]; try{ custom=JSON.parse(localStorage.getItem('dap_produk'))||[] }catch(e){}
+  const all=[...custom, ...defaults];
+  const grid=document.getElementById('grid');
+  grid.innerHTML=all.map((x,i)=>`<div class="card" style="transition-delay:${i*0.08}s"><div style="font-size:28px;">📱</div><h3>${x.nama}</h3><p style="font-size:13px;opacity:.75;line-height:1.5;">${x.desc||''}</p><div class="price">Rp ${x.harga}</div><a class="btn" href="https://wa.me/6280000000000?text=${encodeURIComponent('Halo DAP ORDER, saya mau order '+x.nama+' - Rp '+x.harga)}">Beli via WhatsApp →</a></div>`).join('');
+  // Muncul satu-satu ngembang
+  const cards=grid.querySelectorAll('.card'); cards.forEach((c,idx)=> setTimeout(()=> c.classList.add('show'), idx*120));
 }
-function closePayment(){document.getElementById('paymentModal').classList.remove('show')}
-function goWhatsapp(){const text=`Hallo bang dappak saya ingin konfirmasi pembayaran%0A%0ASudah Bayar:%0AAPK: ${cur.apk}%0APaket: ${cur.paket}%0AHarga: ${cur.harga}%0AMasa: ${cur.masa}`; window.open(`https://wa.me/6283879195047?text=${text}`,'_blank')}
-function goTelegram(){window.open(`https://t.me/Dappak_Reals1?text=Hallo%20bang%20dappak%20sudah%20bayar%20${cur.apk}%20${cur.paket}`,'_blank')}
-
-const obs = new IntersectionObserver((entries)=>{
-  entries.forEach(x=>{
-    if(x.isIntersecting){
-      x.target.style.animation = 'none';
-      void x.target.offsetWidth;
-      x.target.style.animation = 'revealPop .55s cubic-bezier(.34,1.56,.64,1) both';
-      obs.unobserve(x.target);
-    }
-  });
-},{threshold: 0.2});
-document.querySelectorAll('.p-card').forEach(c=>obs.observe(c));
 </script>
 </body>
 </html>
