@@ -87,6 +87,37 @@ button:active, .btn-pre:active, .btn-buy:active, .btn-bayar:active, .btn-dap:act
 }
 @keyframes shimmer{ 0%{ background-position: 200% 0; } 100%{ background-position: -200% 0; } }
 .skeleton-card{ height: 320px; }
+
+/* ===== COPY DARI INDEX - TEMPEL DI PRODUK ===== */
+#pageTrans{
+  position: fixed; inset: 0; background: #fff; z-index: 9999;
+  opacity: 0; pointer-events: none; transition: opacity .18s ease;
+}
+#pageTrans.on{ opacity: 1; }
+
+.p-card{
+  animation: revealPop .55s cubic-bezier(.34,1.56,.64,1) both !important;
+}
+.p-card:nth-child(1){ animation-delay: .02s; }
+.p-card:nth-child(2){ animation-delay: .08s; }
+.p-card:nth-child(3){ animation-delay: .14s; }
+.p-card:nth-child(4){ animation-delay: .20s; }
+
+@keyframes revealPop{
+  0%{ opacity: 0; transform: scale(.92) translateY(15px); filter: blur(8px) brightness(1.5); }
+  100%{ opacity: 1; transform: scale(1) translateY(0); filter: blur(0) brightness(1); }
+}
+
+.skeleton{
+  background: linear-gradient(90deg, #FFEFA8 25%, #FFF8D6 50%, #FFEFA8 75%) !important;
+  background-size: 200% 100% !important;
+  animation: shimmer 1s infinite linear !important;
+  color: transparent !important;
+}
+@keyframes shimmer{
+  0%{ background-position: 200% 0; }
+  100%{ background-position: -200% 0; }
+}
 </style>
 </head>
 <body>
@@ -183,7 +214,7 @@ window.addEventListener('DOMContentLoaded',()=>{
   t.classList.add('on');
   requestAnimationFrame(()=>{
     setTimeout(()=>{
-      t.style.transition='transform .42s cubic-bezier(.76,0,.24,1)';
+      t.style.transition='opacity .18s ease';
       t.classList.remove('on');
     },50)
   })
@@ -230,6 +261,18 @@ function goPayment(apk,paket,harga,masa){
 function closePayment(){document.getElementById('paymentModal').classList.remove('show')}
 function goWhatsapp(){const text=`Hallo bang dappak saya ingin konfirmasi pembayaran%0A%0ASudah Bayar:%0AAPK: ${cur.apk}%0APaket: ${cur.paket}%0AHarga: ${cur.harga}%0AMasa: ${cur.masa}`; window.open(`https://wa.me/6283879195047?text=${text}`,'_blank')}
 function goTelegram(){window.open(`https://t.me/Dappak?text=Hallo%20bang%20dappak%20sudah%20bayar%20${cur.apk}%20${cur.paket}`,'_blank')}
+
+const obs = new IntersectionObserver((entries)=>{
+  entries.forEach(x=>{
+    if(x.isIntersecting){
+      x.target.style.animation = 'none';
+      void x.target.offsetWidth;
+      x.target.style.animation = 'revealPop .55s cubic-bezier(.34,1.56,.64,1) both';
+      obs.unobserve(x.target);
+    }
+  });
+},{threshold: 0.2});
+document.querySelectorAll('.p-card').forEach(c=>obs.observe(c));
 </script>
 </body>
 </html>
