@@ -167,6 +167,20 @@ function closeMenu(){document.getElementById('menuDrawer').classList.remove('sho
 function toggleTheme(){let colors=['#FFDE59','#8AFF8A','#7AC7FF','#FF9BD2'];let i=colors.indexOf(getComputedStyle(document.documentElement).getPropertyValue('--main').trim());let n=colors[(i+1)%colors.length];document.documentElement.style.setProperty('--main',n);localStorage.setItem('main',n)}
 function smoothGo(url){let t=document.getElementById('pageTrans');t.classList.add('on');setTimeout(()=>{window.location.href=url},280)}
 window.addEventListener('load',()=>{let t=document.getElementById('pageTrans');t.style.transition='none';t.classList.add('on');requestAnimationFrame(()=>{setTimeout(()=>{t.style.transition='transform .42s cubic-bezier(.76,0,.24,1)';t.classList.remove('on')},30)})})
+
+// <-- TEMPEL DI SINI -->
+const obs = new IntersectionObserver((entries)=>{
+  entries.forEach(x=>{
+    if(x.isIntersecting){
+      x.target.style.animation = 'none';
+      void x.target.offsetWidth;
+      x.target.style.animation = 'revealPop .55s cubic-bezier(.34,1.56,.64,1) both';
+      obs.unobserve(x.target);
+    }
+  });
+},{threshold: 0.2});
+document.querySelectorAll('.p-card, .info-card').forEach(c=>obs.observe(c));
+
 </script>
 </body>
 </html>
