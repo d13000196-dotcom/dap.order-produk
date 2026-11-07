@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>LOGIN ADMIN - DAP ORDER</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@800;900&family=Inter:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{--main:#FFDE59;--bg:#F2EFFF}
+*{box-sizing:border-box}body{margin:0;font-family:Inter;background:var(--bg);background-image:linear-gradient(#0000000e 1px,transparent 1px),linear-gradient(90deg,#0000000e 1px,transparent 1px);background-size:26px 26px;padding-bottom:88px}
+.header{position:sticky;top:0;z-index:90;height:64px;background:var(--main);border-bottom:4px solid #000;display:flex;justify-content:space-between;align-items:center;padding:0 12px}
+.btn-dap{border:3.5px solid #000;background:#fff;border-radius:18px;padding:10px 14px;font-family:'Bricolage Grotesque';font-weight:900;box-shadow:4px 4px 0 #000;cursor:pointer}
+.btn-theme{border:3.5px solid #000;background:#fff;width:68px;height:44px;border-radius:18px;display:flex;align-items:center;justify-content:center;box-shadow:4px 4px 0 #000;cursor:pointer}
+.card{margin:16px 12px;background:#fff;border:4px solid #000;border-radius:22px;padding:18px;box-shadow:7px 7px 0 #000;animation:revealPop .6s cubic-bezier(.34,1.56,.64,1) both}
+@keyframes revealPop{0%{opacity:0;transform:scale(.92) translateY(15px);filter:blur(8px)}100%{opacity:1;transform:scale(1) translateY(0);filter:blur(0)}}
+.lock{width:64px;height:64px;margin:0 auto;background:var(--main);border:3.5px solid #000;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:4px 4px 0 #000}
+.info{background:#FFE3C2;border:3px solid #000;border-radius:14px;padding:12px;font-size:13px;line-height:1.5;margin-top:14px}
+label{font-weight:900;font-size:13px;letter-spacing:.5px;display:block;margin:14px 0 6px}
+input{width:100%;border:3px solid #000;border-radius:14px;padding:14px;font-size:15px;font-family:Inter;outline:none}
+input:focus{border-color:#FF8A1A}
+.btn-login{margin-top:18px;width:100%;border:3.5px solid #000;background:#FF8A1A;border-radius:999px;padding:14px;font-family:'Bricolage Grotesque';font-weight:900;font-size:14px;box-shadow:4px 4px 0 #000;cursor:pointer}
+.nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:4px solid #000;display:flex;gap:8px;padding:8px}
+.nav button{flex:1;border:3.5px solid #000;border-radius:16px;padding:10px 2px;font-family:'Bricolage Grotesque';font-weight:900;font-size:11px;background:#fff;box-shadow:3px 3px 0 #000;cursor:pointer}
+#pageTrans{position:fixed;inset:0;background:#fff;z-index:9999;opacity:0;pointer-events:none;transition:opacity .45s ease}
+#pageTrans.on{opacity:1}
+</style>
+</head>
+<body>
+<div id="pageTrans"></div>
+<div class="header"><div class="btn-dap" onclick="location.href='index.html'">☰ DAP ORDER</div><div class="btn-theme" onclick="toggleTheme()">☺</div></div>
+<div class="card">
+<div class="lock">🔒</div>
+<h1 style="font-family:'Bricolage Grotesque';font-weight:900;text-align:center;font-size:30px;margin:14px 0 4px">LOGIN ADMIN</h1>
+<p style="text-align:center;color:#666;margin:0;font-size:13px">Masuk untuk mengelola toko</p>
+<div class="info"><b>Akses khusus administrator.</b><br>Gunakan akun admin yang dikonfigurasi pada server. Kredensial tidak disediakan di halaman publik.</div>
+<label>USERNAME</label><input id="u" placeholder="Masukkan username" autocomplete="username">
+<label>PASSWORD</label><input id="p" type="password" placeholder="Masukkan password" autocomplete="current-password">
+<button class="btn-login" onclick="doLogin()">MASUK KE DASHBOARD ADMIN</button>
+<p id="err" style="display:none;color:#D00;font-weight:800;font-size:13px;text-align:center;margin-top:10px">Username / Password salah!</p>
+<p style="font-size:11px;color:#999;text-align:center;margin-top:10px">Demo front-end saja. Untuk produksi, cek login di server, jangan di HTML.</p>
+</div>
+<div class="nav"><button onclick="location.href='index.html'">🏠<br>HOME</button><button onclick="location.href='produk.html'">🛒<br>PRODUCT</button><button onclick="location.href='testi.html'">💬<br>TESTI</button><button onclick="location.href='contact.html'">📞<br>CONTACT</button></div>
+<script>
+let curMain=localStorage.getItem('main'); if(curMain){document.documentElement.style.setProperty('--main',curMain)}
+function toggleTheme(){let c=['#FFDE59','#8AFF8A','#7AC7FF','#FF9BD2'];let cur=getComputedStyle(document.documentElement).getPropertyValue('--main').trim();let n=c[(c.indexOf(cur)+1)%c.length];document.documentElement.style.setProperty('--main',n);localStorage.setItem('main',n)}
+function doLogin(){
+  const u=document.getElementById('u').value.trim();
+  const p=document.getElementById('p').value;
+  if(u==='Admin' && p==='Admin99'){ sessionStorage.setItem('dap_admin','1'); let t=document.getElementById('pageTrans'); t.classList.add('on'); setTimeout(()=>location.href='admin.html',450) }
+  else { document.getElementById('err').style.display='block' }
+}
+</script>
+</body>
+</html>
