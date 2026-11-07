@@ -80,6 +80,39 @@ button:hover, .btn:hover, .btn-contact:hover,
 .skeleton-card{ height: 320px; margin-bottom: 16px; }
 .skeleton-text{ height: 18px; margin: 10px 16px; }
 .skeleton-btn{ height: 42px; margin: 16px; border-radius: 12px; }
+
+/* ===== SKELETON SHIMMER + FADE KAYAK DI VIDEO ===== */
+#pageTrans{
+  position: fixed; inset: 0; background: #fff; z-index: 9999;
+  opacity: 0; pointer-events: none; transition: opacity .18s ease;
+}
+#pageTrans.on{ opacity: 1; }
+
+/* CARD MUNCUL DARI BURAM + NGEMBANG */
+.p-card, .info-card{
+  animation: revealPop .55s cubic-bezier(.34,1.56,.64,1) both !important;
+}
+.p-card:nth-child(1){ animation-delay: .02s; }
+.p-card:nth-child(2){ animation-delay: .08s; }
+.p-card:nth-child(3){ animation-delay: .14s; }
+.p-card:nth-child(4){ animation-delay: .20s; }
+
+@keyframes revealPop{
+  0%{ opacity: 0; transform: scale(.92) translateY(15px); filter: blur(8px) brightness(1.5); }
+  100%{ opacity: 1; transform: scale(1) translateY(0); filter: blur(0) brightness(1); }
+}
+
+/* SKELETON KEDIP PAS SCROLL / LOAD */
+.skeleton{
+  background: linear-gradient(90deg, #FFEFA8 25%, #FFF8D6 50%, #FFEFA8 75%) !important;
+  background-size: 200% 100% !important;
+  animation: shimmer 1s infinite linear !important;
+  color: transparent !important;
+}
+@keyframes shimmer{
+  0%{ background-position: 200% 0; }
+  100%{ background-position: -200% 0; }
+}
 </style>
 </head>
 <body>
