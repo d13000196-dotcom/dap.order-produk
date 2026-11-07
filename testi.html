@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="kuning">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Testimoni - DAP ORDER</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{ --bg:#FFDE59; --bg2:#FFF3A8; --ink:#1A1A2E; --accent:#FF6B00; --border:3px solid #1A1A2E; --shadow:6px 6px 0 #1A1A2E; }
+[data-theme="hijau"]{ --bg:#3ED97A; --bg2:#D6FFDF; --accent:#0B8A4A; }
+[data-theme="biru"]{ --bg:#4AA8FF; --bg2:#D6EDFF; --accent:#1A5CFF; }
+[data-theme="ungu"]{ --bg:#B48CFF; --bg2:#F0E6FF; --accent:#6D28D9; }
+[data-theme="merah"]{ --bg:#FF5A5A; --bg2:#FFE3E3; --accent:#D90429; }
+*{ margin:0; padding:0; box-sizing:border-box; }
+body{ font-family:'Sora',sans-serif; background:var(--bg2); color:var(--ink); background-image:linear-gradient(rgba(26,26,46,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(26,26,46,.07) 1px, transparent 1px); background-size:28px 28px; }
+header{ background:var(--bg); border-bottom:var(--border); position:sticky; top:0; z-index:50; }
+.top{ max-width:1080px; margin:0 auto; padding:12px 14px; display:flex; justify-content:space-between; align-items:center; }
+.top b{ font-family:'Bricolage Grotesque'; font-size:20px; } .top span{ font-size:10px; font-weight:700; letter-spacing:1.5px; opacity:.8; }
+.theme-wrap{ display:flex; gap:6px; background:#fff; border:var(--border); border-radius:99px; padding:5px; box-shadow:3px 3px 0 #1A1A2E; }
+.theme-btn{ width:26px; height:26px; border-radius:50%; border:2px solid #1A1A2E; cursor:pointer; } .theme-btn.active{ outline:3px solid #1A1A2E; outline-offset:2px; }
+main{ max-width:1080px; margin:0 auto; padding:18px 14px 110px; }
+h1{ font-family:'Bricolage Grotesque'; font-size:34px; }
+.empty{ background:#fff; border:var(--border); border-radius:18px; box-shadow:var(--shadow); padding:26px; text-align:center; margin-top:16px; opacity:0; transform:scale(.9); transition:all .5s cubic-bezier(.34,1.56,.64,1); }
+.empty.show{ opacity:1; transform:scale(1); }
+.grid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:16px; }
+@media(max-width:640px){ .grid{ grid-template-columns:1fr; } }
+.card{ background:#fff; border:var(--border); border-radius:18px; box-shadow:var(--shadow); padding:18px; opacity:0; transform:scale(.85); transition:all .5s cubic-bezier(.34,1.56,.64,1); }
+.card.show{ opacity:1; transform:scale(1); }
+nav{ position:fixed; bottom:12px; left:50%; transform:translateX(-50%); width:min(96%,620px); background:#fff; border:var(--border); border-radius:18px; box-shadow:var(--shadow); display:grid; grid-template-columns:repeat(4,1fr); padding:6px; }
+nav a{ text-decoration:none; color:#1A1A2E; display:flex; flex-direction:column; align-items:center; padding:8px 4px; font-size:11px; font-weight:800; border-radius:12px; }
+nav a.active{ background:var(--bg); }
+</style>
+</head>
+<body>
+<header><div class="top"><div><b>DAP ORDER</b><br><span>STORE & APPS</span></div><div class="theme-wrap"><button class="theme-btn" data-t="kuning" style="background:#FFDE59"></button><button class="theme-btn" data-t="hijau" style="background:#3ED97A"></button><button class="theme-btn" data-t="biru" style="background:#4AA8FF"></button><button class="theme-btn" data-t="ungu" style="background:#B48CFF"></button><button class="theme-btn" data-t="merah" style="background:#FF5A5A"></button></div></div></header>
+<main>
+<h1>💬 Testimoni</h1><p style="font-size:13px;opacity:.75;margin-top:4px;">Cerita jujur dari pembeli DAP ORDER.</p>
+<div id="wrap"></div>
+</main>
+<nav><a href="index.html">🏠<span>HOME</span></a><a href="produk.html">📦<span>PRODUK</span></a><a href="testi.html" class="active">💬<span>TESTI</span></a><a href="contact.html">📞<span>CONTACT</span></a></nav>
+<script>
+const saved=localStorage.getItem('dap_theme')||'kuning'; document.documentElement.setAttribute('data-theme',saved);
+document.querySelectorAll('.theme-btn').forEach(b=>{ b.classList.toggle('active',b.dataset.t===saved); b.onclick=()=>{ document.documentElement.setAttribute('data-theme',b.dataset.t); localStorage.setItem('dap_theme',b.dataset.t); document.querySelectorAll('.theme-btn').forEach(x=>x.classList.toggle('active',x===b)); } });
+let list=[]; try{ list=JSON.parse(localStorage.getItem('dap_testi'))||[] }catch(e){}
+const wrap=document.getElementById('wrap');
+if(list.length===0){
+  wrap.innerHTML=`<div class="empty" id="empty"><div style="font-size:40px;">💬</div><h2 style="font-family:'Bricolage Grotesque';margin:10px 0 6px;">Belum ada testimoni</h2><p style="font-size:13px;opacity:.75;line-height:1.6;">Testimoni hanya ditampilkan setelah ditambahkan oleh administrator.<br>Jadi testimoni di sini asli, bukan karangan.</p></div>`;
+  setTimeout(()=> document.getElementById('empty').classList.add('show'), 200);
+} else {
+  wrap.innerHTML=`<div class="grid">${list.map((x,i)=>`<div class="card" style="transition-delay:${i*0.08}s"><div>⭐⭐⭐⭐⭐</div><p style="font-size:14px;line-height:1.6;margin:8px 0;">"${x.isi}"</p><b>- ${x.nama}</b><div style="font-size:11px;opacity:.6;margin-top:4px;">Pembeli Terverifikasi • DAP ORDER</div></div>`).join('')}</div>`;
+  document.querySelectorAll('.card').forEach((c,idx)=> setTimeout(()=> c.classList.add('show'), idx*120));
+}
+</script>
+</body>
+</html>
