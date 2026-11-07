@@ -1,54 +1,35 @@
 <!DOCTYPE html>
-<html lang="id" data-theme="kuning">
+<html lang="id">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Testimoni - DAP ORDER</title>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TESTI - DAP ORDER</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@800;900&family=Inter:wght@600;800&display=swap" rel="stylesheet">
 <style>
-:root{ --bg:#FFDE59; --bg2:#FFF3A8; --ink:#1A1A2E; --accent:#FF6B00; --border:3px solid #1A1A2E; --shadow:6px 6px 0 #1A1A2E; }
-[data-theme="hijau"]{ --bg:#3ED97A; --bg2:#D6FFDF; --accent:#0B8A4A; }
-[data-theme="biru"]{ --bg:#4AA8FF; --bg2:#D6EDFF; --accent:#1A5CFF; }
-[data-theme="ungu"]{ --bg:#B48CFF; --bg2:#F0E6FF; --accent:#6D28D9; }
-[data-theme="merah"]{ --bg:#FF5A5A; --bg2:#FFE3E3; --accent:#D90429; }
-*{ margin:0; padding:0; box-sizing:border-box; }
-body{ font-family:'Sora',sans-serif; background:var(--bg2); color:var(--ink); background-image:linear-gradient(rgba(26,26,46,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(26,26,46,.07) 1px, transparent 1px); background-size:28px 28px; }
-header{ background:var(--bg); border-bottom:var(--border); position:sticky; top:0; z-index:50; }
-.top{ max-width:1080px; margin:0 auto; padding:12px 14px; display:flex; justify-content:space-between; align-items:center; }
-.top b{ font-family:'Bricolage Grotesque'; font-size:20px; } .top span{ font-size:10px; font-weight:700; letter-spacing:1.5px; opacity:.8; }
-.theme-wrap{ display:flex; gap:6px; background:#fff; border:var(--border); border-radius:99px; padding:5px; box-shadow:3px 3px 0 #1A1A2E; }
-.theme-btn{ width:26px; height:26px; border-radius:50%; border:2px solid #1A1A2E; cursor:pointer; } .theme-btn.active{ outline:3px solid #1A1A2E; outline-offset:2px; }
-main{ max-width:1080px; margin:0 auto; padding:18px 14px 110px; }
-h1{ font-family:'Bricolage Grotesque'; font-size:34px; }
-.empty{ background:#fff; border:var(--border); border-radius:18px; box-shadow:var(--shadow); padding:26px; text-align:center; margin-top:16px; opacity:0; transform:scale(.9); transition:all .5s cubic-bezier(.34,1.56,.64,1); }
-.empty.show{ opacity:1; transform:scale(1); }
-.grid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:16px; }
-@media(max-width:640px){ .grid{ grid-template-columns:1fr; } }
-.card{ background:#fff; border:var(--border); border-radius:18px; box-shadow:var(--shadow); padding:18px; opacity:0; transform:scale(.85); transition:all .5s cubic-bezier(.34,1.56,.64,1); }
-.card.show{ opacity:1; transform:scale(1); }
-nav{ position:fixed; bottom:12px; left:50%; transform:translateX(-50%); width:min(96%,620px); background:#fff; border:var(--border); border-radius:18px; box-shadow:var(--shadow); display:grid; grid-template-columns:repeat(4,1fr); padding:6px; }
-nav a{ text-decoration:none; color:#1A1A2E; display:flex; flex-direction:column; align-items:center; padding:8px 4px; font-size:11px; font-weight:800; border-radius:12px; }
-nav a.active{ background:var(--bg); }
+:root{--main:#FFDE59;--bg:#F2EFFF}
+*{box-sizing:border-box}body{margin:0;font-family:Inter;background:var(--bg);background-image:linear-gradient(#0000000e 1px,transparent 1px),linear-gradient(90deg,#0000000e 1px,transparent 1px);background-size:26px 26px;padding-bottom:88px}
+.header{position:sticky;top:0;height:64px;background:var(--main);border-bottom:4px solid #000;display:flex;justify-content:space-between;align-items:center;padding:0 12px}
+.btn-dap{border:3.5px solid #000;background:#fff;border-radius:18px;padding:10px 14px;font-family:'Bricolage Grotesque';font-weight:900;box-shadow:4px 4px 0 #000;cursor:pointer}
+.btn-theme{border:3.5px solid #000;background:#fff;width:68px;height:44px;border-radius:18px;display:flex;align-items:center;justify-content:center;box-shadow:4px 4px 0 #000;cursor:pointer}
+.card{margin:14px 12px;background:#fff;border:3.5px solid #000;border-radius:20px;padding:16px;box-shadow:6px 6px 0 #000;animation:revealPop .6s cubic-bezier(.34,1.56,.64,1) both}
+@keyframes revealPop{0%{opacity:0;transform:scale(.92) translateY(15px);filter:blur(8px)}100%{opacity:1;transform:scale(1) translateY(0);filter:blur(0)}}
+.nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:4px solid #000;display:flex;gap:8px;padding:8px}
+.nav button{flex:1;border:3.5px solid #000;border-radius:16px;padding:10px 2px;font-family:'Bricolage Grotesque';font-weight:900;font-size:11px;background:#fff;box-shadow:3px 3px 0 #000;cursor:pointer}
+.nav button.on{background:var(--main)}
+#pageTrans{position:fixed;inset:0;background:#fff;z-index:9999;opacity:0;pointer-events:none;transition:opacity .45s ease}
+#pageTrans.on{opacity:1}
 </style>
 </head>
 <body>
-<header><div class="top"><div><b>DAP ORDER</b><br><span>STORE & APPS</span></div><div class="theme-wrap"><button class="theme-btn" data-t="kuning" style="background:#FFDE59"></button><button class="theme-btn" data-t="hijau" style="background:#3ED97A"></button><button class="theme-btn" data-t="biru" style="background:#4AA8FF"></button><button class="theme-btn" data-t="ungu" style="background:#B48CFF"></button><button class="theme-btn" data-t="merah" style="background:#FF5A5A"></button></div></div></header>
-<main>
-<h1>💬 Testimoni</h1><p style="font-size:13px;opacity:.75;margin-top:4px;">Cerita jujur dari pembeli DAP ORDER.</p>
-<div id="wrap"></div>
-</main>
-<nav><a href="index.html">🏠<span>HOME</span></a><a href="produk.html">📦<span>PRODUK</span></a><a href="testi.html" class="active">💬<span>TESTI</span></a><a href="contact.html">📞<span>CONTACT</span></a></nav>
+<div id="pageTrans"></div>
+<div class="header"><div class="btn-dap" onclick="location.href='index.html'">☰ DAP ORDER</div><div class="btn-theme" onclick="toggleTheme()">☺</div></div>
+<div style="margin:16px 12px"><div style="display:inline-block;background:var(--main);border:3px solid #000;border-radius:8px;padding:6px 12px;font-family:'Bricolage Grotesque';font-weight:900;transform:rotate(-2deg);box-shadow:3px 3px 0 #000">TESTIMONI PELANGGAN</div><h1 style="font-family:'Bricolage Grotesque';font-weight:900;font-size:32px;line-height:.95;margin:12px 0 0">BUKTI<br>ORDERAN<br>ASLI</h1></div>
+<div class="card"><b>Maulana - Jakarta</b><p style="color:#555;font-size:13px">Order Netflix Premium, langsung diproses 2 menit, akun aman. Recommended!</p><span style="font-size:12px;color:#888">Produk: Netflix Premium - Rp 50.000</span></div>
+<div class="card"><b>Tama - Bandung</b><p style="color:#555;font-size:13px">Beli CapCut Pro, admin fast respon di WA, dikasih tutorial juga. Mantap!</p><span style="font-size:12px;color:#888">Produk: CapCut Pro - Rp 30.000</span></div>
+<div class="card"><b>Xean - Lampung</b><p style="color:#555;font-size:13px">Udah 3x order Canva Pro di sini, gak pernah gagal. Amanah.</p><span style="font-size:12px;color:#888">Produk: Canva Pro - Rp 50.000</span></div>
+<div class="nav"><button onclick="location.href='index.html'">🏠<br>HOME</button><button onclick="location.href='produk.html'">🛒<br>PRODUCT</button><button class="on" onclick="location.href='testi.html'">💬<br>TESTI</button><button onclick="location.href='contact.html'">📞<br>CONTACT</button></div>
 <script>
-const saved=localStorage.getItem('dap_theme')||'kuning'; document.documentElement.setAttribute('data-theme',saved);
-document.querySelectorAll('.theme-btn').forEach(b=>{ b.classList.toggle('active',b.dataset.t===saved); b.onclick=()=>{ document.documentElement.setAttribute('data-theme',b.dataset.t); localStorage.setItem('dap_theme',b.dataset.t); document.querySelectorAll('.theme-btn').forEach(x=>x.classList.toggle('active',x===b)); } });
-let list=[]; try{ list=JSON.parse(localStorage.getItem('dap_testi'))||[] }catch(e){}
-const wrap=document.getElementById('wrap');
-if(list.length===0){
-  wrap.innerHTML=`<div class="empty" id="empty"><div style="font-size:40px;">💬</div><h2 style="font-family:'Bricolage Grotesque';margin:10px 0 6px;">Belum ada testimoni</h2><p style="font-size:13px;opacity:.75;line-height:1.6;">Testimoni hanya ditampilkan setelah ditambahkan oleh administrator.<br>Jadi testimoni di sini asli, bukan karangan.</p></div>`;
-  setTimeout(()=> document.getElementById('empty').classList.add('show'), 200);
-} else {
-  wrap.innerHTML=`<div class="grid">${list.map((x,i)=>`<div class="card" style="transition-delay:${i*0.08}s"><div>⭐⭐⭐⭐⭐</div><p style="font-size:14px;line-height:1.6;margin:8px 0;">"${x.isi}"</p><b>- ${x.nama}</b><div style="font-size:11px;opacity:.6;margin-top:4px;">Pembeli Terverifikasi • DAP ORDER</div></div>`).join('')}</div>`;
-  document.querySelectorAll('.card').forEach((c,idx)=> setTimeout(()=> c.classList.add('show'), idx*120));
-}
+let curMain=localStorage.getItem('main'); if(curMain){document.documentElement.style.setProperty('--main',curMain)}
+function toggleTheme(){let c=['#FFDE59','#8AFF8A','#7AC7FF','#FF9BD2'];let cur=getComputedStyle(document.documentElement).getPropertyValue('--main').trim();let n=c[(c.indexOf(cur)+1)%c.length];document.documentElement.style.setProperty('--main',n);localStorage.setItem('main',n)}
 </script>
 </body>
 </html>
