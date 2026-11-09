@@ -154,7 +154,7 @@ input{width:100%;border:3px solid #000;border-radius:14px;padding:14px;font-size
 <label>USERNAME</label><input id="u" placeholder="Masukkan username">
 <label>PASSWORD</label><input id="p" type="password" placeholder="Masukkan password">
 <button class="btn-contact" style="background:#FF8A1A;margin-top:18px" onclick="doLogin()">MASUK KE DASHBOARD ADMIN</button>
-<p id="err" style="display:none;color:#D00;font-weight:800;font-size:13px;text-align:center;margin-top:10px">Username / Password salah!</p>
+<p id="err" style="display:none;color:#D00;font-weight:800;font-size:13px;text-align:center;margin-top:10px">Username atau Password Tidak Valid!</p>
 </div>
 </div>
 
@@ -202,9 +202,9 @@ input{width:100%;border:3px solid #000;border-radius:14px;padding:14px;font-size
 <div id="payPrice" class="qris-price">Rp 50.000</div>
 <div class="qris-box"><img src="qris.png" onerror="this.src='https://via.placeholder.com/400x400/FFFFFF/000000?text=QRIS'"></div>
 <div class="detail-box"><div style="font-family:'Bricolage Grotesque';font-weight:900;font-size:12px;border-bottom:2px solid #EDEDED;padding-bottom:8px;margin-bottom:10px">DETAIL PESANAN</div>
-<div class="detail-row"><span class="k">Barang</span><span class="v" id="dBarang">Netflix Premium</span></div>
-<div class="detail-row"><span class="k">Paket</span><span class="v" id="dRole">BASIC</span></div>
-<div class="detail-row"><span class="k">Masa aktif</span><span class="v" id="dMasa">30 hari</span></div>
+<div class="detail-row"><span class="k">Barang</span><span class="v" id="dBarang">DarkVerse FULL UPDATE</span></div>
+<div class="detail-row"><span class="k">Paket</span><span class="v" id="dRole">FULL UPDATE</span></div>
+<div class="detail-row"><span class="k">Masa aktif</span><span class="v" id="dMasa">Permanen</span></div>
 <div class="detail-row"><span class="k">Harga</span><span class="v orange" id="dHarga">Rp 50.000</span></div>
 <div class="detail-row"><span class="k">Hari/Tanggal</span><span class="v" id="dTanggal">-</span></div></div>
 <div class="note-box"><span>!</span><span>Setelah transfer, silahkan hubungi admin dengan menekan tombol dibawah ini untuk mendapatkan produk.</span></div>
@@ -248,7 +248,7 @@ function goPayment(apk,paket,harga,masa){cur={apk,paket,harga,masa}; closeBuying
 function closePayment(){document.getElementById('paymentModal').classList.remove('show')}
 function goWhatsapp(){const text=`Hallo Dappak, saya ingin konfirmasi pembayaran%0A%0AProduk: ${cur.apk}%0APaket: ${cur.paket}%0AHarga: ${cur.harga}%0AMasa: ${cur.masa}`; window.open(`https://wa.me/6283879195047?text=${text}`,'_blank')}
 function goTelegram(){window.open(`https://t.me/Dappak_Reals1?text=Hallo%20sudah%20bayar%20${cur.apk}%20${cur.paket}`,'_blank')}
-function doLogin(){const u=document.getElementById('u').value.trim(); const p=document.getElementById('p').value; if(u==='Admin' && p==='Admin99'){ sessionStorage.setItem('dap_admin','1'); goPage('admin'); renderAdmin(); } else { document.getElementById('err').style.display='block' }}
+function doLogin(){const u=document.getElementById('u').value.trim(); const p=document.getElementById('p').value; if(u==='Admin' && p==='1 sampe 3'){ sessionStorage.setItem('dap_admin','1'); goPage('admin'); renderAdmin(); } else { document.getElementById('err').style.display='block' }}
 let list=JSON.parse(localStorage.getItem('dap_products')||'[]');
 function renderAdmin(){ document.getElementById('listProduk').innerHTML=list.length?list.map((x,i)=>`<div style="border:2px solid #000;border-radius:12px;padding:10px;margin-bottom:8px;display:flex;justify-content:space-between"><span><b>${x.name}</b><br>${x.price}</span><span onclick="delProd(${i})" style="cursor:pointer">X</span></div>`).join(''):'<div style="color:#888">Belum ada produk tambahan.</div>'; document.getElementById('totalProduk').innerText=7+list.length }
 function addProduct(){const n=document.getElementById('newName').value.trim(); const p=document.getElementById('newPrice').value.trim(); if(!n||!p) return alert('Isi nama + harga dulu'); list.push({name:n,price:p}); localStorage.setItem('dap_products',JSON.stringify(list)); document.getElementById('newName').value=''; document.getElementById('newPrice').value=''; renderAdmin()}
