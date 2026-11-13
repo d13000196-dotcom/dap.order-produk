@@ -302,15 +302,24 @@ renderAdmin();
 function refreshDeleteList(){
   let list = document.getElementById('delProduct');
   if(!list) return;
-  // ambil dari listProduk yang udah ada, atau dari data produk lu
-  // contoh simpel: ambil dari array produk kalo lu punya
-  // kalo lu masih pake demo, ini bakal keisi pas lu nambah produk
-  let produk = JSON.parse(localStorage.getItem('dapProduk') || '[]');
   list.innerHTML = '<option value="">-- Pilih Produk --</option>';
-  produk.forEach(p => {
+  
+  // 1. Ambil dari produk utama (yang hardcoded di atas)
+  if(typeof products !== 'undefined'){
+    products.forEach(p => {
+      list.innerHTML += `<option value="${p.id}">${p.id}</option>`;
+    });
+  }
+
+  // 2. Ambil dari produk tambahan (yang lu tambah lewat dashboard)
+  let tambahan = JSON.parse(localStorage.getItem('dapProduk') || '[]');
+  tambahan.forEach(p => {
     list.innerHTML += `<option value="${p.nama}">${p.nama} - ${p.role}</option>`;
   });
 }
+
+// Panggil pas pertama buka admin, biar langsung keisi
+refreshDeleteList();
 
 function addProduct(){
   let nama = document.getElementById('newName').value;
