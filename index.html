@@ -362,32 +362,68 @@ function refreshDeleteList(){
 refreshDeleteList();
 
 function addProduct(){
-  let nama = document.getElementById('newName').value;
-  let harga = document.getElementById('newPrice').value;
+  let nama = document.getElementById('newNama').value.trim();
+  let harga = document.getElementById('newHarga').value.trim();
   let role = document.getElementById('newRole').value;
-  if(!nama || !harga || !role){ alert('Isi Nama, Harga & Role dulu bre!'); return; }
-  
+
+  if(!nama || !harga || !role){ 
+    showDapModal('LENGKAPI DATA', 'Isi Nama, Harga dan Role dulu bre!');
+    return; 
+  }
+
   let produk = JSON.parse(localStorage.getItem('dapProduk') || '[]');
   produk.push({nama:nama, harga:harga, role:role});
   localStorage.setItem('dapProduk', JSON.stringify(produk));
-  
-  document.getElementById('listProduk').innerHTML += `<div>✅ ${nama} - ${harga} [${role}]</div>`;
+
+  document.getElementById('listProduk').innerHTML += '';
   refreshDeleteList();
-  alert('Produk ditambah!');
+  showDapModal('BERHASIL', 'Produk berhasil ditambah!');
 }
 
-function deleteProduct(){
-  let namaPilih = document.getElementById('delProduct').value;
-  let rolePilih = document.getElementById('delRole').value;
-  if(!namaPilih || !rolePilih){ alert('Pilih Produk & Role dulu bre!'); return; }
-  if(!confirm(`Yakin hapus ${namaPilih} dengan role ${rolePilih}?`)) return;
-
+async function deleteProduct(){
+  let namaPilih = document.getElementById('delProductWrap')?.dataset.value;
+  let rolePilih = document.getElementById('delRoleWrap')?.dataset.value;
+  if(!namaPilih || !rolePilih){ await showDapModal('BELUM LENGKAP','Pilih Produk & Role dulu bre!'); return; }
+  let yakin = await showDapModal('HAPUS PRODUK', `Yakin hapus ${namaPilih} dengan role ${rolePilih}?`, true, 'YA, HAPUS');
+  if(!yakin) return;
   let produk = JSON.parse(localStorage.getItem('dapProduk') || '[]');
   produk = produk.filter(p => !(p.nama === namaPilih && p.role === rolePilih));
   localStorage.setItem('dapProduk', JSON.stringify(produk));
   refreshDeleteList();
-  alert('Produk berhasil dihapus!');
+  await showDapModal('BERHASIL','Produk berhasil dihapus!');
 }
+let dapResolve = null;
+function showDapModal(judul, teks, showCancel=false, okText='OKE'){
+  document.getElementById('dapModalTitle').innerText = judul;
+  document.getElementById('dapModalText').innerText = teks;
+  document.getElementById('dapModalOk').innerText = okText;
+  document.getElementById('dapModalCancel').style.display = showCancel ? 'block' : 'none';
+  document.getElementById('dapOverlay').classList.add('show');
+  return new Promise(res => dapResolve = res);
+}
+function closeDapModal(val=true){
+  document.getElementById('dapOverlay').classList.remove('show');
+  if(dapResolve) dapResolve(val);
+}
+function buatDapSelect(wrapId, options, onPick){
+  let wrap = document.getElementById(wrapId);
+  if(!wrap) return;
+  let btn = wrap.querySelector('.dap-select-btn span');
+  let list = wrap.querySelector('.dap-select-list');
+  list.innerHTML = options.map(o=>`<div class="dap-opt" data-v="${o}">${o}<span class="dot"></span></div>`).join('');
+  wrap.querySelector('.dap-select-btn').onclick = (e)=>{ e.stopPropagation(); document.querySelectorAll('.dap-select-wrap.open').forEach(w=>{ if(w!==wrap) w.classList.remove('open') }); wrap.classList.toggle('open'); };
+  list.querySelectorAll('.dap-opt').forEach(opt=>{
+    opt.onclick = ()=>{
+      list.querySelectorAll('.dap-opt').forEach(x=>x.classList.remove('active'));
+      opt.classList.add('active');
+      btn.innerText = opt.dataset.v;
+      wrap.classList.remove('open');
+      wrap.dataset.value = opt.dataset.v;
+      if(onPick) onPick(opt.dataset.v);
+    }
+  });
+}
+document.addEventListener('click', ()=> document.querySelectorAll('.dap-select-wrap.open').forEach(w=>w.classList.remove('open')));
 </script>
 <div id="dapOverlay" class="dap-overlay" onclick="if(event.target===this) closeDapModal()">
   <div class="dap-modal">
