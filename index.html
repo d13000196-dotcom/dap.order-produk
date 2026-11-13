@@ -328,16 +328,22 @@ renderAdmin();
 refreshDeleteList();
 function refreshDeleteList(){
   let listNama = [];
-  // Baca dari 2 kunci, biar gak salah laci lagi
-  let a = JSON.parse(localStorage.getItem('dap_products') || '[]');
-  let b = JSON.parse(localStorage.getItem('dapProduk') || '[]');
-  a.forEach(p => listNama.push(p.nama || p));
-  b.forEach(p => listNama.push(p.nama || p));
-  // Kalo ada produk bawaan
-  if(typeof products !== 'undefined'){
-    products.forEach(p => listNama.push(p.nama));
+  // Ambil dari variabel list yang sama kayak renderAdmin, biar gak beda laci
+  if(typeof list !== 'undefined' && list.length){
+    list.forEach(p => {
+      if(typeof p === 'string') listNama.push(p);
+      else if(p) listNama.push(p.nama || p.n || p.name || '');
+    });
   }
-  // Buang yang duplikat
+  // Cadangan dari localStorage
+  let b = JSON.parse(localStorage.getItem('dapProduk') || '[]');
+  b.forEach(p => {
+    if(typeof p === 'string') listNama.push(p);
+    else if(p) listNama.push(p.nama || p.n || p.name || '');
+  });
+  if(typeof products !== 'undefined'){
+    products.forEach(p => listNama.push(p.nama || p.n || p.name || ''));
+  }
   listNama = [...new Set(listNama)].filter(x => x);
   buatDapSelect('delProductWrap', listNama);
 }
