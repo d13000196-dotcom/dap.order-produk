@@ -328,22 +328,24 @@ renderAdmin();
 refreshDeleteList();
 function refreshDeleteList(){
   let listNama = [];
-  // Ambil dari variabel list yang sama kayak renderAdmin, biar gak beda laci
-  if(typeof list !== 'undefined' && list.length){
-    list.forEach(p => {
+  // 1. PRODUK LAMA - dari kode (backup data lama)
+  if(typeof products !== 'undefined' && products.length){
+    products.forEach(p => {
       if(typeof p === 'string') listNama.push(p);
-      else if(p) listNama.push(p.nama || p.n || p.name || '');
+      else if(p) listNama.push(p.nama || p.n || p.name || p.title || '');
     });
   }
-  // Cadangan dari localStorage
+  // 2. PRODUK BARU - dari localStorage
+  let a = JSON.parse(localStorage.getItem('dap_products') || '[]');
+  a.forEach(p => {
+    if(typeof p === 'string') listNama.push(p);
+    else if(p) listNama.push(p.nama || p.n || p.name || p.title || '');
+  });
   let b = JSON.parse(localStorage.getItem('dapProduk') || '[]');
   b.forEach(p => {
     if(typeof p === 'string') listNama.push(p);
-    else if(p) listNama.push(p.nama || p.n || p.name || '');
+    else if(p) listNama.push(p.nama || p.n || p.name || p.title || '');
   });
-  if(typeof products !== 'undefined'){
-    products.forEach(p => listNama.push(p.nama || p.n || p.name || ''));
-  }
   listNama = [...new Set(listNama)].filter(x => x);
   buatDapSelect('delProductWrap', listNama);
 }
