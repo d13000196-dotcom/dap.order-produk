@@ -326,26 +326,27 @@ function delProd(i){list.splice(i,1); localStorage.setItem('dap_products',JSON.s
 function logout(){sessionStorage.removeItem('dap_admin'); goPage('login')}
 renderAdmin();
 refreshDeleteList();
+const backupProdukLama = ["CapCut", "Spotify", "YouTube", "Am", "Game Turbo"];
+
 function refreshDeleteList(){
   let listNama = [];
-  // 1. PRODUK LAMA - dari kode (backup data lama)
-  if(typeof products !== 'undefined' && products.length){
-    products.forEach(p => {
-      if(typeof p === 'string') listNama.push(p);
-      else if(p) listNama.push(p.nama || p.n || p.name || p.title || '');
-    });
-  }
-  // 2. PRODUK BARU - dari localStorage
+  // 1. PRODUK LAMA - dari backup yang lu kasih (ini yang dari tadi gak muncul)
+  let yangDihapus = JSON.parse(localStorage.getItem('dap_deleted') || '[]');
+  backupProdukLama.forEach(n => {
+    if(!yangDihapus.includes(n)) listNama.push(n);
+  });
+  // 2. PRODUK BARU - dari yang lu tambah di admin
   let a = JSON.parse(localStorage.getItem('dap_products') || '[]');
   a.forEach(p => {
     if(typeof p === 'string') listNama.push(p);
-    else if(p) listNama.push(p.nama || p.n || p.name || p.title || '');
+    else if(p) listNama.push(p.nama || p.n || p.name || '');
   });
   let b = JSON.parse(localStorage.getItem('dapProduk') || '[]');
   b.forEach(p => {
     if(typeof p === 'string') listNama.push(p);
-    else if(p) listNama.push(p.nama || p.n || p.name || p.title || '');
+    else if(p) listNama.push(p.nama || p.n || p.name || '');
   });
+  // Buang duplikat & yang kosong
   listNama = [...new Set(listNama)].filter(x => x);
   buatDapSelect('delProductWrap', listNama);
 }
