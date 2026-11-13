@@ -349,9 +349,9 @@ function refreshDeleteList(){
 refreshDeleteList();
 
 function addProduct(){
-  let nama = document.getElementById('newNama').value.trim();
-  let harga = document.getElementById('newHarga').value.trim();
-  let role = document.getElementById('newRole').value;
+  let nama = document.getElementById('newName').value.trim();
+let harga = document.getElementById('newPrice').value.trim();
+let role = document.getElementById('newRoleWrap').dataset.value;
 
   if(!nama || !harga || !role){ 
     showDapModal('LENGKAPI DATA', 'Isi Nama, Harga dan Role dulu bre!');
@@ -411,6 +411,8 @@ function buatDapSelect(wrapId, options, onPick){
   });
 }
 document.addEventListener('click', ()=> document.querySelectorAll('.dap-select-wrap.open').forEach(w=>w.classList.remove('open')));
+buatDapSelect('newRoleWrap', ['FULL UPDATE','RESELLER','VIP','ADMIN','PARTNER','TK','MODERATOR','OWNER']);
+buatDapSelect('delRoleWrap', ['FULL UPDATE','RESELLER','VIP','ADMIN','PARTNER','TK','MODERATOR','OWNER']);
 </script>
 <div id="dapOverlay" class="dap-overlay" onclick="if(event.target===this) closeDapModal()">
   <div class="dap-modal">
