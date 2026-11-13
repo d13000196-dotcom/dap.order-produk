@@ -201,7 +201,7 @@ input{width:100%;border:3px solid #000;border-radius:14px;padding:14px;font-size
 <!-- ============ PAGE: DASHBOARD ADMIN ============ -->
 <div id="page-admin" class="page">
 <div style="margin:14px 12px"><h1 style="font-family:'Bricolage Grotesque';font-weight:900;font-size:28px;margin:0">DASHBOARD ADMIN</h1><p style="margin:6px 0 0;color:#555">Halo, Admin. Kelola produk, testi & kontak dari sini.</p></div>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 12px"><div class="card" style="margin:0"><div style="font-size:12px;color:#888;font-weight:800">TOTAL PRODUK</div><b style="font-family:'Bricolage Grotesque';font-size:26px" id="totalProduk">7</b><div style="font-size:12px">Produk aktif</div></div><div class="card" style="margin:0;background:#C9F1DF"><div style="font-size:12px;color:#555;font-weight:800">DATABASE</div><b style="font-size:18px">Terhubung</b><div style="font-size:12px">DAP ORDER</div></div></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 12px"><div class="card" style="margin:0"><div style="font-size:12px;color:#888;font-weight:800">TOTAL PRODUK</div><b style="font-family:'Bricolage Grotesque';font-size:26px" id="totalProduk">7</b><div style="font-size:12px">Produk Aktif</div></div><div class="card" style="margin:0;background:#C9F1DF"><div style="font-size:12px;color:#555;font-weight:800">DATABASE</div><b style="font-size:18px">Terhubung</b><div style="font-size:12px">DAP ORDER</div></div></div>
 
 <div class="card"><h3 style="font-family:'Bricolage Grotesque';margin:0">AGENT MANAJEMEN</h3><p style="color:#666;font-size:13px">Kelola produk & testi. Data tersimpan di browser untuk demo ini.</p>
 
@@ -209,17 +209,10 @@ input{width:100%;border:3px solid #000;border-radius:14px;padding:14px;font-size
 <label>NAMA PRODUK BARU</label><input id="newName" placeholder="Contoh: Nama Produk Baru">
 <label>HARGA</label><input id="newPrice" placeholder="Contoh: Rp 50.000">
 <label>PILIH ROLE</label>
-<select id="newRole" style="width:100%;padding:12px;border:2px solid #000;border-radius:14px;margin:6px 0 10px;font-family:inherit;font-weight:700;background:#fff">
-  <option value="">-- Pilih Role --</option>
-  <option value="FULL UPDATE">FULL UPDATE</option>
-  <option value="RESELLER">RESELLER</option>
-  <option value="VIP">VIP</option>
-  <option value="ADMIN">ADMIN</option>
-  <option value="PARTNER">PARTNER</option>
-  <option value="TK">TK</option>
-  <option value="MODERATOR">MODERATOR</option>
-  <option value="OWNER">OWNER</option>
-</select>
+<div class="dap-select-wrap" id="newRoleWrap">
+  <div class="dap-select-btn"><span>-- Pilih Role --</span><b>▼</b></div>
+  <div class="dap-select-list"></div>
+</div>
 <button class="btn-contact" style="background:var(--main);margin-top:14px" onclick="addProduct()">TAMBAH PRODUK (DEMO)</button>
 <div id="listProduk" style="margin-top:12px;font-size:13px"></div>
 
@@ -229,22 +222,16 @@ input{width:100%;border:3px solid #000;border-radius:14px;padding:14px;font-size
 <p style="color:#666;font-size:13px;margin:4px 0 10px">Pilih produk & role yang mau dihapus.</p>
 
 <label>PILIH PRODUK YANG MAU DIHAPUS</label>
-<select id="delProduct" style="width:100%;padding:12px;border:2px solid #000;border-radius:14px;margin:6px 0 10px;font-family:inherit;font-weight:700;background:#fff">
-  <option value="">-- Pilih Produk --</option>
-</select>
+<div class="dap-select-wrap" id="delProductWrap">
+  <div class="dap-select-btn"><span>-- Pilih Produk --</span><b>▼</b></div>
+  <div class="dap-select-list"></div>
+</div>
 
 <label>PILIH ROLE YANG MAU DIHAPUS</label>
-<select id="delRole" style="width:100%;padding:12px;border:2px solid #000;border-radius:14px;margin:6px 0 10px;font-family:inherit;font-weight:700;background:#fff">
-  <option value="">-- Pilih Role --</option>
-  <option value="FULL UPDATE">FULL UPDATE</option>
-  <option value="RESELLER">RESELLER</option>
-  <option value="VIP">VIP</option>
-  <option value="ADMIN">ADMIN</option>
-  <option value="PARTNER">PARTNER</option>
-  <option value="TK">TK</option>
-  <option value="MODERATOR">MODERATOR</option>
-  <option value="OWNER">OWNER</option>
-</select>
+<div class="dap-select-wrap" id="delRoleWrap">
+  <div class="dap-select-btn"><span>-- Pilih Role --</span><b>▼</b></div>
+  <div class="dap-select-list"></div>
+</div>
 
 <button class="btn-contact" style="background:#ff3b30;color:#fff;margin-top:10px" onclick="deleteProduct()">HAPUS PRODUK</button>
 </div>
