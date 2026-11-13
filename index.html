@@ -325,6 +325,7 @@ function addProduct(){const n=document.getElementById('newName').value.trim(); c
 function delProd(i){list.splice(i,1); localStorage.setItem('dap_products',JSON.stringify(list)); renderAdmin()}
 function logout(){sessionStorage.removeItem('dap_admin'); goPage('login')}
 renderAdmin();
+refreshDeleteList();
 function refreshDeleteList(){
   let listNama = [];
   // Baca dari 2 kunci, biar gak salah laci lagi
