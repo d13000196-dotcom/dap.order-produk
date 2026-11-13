@@ -327,15 +327,17 @@ function logout(){sessionStorage.removeItem('dap_admin'); goPage('login')}
 renderAdmin();
 function refreshDeleteList(){
   let listNama = [];
-  // 1. Dari produk bawaan
+  // Baca dari 2 kunci, biar gak salah laci lagi
+  let a = JSON.parse(localStorage.getItem('dap_products') || '[]');
+  let b = JSON.parse(localStorage.getItem('dapProduk') || '[]');
+  a.forEach(p => listNama.push(p.nama || p));
+  b.forEach(p => listNama.push(p.nama || p));
+  // Kalo ada produk bawaan
   if(typeof products !== 'undefined'){
     products.forEach(p => listNama.push(p.nama));
   }
-  // 2. Dari produk tambahan (yang lu tambah di admin)
-  let tambahan = JSON.parse(localStorage.getItem('dapProduk') || '[]');
-  tambahan.forEach(p => listNama.push(p.nama));
-
-  // Isi dropdown hapus pake buatDapSelect, bukan <option> lagi
+  // Buang yang duplikat
+  listNama = [...new Set(listNama)].filter(x => x);
   buatDapSelect('delProductWrap', listNama);
 }
 function addProduct(){
