@@ -327,44 +327,35 @@ function logout(){sessionStorage.removeItem('dap_admin'); goPage('login')}
 renderAdmin();
 refreshDeleteList();
 function refreshDeleteList(){
-function getProdukDariDashboard(){
-  let names = [];
-  // 1. Coba baca dari variabel global yang dipake Dashboard
-  if(typeof products !== 'undefined' && products.length){
-    products.forEach(p => {
-      if(typeof p === 'string') names.push(p);
-      else if(p) names.push(p.nama || p.n || p.name || p.title || '');
+  try{
+    let listNama = [];
+    // 1. PRODUK BARU - yang lu tambah di admin
+    let a = [];
+    try{ a = JSON.parse(localStorage.getItem('dap_products') || '[]'); }catch(e){}
+    a.forEach(p => {
+      if(typeof p === 'string') listNama.push(p);
+      else if(p) listNama.push(p.nama || p.n || p.name || '');
     });
-  }
-  if(typeof list !== 'undefined' && list.length){
-    list.forEach(p => {
-      if(typeof p === 'string') names.push(p);
-      else if(p) names.push(p.nama || p.n || p.name || p.title || '');
+    let b = [];
+    try{ b = JSON.parse(localStorage.getItem('dapProduk') || '[]'); }catch(e){}
+    b.forEach(p => {
+      if(typeof p === 'string') listNama.push(p);
+      else if(p) listNama.push(p.nama || p.n || p.name || '');
     });
-  }
-  // 2. Coba baca dari localStorage juga
-  let a = JSON.parse(localStorage.getItem('dap_products') || '[]');
-  a.forEach(p => {
-    if(typeof p === 'string') names.push(p);
-    else if(p) names.push(p.nama || p.n || p.name || p.title || '');
-  });
-  let b = JSON.parse(localStorage.getItem('dapProduk') || '[]');
-  b.forEach(p => {
-    if(typeof p === 'string') names.push(p);
-    else if(p) names.push(p.nama || p.n || p.name || p.title || '');
-  });
-  // 3. YANG PALING PENTING: Baca langsung dari yang tampil di Dashboard Produk (DOM)
-  // Ini yang bikin dia pasti nyambung sama dashboard
-  document.querySelectorAll('[data-nama], .produk-nama, .product-name, .nama-produk').forEach(el => {
-    let t = (el.dataset.nama || el.textContent || '').trim();
-    if(t) names.push(t);
-  });
-  return [...new Set(names)].filter(x => x);
-}
-
-function refreshDeleteList(){
-  let listNama = getProdukDariDashboard();
-  buatDapSelect('delProductWrap', listNama);
+    // 2. PRODUK LAMA - dari Dashboard
+    // Coba semua nama variabel yang mungkin, pake window[] biar gak stuck
+    ['products','katalog','daftarProduk','dataProduk','listProduk','produk','list','DATA_PRODUK'].forEach(k => {
+      try{
+        let v = window[k];
+        if(Array.isArray(v)) v.forEach(p => {
+          if(typeof p === 'string') listNama.push(p);
+          else if(p) listNama.push(p.nama || p.n || p.name || p.title || '');
+        });
+      }catch(e){}
+    });
+    listNama = [...new Set(listNama)].filter(x => x);
+    buatDapSelect('delProductWrap', listNama);
+  }catch(e){}
 }
 function addProduct(){
   let nama = document.getElementById('newName').value.trim();
