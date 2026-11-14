@@ -329,21 +329,19 @@ refreshDeleteList();
 function refreshDeleteList(){
   try{
     let listNama = [];
-    // 1. PRODUK BARU - dari localStorage
+    // 1. PRODUK LAMA - dari array products yang udah ada di file
+    if(typeof products !== 'undefined' && Array.isArray(products)){
+      products.forEach(p => {
+        if(typeof p === 'string') listNama.push(p);
+        else if(p) listNama.push(p.nama || p.n || p.name || p.apk || p.id || p.title || '');
+      });
+    }
+    // 2. PRODUK BARU - dari localStorage
     let a = [];
     try{ a = JSON.parse(localStorage.getItem('dap_products') || '[]'); }catch(e){}
     a.forEach(p => {
       if(typeof p === 'string') listNama.push(p);
-      else if(p) listNama.push(p.nama || p.n || p.name || '');
-    });
-    // 2. PRODUK LAMA - dari kartu yang tampil di Dashboard (.p-card)
-    document.querySelectorAll('.p-card').forEach(card => {
-      let t = '';
-      let el = card.querySelector('h3, h4, .title, .p-title, b, strong');
-      if(el) t = el.textContent.trim();
-      if(!t) t = (card.dataset.nama || card.dataset.name || '').trim();
-      if(!t) t = card.textContent.trim().split('\n')[0].trim();
-      if(t) listNama.push(t);
+      else if(p) listNama.push(p.nama || p.n || p.name || p.apk || p.id || '');
     });
     listNama = [...new Set(listNama)].filter(x => x);
     buatDapSelect('delProductWrap', listNama);
