@@ -329,29 +329,21 @@ refreshDeleteList();
 function refreshDeleteList(){
   try{
     let listNama = [];
-    // 1. PRODUK BARU - yang lu tambah di admin
+    // 1. PRODUK BARU - dari localStorage
     let a = [];
     try{ a = JSON.parse(localStorage.getItem('dap_products') || '[]'); }catch(e){}
     a.forEach(p => {
       if(typeof p === 'string') listNama.push(p);
       else if(p) listNama.push(p.nama || p.n || p.name || '');
     });
-    let b = [];
-    try{ b = JSON.parse(localStorage.getItem('dapProduk') || '[]'); }catch(e){}
-    b.forEach(p => {
-      if(typeof p === 'string') listNama.push(p);
-      else if(p) listNama.push(p.nama || p.n || p.name || '');
-    });
-    // 2. PRODUK LAMA - dari Dashboard
-    // Coba semua nama variabel yang mungkin, pake window[] biar gak stuck
-    ['products','katalog','daftarProduk','dataProduk','listProduk','produk','list','DATA_PRODUK'].forEach(k => {
-      try{
-        let v = window[k];
-        if(Array.isArray(v)) v.forEach(p => {
-          if(typeof p === 'string') listNama.push(p);
-          else if(p) listNama.push(p.nama || p.n || p.name || p.title || '');
-        });
-      }catch(e){}
+    // 2. PRODUK LAMA - dari kartu yang tampil di Dashboard (.p-card)
+    document.querySelectorAll('.p-card').forEach(card => {
+      let t = '';
+      let el = card.querySelector('h3, h4, .title, .p-title, b, strong');
+      if(el) t = el.textContent.trim();
+      if(!t) t = (card.dataset.nama || card.dataset.name || '').trim();
+      if(!t) t = card.textContent.trim().split('\n')[0].trim();
+      if(t) listNama.push(t);
     });
     listNama = [...new Set(listNama)].filter(x => x);
     buatDapSelect('delProductWrap', listNama);
