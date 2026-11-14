@@ -327,18 +327,43 @@ function logout(){sessionStorage.removeItem('dap_admin'); goPage('login')}
 renderAdmin();
 refreshDeleteList();
 function refreshDeleteList(){
-  let listNama = [];
-  // Baca dari 2 kunci, biar gak salah laci lagi
-  let a = JSON.parse(localStorage.getItem('dap_products') || '[]');
-  let b = JSON.parse(localStorage.getItem('dapProduk') || '[]');
-  a.forEach(p => listNama.push(p.nama || p));
-  b.forEach(p => listNama.push(p.nama || p));
-  // Kalo ada produk bawaan
-  if(typeof products !== 'undefined'){
-    products.forEach(p => listNama.push(p.nama));
+function getProdukDariDashboard(){
+  let names = [];
+  // 1. Coba baca dari variabel global yang dipake Dashboard
+  if(typeof products !== 'undefined' && products.length){
+    products.forEach(p => {
+      if(typeof p === 'string') names.push(p);
+      else if(p) names.push(p.nama || p.n || p.name || p.title || '');
+    });
   }
-  // Buang yang duplikat
-  listNama = [...new Set(listNama)].filter(x => x);
+  if(typeof list !== 'undefined' && list.length){
+    list.forEach(p => {
+      if(typeof p === 'string') names.push(p);
+      else if(p) names.push(p.nama || p.n || p.name || p.title || '');
+    });
+  }
+  // 2. Coba baca dari localStorage juga
+  let a = JSON.parse(localStorage.getItem('dap_products') || '[]');
+  a.forEach(p => {
+    if(typeof p === 'string') names.push(p);
+    else if(p) names.push(p.nama || p.n || p.name || p.title || '');
+  });
+  let b = JSON.parse(localStorage.getItem('dapProduk') || '[]');
+  b.forEach(p => {
+    if(typeof p === 'string') names.push(p);
+    else if(p) names.push(p.nama || p.n || p.name || p.title || '');
+  });
+  // 3. YANG PALING PENTING: Baca langsung dari yang tampil di Dashboard Produk (DOM)
+  // Ini yang bikin dia pasti nyambung sama dashboard
+  document.querySelectorAll('[data-nama], .produk-nama, .product-name, .nama-produk').forEach(el => {
+    let t = (el.dataset.nama || el.textContent || '').trim();
+    if(t) names.push(t);
+  });
+  return [...new Set(names)].filter(x => x);
+}
+
+function refreshDeleteList(){
+  let listNama = getProdukDariDashboard();
   buatDapSelect('delProductWrap', listNama);
 }
 function addProduct(){
