@@ -140,27 +140,26 @@ input{width:100%;border:3px solid #000;border-radius:14px;padding:14px;font-size
 <div style="margin-top:10px;color:#333">Saya Dappak menjual berbagai produk aplikasi bug untuk exploitasi WhatsApp dan mengirim serangan RAT (Remote Access Trojan), untuk melakukan penyadapan informasi dan data pada ponsel target. Saya Dappak juga sudah melakukan 2-3K lebih Transaksi pembelian</div>
 <div class="btn-jelajah" onclick="goPage('produk')">JELAJAHI PRODUCT <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><path d="M5 12 H19 M12 5 L19 12 L12 19"/></svg></div>
 </div>
-<div style="background:#C9F1DF;border-top:4px solid #000;padding:14px">
-<div class="tag">DAP OFFICIAL</div>
+<div style="background:#C9F1DF;background-image:radial-gradient(#00000022 1px, transparent 1px);background-size:14px 14px;border-top:4px solid #000;padding:14px">
+<div class="tag">● DAP OFFICIALLY</div>
 <p style="font-weight:700;line-height:1.4;margin-top:12px">Tempat menjelajahi produk digital. Periksa informasi produk dan ketentuan sebelum melakukan transaksi.</p>
-<div style="margin-top:8px">© 2026 DAP ORDER. Hak cipta dilindungi.</div>
+<div style="margin-top:8px">© 2026 Dap Officially. Hak cipta dilindungi.</div>
 <div style="margin-top:18px"><div style="border:3.5px solid #000;display:inline-block;padding:8px 14px;font-weight:900;background:#B7E6CC;box-shadow:4px 4px 0 #000">INFORMASI</div>
 <div style="margin-top:12px">
 <div class="info-card" onclick="goPage('produk')"><span>Jelajahi Product</span><span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5"><path d="M7 17 L17 7 M7 7 H17 V17"/></svg></span></div>
-<div class="info-card" style="background:#C2E6FF" onclick="document.getElementById('tutorial').scrollIntoView({behavior:'smooth'})"><span>Tutorial Membeli</span><span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5"><path d="M5 12 H19 M12 5 L19 12 L12 19"/></svg></span></div></div></div></div>
+<div class="info-card" style="background:#C2E6FF" onclick="goPage('tutorial')"><span>Tutorial Membeli</span><span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5"><path d="M5 12 H19 M12 5 L19 12 L12 19"/></svg></span></div>
+<div class="info-card" style="background:#FFE600" onclick="goPage('aturan')"><span>Aturan Jual Beli</span><span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5"><path d="M5 12 H19 M12 5 L19 12 L12 19"/></svg></span></div>
+</div></div></div>
 </div>
-
-<!-- TUTORIAL - NEMPEL DI BAWAH DAP OFFICIAL, DI DALAM HOME -->
-<div id="tutorial" style="padding:20px 15px; font-family:inherit;">
-
-  <!-- KOTAK 1 ATAS - KUNING IKUT TEMA -->
-  <div style="background:var(--primary, var(--main, var(--accent, var(--theme-color, var(--yellow, #FFE600))))); color:var(--text, #000); border:3px solid #000; border-radius:16px; padding:18px; font-family:inherit;">
+  
+<!-- PAGE: TUTORIAL -->
+<div id="page-tutorial" class="page">
+<div style="padding:20px 15px; font-family:'Inter',sans-serif;">
+  <div style="background:#FFE600; color:#000; border:3px solid #000; border-radius:16px; padding:18px;">
     <div style="display:inline-block; background:#000; color:#fff; font-size:12px; font-weight:800; letter-spacing:1px; padding:6px 12px; border-radius:6px; margin-bottom:12px;">DAP OFFICIALLY • PANDUAN PEMBELI</div>
-    <h2 style="font-family:inherit; margin:0;">TUTORIAL BELI</h2>
-    <p style="font-family:inherit;">Ikuti langkah berikut untuk memilih produk, menyelesaikan pembayaran, dan menghubungi admin.</p>
+    <h2 style="margin:0;">TUTORIAL BELI</h2>
+    <p>Ikuti langkah berikut untuk memilih produk, menyelesaikan pembayaran, dan menghubungi admin.</p>
   </div>
-
-  <!-- KOTAK 2 TENGAH - PUTIH -->
   <div style="background:#fff; border:3.5px solid #000; border-radius:15px; padding:18px; box-shadow:5px 5px 0 #000; margin-bottom:15px; margin-top:15px;">
     <h3 style="margin:0 0 15px; font-size:19px; font-weight:900; color:#000;">Langkah Pembelian</h3>
     <div style="font-size:14px; line-height:1.6; color:#000;">
@@ -173,16 +172,44 @@ input{width:100%;border:3px solid #000;border-radius:14px;padding:14px;font-size
       <p style="margin:0;"><span style="color:#2B4EFF; font-weight:900;">7.</span> <b>Tunggu konfirmasi.</b> Produk akan diproses setelah pembayaran diperiksa oleh admin. Simpan bukti transaksi sampai pesanan selesai.</p>
     </div>
   </div>
-
-  <!-- KOTAK 3 BAWAH - HIJAU MUDA -->
-  <div style="background:#CFF0D9; border:3.5px solid #000; border-radius:15px; padding:15px 18px; box-shadow:5px 5px 0 #000; font-size:14px; font-weight:600; line-height:1.5; color:#000;">
+  <div style="background:#CFF0D9; border:3.5px solid #000; border-radius:15px; padding:15px 18px; box-shadow:5px 5px 0 #000; font-size:14px; font-weight:600; line-height:1.5; color:#000; margin-bottom:15px;">
     Tips: Jika ada detail yang belum jelas, tanyakan kepada admin sebelum membayar. Jangan bagikan kata sandi atau kode OTP.
   </div>
-
+  <div onclick="goPage('produk')" style="display:inline-block; background:#000; color:#fff; border:3px solid #000; border-radius:12px; padding:12px 18px; font-weight:900; cursor:pointer; box-shadow:4px 4px 0 #000;">→ Mulai Belanja</div>
 </div>
-<!-- AKHIR TUTORIAL -->
-</div> <!-- tutup padding 18px 14px -->
-</div> <!-- tutup page-home -->
+</div>
+<!-- AKHIR PAGE: TUTORIAL -->
+
+<!-- PAGE: ATURAN JUAL BELI -->
+<div id="page-aturan" class="page">
+<div style="padding:20px 15px; font-family:'Inter',sans-serif;">
+  <div style="background:#FFE600; color:#000; border:3px solid #000; border-radius:16px; padding:18px;">
+    <div style="display:inline-block; background:#000; color:#fff; font-size:12px; font-weight:800; letter-spacing:1px; padding:6px 12px; border-radius:6px; margin-bottom:12px;">DAP OFFICIALLY • INFORMASI PEMBELI</div>
+    <h2 style="margin:0;">ATURAN JUAL BELI</h2>
+    <p>Mohon baca ketentuan berikut sebelum melakukan pemesanan agar transaksi lebih jelas dan nyaman bagi pembeli maupun pengelola.</p>
+  </div>
+  <div style="background:#fff; border:3.5px solid #000; border-radius:15px; padding:18px; box-shadow:5px 5px 0 #000; margin-bottom:15px; margin-top:15px;">
+    <h3 style="margin:0 0 15px; font-size:19px; font-weight:900; color:#000;">Ketentuan Transaksi</h3>
+    <div style="font-size:14px; line-height:1.6; color:#000;">
+      <p style="margin:0 0 14px;"><span style="color:#2B4EFF; font-weight:900;">1.</span> <b>Periksa produk sebelum membeli.</b> Baca nama, deskripsi, fitur, persyaratan, dan informasi lain pada halaman produk. Jika ada yang belum jelas, tanyakan kepada admin sebelum membayar.</p>
+      <p style="margin:0 0 14px;"><span style="color:#2B4EFF; font-weight:900;">2.</span> <b>Pilih role dan masa aktif dengan teliti.</b> Pastikan pilihan seperti harian, mingguan, bulanan, atau permanen sesuai kebutuhan. Untuk durasi harian, periksa jumlah hari dan total harga yang ditampilkan.</p>
+      <p style="margin:0 0 14px;"><span style="color:#2B4EFF; font-weight:900;">3.</span> <b>Pastikan nominal pembayaran benar.</b> Cocokkan nominal dan detail pesanan pada halaman pembayaran sebelum memindai QRIS atau melakukan transfer.</p>
+      <p style="margin:0 0 14px;"><span style="color:#2B4EFF; font-weight:900;">4.</span> <b>Simpan bukti pembayaran.</b> Setelah transfer, hubungi admin melalui tombol WhatsApp atau Telegram yang tersedia dan sertakan bukti pembayaran serta informasi pesanan yang diperlukan.</p>
+      <p style="margin:0 0 14px;"><span style="color:#2B4EFF; font-weight:900;">5.</span> <b>Tunggu verifikasi admin.</b> Tampilan QR atau bukti transfer saja bukan konfirmasi bahwa pembayaran telah diterima. Produk diberikan setelah pembayaran diperiksa dan dikonfirmasi oleh admin.</p>
+      <p style="margin:0 0 14px;"><span style="color:#2B4EFF; font-weight:900;">6.</span> <b>Jangan membagikan informasi sensitif.</b> Jangan kirim kata sandi akun pribadi, kode OTP, atau informasi keamanan yang tidak diperlukan untuk menyelesaikan pesanan.</p>
+      <p style="margin:0 0 14px;"><span style="color:#2B4EFF; font-weight:900;">7.</span> <b>Pengiriman produk digital.</b> Periksa instruksi dan informasi aktivasi yang diberikan saat produk dikirim. Hubungi admin jika ada kendala yang berkaitan dengan pesanan.</p>
+      <p style="margin:0 0 14px;"><span style="color:#2B4EFF; font-weight:900;">8.</span> <b>Pembatalan dan pengembalian dana.</b> Karena produk digital dapat dikirim atau diaktifkan segera, pastikan pesanan sebelum membayar. Permintaan pembatalan atau pengembalian akan ditinjau berdasarkan status pesanan, kesepakatan dengan admin, dan ketentuan hukum yang berlaku.</p>
+      <p style="margin:0 0 14px;"><span style="color:#2B4EFF; font-weight:900;">9.</span> <b>Gunakan produk secara bertanggung jawab.</b> Patuhi hukum dan ketentuan layanan dari aplikasi atau platform terkait. Jangan gunakan produk untuk merugikan orang lain atau mengakses akun maupun sistem tanpa izin.</p>
+      <p style="margin:0;"><span style="color:#2B4EFF; font-weight:900;">10.</span> <b>Hubungi admin jika ada masalah.</b> Sampaikan kendala dengan bahasa yang jelas dan sertakan nomor atau detail pesanan serta bukti yang relevan. Jangan melakukan pembayaran ulang sebelum mendapat arahan.</p>
+    </div>
+  </div>
+  <div style="background:#C2E6FF; border:3.5px solid #000; border-radius:15px; padding:15px 18px; box-shadow:5px 5px 0 #000; font-size:14px; font-weight:600; line-height:1.5; color:#000; margin-bottom:15px;">
+    Catatan: Ketentuan ini merupakan panduan transaksi umum. Hak konsumen yang berlaku menurut peraturan perundang-undangan tetap dihormati.
+  </div>
+  <div onclick="goPage('home')" style="display:inline-block; background:#000; color:#fff; border:3px solid #000; border-radius:12px; padding:12px 18px; font-weight:900; cursor:pointer; box-shadow:4px 4px 0 #000;">← Kembali ke Home</div>
+</div>
+</div>
+<!-- AKHIR PAGE: ATURAN -->
 
 <!-- ============ PAGE: PRODUK - SAMA KAYAK LAMA ============ -->
 <div id="page-produk" class="page">
