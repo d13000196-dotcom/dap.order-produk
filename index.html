@@ -160,7 +160,7 @@ input{width:100%;border:3px solid #000;border-radius:14px;padding:14px;font-size
 
 <div id="tutorial" style="padding:20px 15px 100px;">
 
-  <!-- KOTAK ATAS - KUNING IKUT WARNA WEBSITE -->
+  <!-- KOTAK ATAS -->
   <div id="tutorial-top" style="background:#FFE600; border:3.5px solid #000; border-radius:15px; padding:18px; box-shadow:5px 5px 0 #000; margin-bottom:15px;">
     <div style="display:inline-block; background:#000; color:#fff; font-size:12px; font-weight:800; letter-spacing:1px; padding:6px 12px; border-radius:6px; margin-bottom:12px;">DAP OFFICIAL • PANDUAN PEMBELI</div>
     <h2 style="margin:0 0 8px; font-size:30px; line-height:1; color:#000;">TUTORIAL BELI</h2>
@@ -189,21 +189,45 @@ input{width:100%;border:3px solid #000;border-radius:14px;padding:14px;font-size
 </div>
 
 <script>
-function ikutWarnaWeb(){
-  var kotak = document.getElementById('tutorial-top');
-  if(!kotak) return;
-  var semua = document.querySelectorAll('div, header, section, body');
-  for(var i=0; i<semua.length; i++){
-    var bg = getComputedStyle(semua[i]).backgroundColor;
-    if(bg && bg !== 'rgba(0, 0, 0, 0)' && bg !== 'rgb(255, 255, 255)' && bg !== 'rgb(255, 230, 0)' && bg !== 'rgb(0, 0, 0)'){
-      if(semua[i].offsetWidth > window.innerWidth * 0.8){
-        kotak.style.background = bg;
-        var angka = document.querySelectorAll('.angka-tema');
-        angka.forEach(function(a){ a.style.color = bg; });
-        break;
+function ambilWarnaTema(){
+  // 1. Cari tulisan "DAP ORDER" - naik ke atas sampai ketemu bar kuning / ijo / biru / pink nya
+  var els = document.querySelectorAll('*');
+  for(var i=0; i<els.length; i++){
+    if(els[i].textContent.trim() === 'DAP ORDER'){
+      var p = els[i];
+      while(p){
+        var bg = getComputedStyle(p).backgroundColor;
+        // Yang diambil cuma 4 warna ini, abu-abu / putih / item dibuang
+        if(bg === 'rgb(255, 230, 0)' || bg === 'rgb(255, 224, 0)' || bg === 'rgb(255, 235, 0)'){
+          return '#FFE600'; // KUNING
+        }
+        // Ijo, Biru, Pink - ambil apa adanya dari web lu
+        if(bg && bg !== 'rgba(0, 0, 0, 0)' && bg !== 'rgb(255, 255, 255)' && bg !== 'rgb(0, 0, 0)'){
+          // Jangan ambil abu-abu background web (itu yang bikin kemarin jadi abu)
+          if(bg.indexOf('237') === -1 && bg.indexOf('238') === -1 && bg.indexOf('240') === -1){
+            return bg;
+          }
+        }
+        p = p.parentElement;
       }
     }
   }
+  // 2. Cadangan: cek tombol HOME bawah yang warnanya ikut tema juga
+  var home = document.querySelector('a[href*="home"], button');
+  if(home) return getComputedStyle(home).backgroundColor;
+  return '#FFE600';
+}
+
+function ikutWarnaWeb(){
+  var warna = ambilWarnaTema();
+  var kotak = document.getElementById('tutorial-top');
+  if(kotak) kotak.style.background = warna;
+  var angka = document.querySelectorAll('.angka-tema');
+  angka.forEach(function(a){
+    // Kalau tema kuning, angka jangan kuning terang (gak keliatan di putih), jadi agak gelap
+    if(warna === '#FFE600') a.style.color = '#D4A900';
+    else a.style.color = warna;
+  });
 }
 ikutWarnaWeb();
 setInterval(ikutWarnaWeb, 800);
