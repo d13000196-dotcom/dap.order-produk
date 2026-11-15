@@ -148,19 +148,21 @@ input{width:100%;border:3px solid #000;border-radius:14px;padding:14px;font-size
 <div style="margin-top:12px">
 <div class="info-card" onclick="goPage('produk')"><span>Jelajahi Product</span><span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5"><path d="M7 17 L17 7 M7 7 H17 V17"/></svg></span></div>
 <div class="info-card" style="background:#C2E6FF" onclick="goPage('tutorial')"><span>Tutorial Membeli</span><span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5"><path d="M5 12 H19 M12 5 L19 12 L12 19"/></svg></span></div></div></div></div>
+<div class="info-card" style="background:#C2E6FF" onclick="document.getElementById('tutorial').scrollIntoView({behavior:'smooth'})"><span>Tutorial Membeli</span><span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5"><path d="M5 12 H19 M12 5 L19 12 L12 19"/></svg></span></div></div></div></div>
 </div>
 
-<!-- PAGE: TUTORIAL - TARO DI SINI, ANTARA HOME SAMA PRODUK -->
-<div id="page-tutorial" class="page">
-<div style="padding:20px 15px; font-family:'Inter',sans-serif;">
+<!-- TUTORIAL - NEMPEL DI BAWAH DAP OFFICIAL, DI DALAM HOME -->
+<div id="tutorial" style="padding:20px 15px; font-family:inherit;">
 
   <!-- KOTAK 1 ATAS - KUNING IKUT TEMA -->
-  <div style="background:var(--primary, var(--main, var(--accent, var(--theme-color, var(--yellow, #FFE600))))); color:var(--text, #000); border:3px solid #000; border-radius:16px; padding:18px; font-family:inherit;">    <div style="display:inline-block; background:#000; color:#fff; font-size:12px; font-weight:800; letter-spacing:1px; padding:6px 12px; border-radius:6px; margin-bottom:12px;">DAP OFFICIALLY • PANDUAN PEMBELI</div>
+  <div style="background:var(--primary, var(--main, var(--accent, var(--theme-color, var(--yellow, #FFE600))))); color:var(--text, #000); border:3px solid #000; border-radius:16px; padding:18px; font-family:inherit;">
+    <div style="display:inline-block; background:#000; color:#fff; font-size:12px; font-weight:800; letter-spacing:1px; padding:6px 12px; border-radius:6px; margin-bottom:12px;">DAP OFFICIALLY • PANDUAN PEMBELI</div>
     <h2 style="font-family:inherit; margin:0;">TUTORIAL BELI</h2>
-    <p style="font-family:inherit;">Ikuti langkah berikut untuk memilih produk, menyelesaikan pembayaran, dan menghubungi admin.</p>  </div>
+    <p style="font-family:inherit;">Ikuti langkah berikut untuk memilih produk, menyelesaikan pembayaran, dan menghubungi admin.</p>
+  </div>
 
   <!-- KOTAK 2 TENGAH - PUTIH -->
-  <div style="background:#fff; border:3.5px solid #000; border-radius:15px; padding:18px; box-shadow:5px 5px 0 #000; margin-bottom:15px;">
+  <div style="background:#fff; border:3.5px solid #000; border-radius:15px; padding:18px; box-shadow:5px 5px 0 #000; margin-bottom:15px; margin-top:15px;">
     <h3 style="margin:0 0 15px; font-size:19px; font-weight:900; color:#000;">Langkah Pembelian</h3>
     <div style="font-size:14px; line-height:1.6; color:#000;">
       <p style="margin:0 0 14px;"><span style="color:#2B4EFF; font-weight:900;">1.</span> <b>Buka halaman Product.</b> Pilih produk yang ingin dibeli dari katalog.</p>
@@ -179,8 +181,7 @@ input{width:100%;border:3px solid #000;border-radius:14px;padding:14px;font-size
   </div>
 
 </div>
-</div>
-<!-- AKHIR PAGE: TUTORIAL -->
+<!-- AKHIR TUTORIAL -->
 
 <!-- ============ PAGE: PRODUK - SAMA KAYAK LAMA ============ -->
 <div id="page-produk" class="page">
